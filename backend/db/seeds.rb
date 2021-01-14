@@ -34,7 +34,7 @@ ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! just 
 
 r1 = Reply.create(post_id: ps1.id, replier_id: u2.id, reply: 'love it. 10/10')
 
-c1 = Comment.create(project_id: p1.id, commenter_id: u2.id, comment: 'just found your page...like what you are up to keep it up')
+c1 = Comment.create(project_id: p1.id, commenter_id: u2.id, blurb: 'just found your page...like what you are up to keep it up')
 
 s1 = Supportership.create(project_id: p1.id, supporter_id: u2.id)
 

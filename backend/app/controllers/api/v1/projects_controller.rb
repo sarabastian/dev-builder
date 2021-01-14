@@ -10,7 +10,7 @@ class Api::V1::ProjectsController < ApplicationController
     end
 
     def create 
-        project = User.new(project_params)
+        project = Project.new(project_params)
         render json: project
     end
 

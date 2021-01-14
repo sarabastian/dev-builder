@@ -1,6 +1,6 @@
 class Api::V1::SupportershipsController < ApplicationController
     def index
-        supporterships = Supporterships.all
+        supporterships = Supportership.all
         render json: supporterships
     end
     
@@ -24,6 +24,6 @@ class Api::V1::SupportershipsController < ApplicationController
     private
 
     def supportership_params
-        params.require(:supporter).permit()
+        params.require(:supporter).permit(:project_id, :supporter_id)
     end
 end

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
       resources :replies 
       
       post '/login', to: 'auth#create'
-      get '/profile', to: 'users#profile'
+      get "/auto_login", to: "auth#auto_login"
+      get "/user_is_authed", to: "auth#user_is_authed"
     end
   end
 

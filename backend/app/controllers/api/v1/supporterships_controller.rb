@@ -24,6 +24,6 @@ class Api::V1::SupportershipsController < ApplicationController
     private
 
     def supportership_params
-        params.require(:supporter).permit(:project_id, :supporter_id)
+        params.require(:supportership).permit(:project_id, :supporter_id)
     end
 end

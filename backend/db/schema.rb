@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 2021_01_14_162452) do
 
   create_table "collaborate_requests", force: :cascade do |t|
     t.integer "project_id"
-    t.integer "requester_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
     t.integer "project_id"
-    t.integer "commenter_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "blurb"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_162452) do
 
   create_table "replies", force: :cascade do |t|
     t.integer "post_id"
-    t.integer "replier_id"
+    t.integer "user_id"
     t.string "reply"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_162452) do
 
   create_table "supporterships", force: :cascade do |t|
     t.integer "project_id"
-    t.integer "supporter_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -72,19 +72,10 @@ ActiveRecord::Schema.define(version: 2021_01_14_162452) do
     t.string "password_digest"
     t.string "name"
     t.string "location"
-    t.bigint "commenter_id"
-    t.bigint "supporter_id"
-    t.bigint "requester_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "profile_pic"
     t.string "bio"
-    t.index ["commenter_id"], name: "index_users_on_commenter_id"
-    t.index ["requester_id"], name: "index_users_on_requester_id"
-    t.index ["supporter_id"], name: "index_users_on_supporter_id"
   end
 
-  add_foreign_key "users", "users", column: "commenter_id"
-  add_foreign_key "users", "users", column: "requester_id"
-  add_foreign_key "users", "users", column: "supporter_id"
 end

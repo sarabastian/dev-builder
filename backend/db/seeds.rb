@@ -32,10 +32,11 @@ p1 = Project.create(title: 'RVBnB', story: 'A marketplace for users to rent and 
 
 ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! just updated the homepage - check it out and let me know what you think!')
 
-r1 = Reply.create(post_id: ps1.id, replier_id: u2.id, reply: 'love it. 10/10')
+r1 = Reply.create(post_id: ps1.id, user_id: u2.id, reply: 'love it. 10/10')
 
-c1 = Comment.create(project_id: p1.id, commenter_id: u2.id, blurb: 'just found your page...like what you are up to keep it up')
+c1 = Comment.create(project_id: p1.id, user_id: u2.id, blurb: 'just found your page...like what you are up to keep it up')
 
-s1 = Supportership.create(project_id: p1.id, supporter_id: u2.id)
+s1 = Supportership.create(project_id: p1.id, user_id: u2.id)
 
-collab1 = CollaborateRequest.create(project_id: p1.id, requester_id: u2.id)
+
+collab1 = CollaborateRequest.create(project_id: p1.id, user_id: u2.id)

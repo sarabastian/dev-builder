@@ -3,11 +3,14 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :projects
   has_many :supporterships
-  has_many :supporters, through: :supporterships, class_name: "User", foreign_key: "supporter_id"
-  # has_many :projects, through: :supporterships
+  has_many :projects_supported, through: :supporterships, source: :project
+
   has_many :comments
-  has_many :commenters, through: :comments, class_name: "User", foreign_key: "commenter_id"
-  has_many :collaborate_requests 
-  has_many :requesters, through: :collaborate_requests, class_name: "User", foreign_key: "requester_id"
-  has_many :posts
+  has_many :projects_commented_on, through: :comments, source: :project
+
+  has_many :collaborate_requests
+  has_many :collaborate_project_requests, through: :collaborate_requests, source: :project
+
+
+  
 end

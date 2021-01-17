@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 import { createBrowserHistory } from 'history';
-import Main from './components/Main';
+import Main from './containers/Main';
 import Login from './components/login';
 
 class App extends React.Component {

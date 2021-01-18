@@ -66,7 +66,7 @@ export default function MenuAppBar(props) {
           </Typography>
           <Fab variant="extended" color="secondary" aria-label="add" >
           <AddIcon className={classes.extendedIcon}/>Create
-          </Fab>
+          </Fab> 
           {auth && (
             <div>
               <Avatar alt="Remy Sharp" src={props.user.profile_pic}

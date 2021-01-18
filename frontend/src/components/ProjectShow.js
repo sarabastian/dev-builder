@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
 import ProjectShowNav from './ProjectShowNav';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,7 +8,10 @@ import Grow from '@material-ui/core/Grow';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
-const ProjectShow = (props) =>  {
+
+
+const ProjectShow = () =>  {
+  // console.log(location)
   const useStyles = makeStyles((theme) => ({
     root: {
       height: 180,
@@ -38,9 +40,11 @@ const ProjectShow = (props) =>  {
     const handleChange = () => {
       setChecked((prev) => !prev);
     };
+
     return (
+
   <div>
-      <ProjectShowNav />
+      <ProjectShowNav  />
    
       <div className={classes.root}>
         <FormControlLabel

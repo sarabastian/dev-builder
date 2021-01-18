@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-import ProjectShow from './ProjectShow.js'
+import { withRouter } from 'react-router-dom'
 
 
 class ProjectCard extends React.Component {
@@ -53,7 +53,8 @@ handleClick = () => {
             pathname: "/show",
             state: {
               project: this.props.project,
-              key: this.props.project.id
+              key: this.props.project.id,
+              user: this.props.user
     
             }
             
@@ -73,4 +74,4 @@ handleClick = () => {
 
 
 
-export default ProjectCard;
+export default withRouter(ProjectCard);

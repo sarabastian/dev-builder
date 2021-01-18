@@ -41,7 +41,7 @@ componentDidMount() {
 <div>
     <MainNavbar user={this.state.user} key={this.state.user.id} />
 
-  {this.state.projects.map(project => <ProjectCard project={project} key={project.id} />)}
+  {this.state.projects.map(project => <ProjectCard user={this.state.user} project={project} key={project.id} />)}
 
   </div>
 

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -14,6 +13,7 @@ import Menu from '@material-ui/core/Menu';
 import { Fab } from '@material-ui/core';
 import  AddIcon  from '@material-ui/icons/Add';
 import Avatar from '@material-ui/core/Avatar';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +30,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuAppBar(props) {
+
+
+export default function MainNavBar(props) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -43,10 +45,16 @@ export default function MenuAppBar(props) {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+ 
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
+  const [show, setShow] = useState(false);
+
+
+  const handleShow = () => setShow(true);
 
   return (
     <div className={classes.root}>
@@ -64,9 +72,19 @@ export default function MenuAppBar(props) {
           <Typography variant="h6" className={classes.title}>
             My Projects
           </Typography>
+          <Link to={{
+            pathname: "/create",
+            state: {
+              user: props.user
+            }
+           }}>
           <Fab variant="extended" color="secondary" aria-label="add" >
-          <AddIcon className={classes.extendedIcon}/>Create
+          <AddIcon className={classes.extendedIcon}
+            onClick={handleShow}
+          />Create
+         
           </Fab> 
+          </Link>
           {auth && (
             <div>
               <Avatar alt="Remy Sharp" src={props.user.profile_pic}

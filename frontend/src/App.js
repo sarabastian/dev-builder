@@ -5,7 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Main from './containers/Main';
 import Login from './components/Login';
-import ProjectShow from './components/ProjectShow'
+import ProjectShow from './components/ProjectShow';
+import CreateProject from './components/CreateProject';
+import NewProjectContainer from './containers/NewProjectContainer'
 
 class App extends React.Component {
   state = {
@@ -37,6 +39,8 @@ class App extends React.Component {
             <Route path="/login" component={() => <Login login={this.state.isloggedin} handleLogin={this.handleLogin} />} />
             <Route exact path="/" component={() => <Main  /> } />
             <Route exact path="/show" component={() => <ProjectShow />} />
+            <Route exact path="/create" component={() => <CreateProject />} />
+            <Route exact path="/new" component={() => <NewProjectContainer />} />
    
 
 

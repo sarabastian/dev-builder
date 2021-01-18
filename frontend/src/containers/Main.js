@@ -2,13 +2,14 @@ import React from 'react';
 
 import ProjectCard from '../components/ProjectCard';
 // import { Paper } from '@material-ui/core';
-import Navbar from '../components/Navbar'
+import MainNavbar from '../components/MainNavbar'
 
 
 class Main extends React.Component {
 
 state = {
-    projects: []
+    projects: [],
+    user: {}
 
 }
 
@@ -20,9 +21,9 @@ componentDidMount() {
     fetch(`http://localhost:3001/api/v1/users/${parseInt(localStorage.token)}`)
     .then(r => r.json())
     .then(user => {
-        console.log(user.projects)
         this.setState({
-           projects: user.projects
+           projects: user.projects,
+           user: user
         })
     }
     )
@@ -30,14 +31,15 @@ componentDidMount() {
 
 
     render() {
-        
+                console.log(this.state.user)
+
         return(
         
          
           
 
 <div>
-<Navbar />
+    <MainNavbar user={this.state.user} key={this.state.user.id} />
 
   {this.state.projects.map(project => <ProjectCard project={project} key={project.id} />)}
 

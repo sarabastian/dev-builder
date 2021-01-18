@@ -16,7 +16,7 @@ CollaborateRequest.destroy_all
 
 
 u1 = User.create(username: 'sbastian', password: '123', name: 'Sara', location: 'Philadelphia, PA', 
-                 profile_pic: 'file:///Users/sarabastian/Desktop/20191226%20some%20friends%20060.jpg',
+                 profile_pic: 'https://media-exp1.licdn.com/dms/image/C5603AQHdMhpgbVMvlw/profile-displayphoto-shrink_400_400/0/1599700722825?e=1616630400&v=beta&t=rItDt-iDPJz23pJjKQCilCKZ5en3h-YCA2OyCp_QxEQ',
                  bio: 'Aspiring fullstack software engineer looking to make an impact with clean code')
 
 u2 = User.create(username: 'smori', password: '123', name: 'Sienna', location: 'New York, NY',

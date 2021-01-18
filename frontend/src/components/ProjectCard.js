@@ -7,46 +7,68 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
+import ProjectShow from './ProjectShow.js'
 
 
-const ProjectCard = (props) => {
+class ProjectCard extends React.Component {
 
+state = {
 
+    clicked: false
+}
 
-    console.log(props.project)
+handleClick = () => {
 
-    const useStyles = makeStyles({
-        root: {
-            maxWidth: 345,
-        },
-        media: {
-            height: 140,
-        },
-    });
-
-    const classes = useStyles();
+    this.setState({
+        clicked: true
+    })
+}
+ render(){
 
     return (
        
-        <Card className={classes.root}>
+        <Card className="project-card">
             <CardActionArea>
-            <CardMedia
-          className={classes.media}
-         src={props.project.image}
-          title="Contemplative Reptile"
-        />
+
+         
+         <img src={this.props.project.image}
+          title="Contemplative Reptile" />
+    
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {props.project.title}
+                        {this.props.project.title}
           </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {props.project.story}
+                        {this.props.project.story}
           </Typography>
                 </CardContent>
             </CardActionArea>
+            <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+
+        <Link to={{
+            pathname: "/show",
+            state: {
+              project: this.props.project,
+              key: this.props.project.id
+    
+            }
+            
+           }} >
+        <Button size="small" color="primary">
+          Manage
+         
+        </Button>
+        </Link>
+       
+      </CardActions>
         </Card>
         
     )
+ }
 }
 
 

@@ -10,7 +10,9 @@ class Api::V1::ProjectsController < ApplicationController
     end
 
     def create 
+      
         project = Project.new(project_params)
+        #   byebug
         render json: project
     end
 
@@ -24,6 +26,6 @@ class Api::V1::ProjectsController < ApplicationController
     private
 
     def project_params
-        params.require(:project).permit(:title, :story, :timeline, :fundraising_goal, :github, :language, :stage, :user_id)
+        params.require(:project).permit(:title, :story, :timeline, :fundraising_goal, :image, :github, :language, :stage, :user_id)
     end
 end

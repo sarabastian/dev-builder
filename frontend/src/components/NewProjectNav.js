@@ -13,7 +13,8 @@ import Menu from '@material-ui/core/Menu';
 import { Fab } from '@material-ui/core';
 import  AddIcon  from '@material-ui/icons/Add';
 import Avatar from '@material-ui/core/Avatar';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function MainNavBar(props) {
+export default function NewProjectNav() {
+  const data = useLocation()
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -55,7 +57,6 @@ export default function MainNavBar(props) {
 
 
   const handleShow = () => setShow(true);
-
   return (
     <div className={classes.root}>
       <FormGroup>
@@ -70,14 +71,12 @@ export default function MainNavBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            My Projects
+            Overview
           </Typography>
-          <NavLink   exact activeStyle={{color: 'red'}} to={{
-
+          <Link to={{
             pathname: "/create",
-          
             state: {
-              user: props.user
+              user: data.state.data.state.user
             }
            }}>
           <Fab variant="extended" color="secondary" aria-label="add" >
@@ -86,10 +85,10 @@ export default function MainNavBar(props) {
           />Create
          
           </Fab> 
-          </NavLink>
+          </Link>
           {auth && (
             <div>
-              <Avatar alt="Remy Sharp" src={props.user.profile_pic}
+              <Avatar alt="Remy Sharp" src={data.state.data.state.user.profile_pic}
 
                 aria-label="account of current user"
                 aria-controls="menu-appbar"

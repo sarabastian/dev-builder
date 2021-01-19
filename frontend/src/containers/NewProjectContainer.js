@@ -1,50 +1,58 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
+import NewProjectNav from '../components/NewProjectNav'
 
 
 function NewProjectContainer() {
 
-    const [project, setProject] = useState('');
+
 
     const props = useLocation();
+    // const project = [project, setProject] = useState({})
 
-   React.useEffect(function effectFunction() {
+    useEffect(() => {
+        fetch('http://localhost:3001/api/v1/projects',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
 
-        fetch('http://localhost:3001/api/v1/projects', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-        
-            },
-            body: JSON.stringify({ 
-                title: props.state.title,
+                },
+                body: JSON.stringify({
+                    title: props.state.title,
                     story: props.state.story,
-                    timeline: props.state.timeline,
-                    fundraisingGoal: parseInt(props.state.fundraisingGoal),
+                    timeline: parseInt(props.state.timeline),
+                    fundraising_goal: parseInt(props.state.fundraising_goal),
+                    image: props.state.image,
                     github: props.state.github,
                     language: props.state.language,
-                    stage: props.state.stage, 
+                    stage: props.state.stage,
                     user_id: props.state.data.state.user.id
-            }),
-        })
-        .then(r=> r.json())
-        .then(project => setProject(project))
-    
-    
-    })
+                }),
+            })
+
+
+            .then(r => r.json())
+            .then(project => console.log(project))
+
+    }, [])
+
+
+    return (
+        <div>
+            <NewProjectNav user={props.state.data.state.user} />
+            <h1>{props.state.title}</h1>
+        </div>
+    )
 
 
 
-        return(
-
-            
-<h1>hi</h1>
 
 
 
-        )
-    
+
+
 };
 
 export default NewProjectContainer;

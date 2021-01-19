@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-    return ['1', '2', '3', '4', '5', '6', '7'];
+    return ['1', '2', '3', '4', '5', '6', '7', '8'];
   }
   
 
@@ -45,19 +45,23 @@ function CreateProject() {
     const [title, setTitle] = useState('');
     const [story, setStory] = useState('');
     const [timeline, setTimeline] = useState(null);
-    const [fundraisingGoal, setFundraisingGoal] = useState(null);
+    const [image, setImage] = useState('')
+    const [fundraising_goal, setFundraisingGoal] = useState(null);
     const [github, setGithub] = useState('');
     const [language, setLanguage] = useState('');
     const [stage, setStage] = useState('');
     const data = useLocation();
 
 
-    const submitValue = () => {
+
+
+    function submitValue ()  {
         const details = {
             'Title': title,
             'Story': story,
             'Timeline': timeline,
-            'Fundraising Goal': fundraisingGoal,
+            'Fundraising Goal': fundraising_goal,
+            'Image': image,
             'Github': github,
             'Language': language,
             'Stage': stage,
@@ -67,6 +71,9 @@ function CreateProject() {
         console.log(details);
 
     }
+ 
+      
+
 
     const handleNext = (e) => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -230,6 +237,41 @@ function CreateProject() {
                     </StepContent>
                 </Step>
                 <Step >
+                    <StepLabel>Cover image?</StepLabel>
+                    <StepContent>
+                        <Typography>
+                            <Input onChange={e => setImage(e.target.value)} >
+                                {/* {getStepContent(index)} */}
+
+                            </Input>
+                        </Typography>
+
+                        <div className={classes.actionsContainer}>
+                            <div>
+                                <Button
+                                    disabled={activeStep === 0}
+                                    onClick={handleBack}
+                                    className={classes.button}
+                                >
+                                    Back
+                  </Button>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                    className={classes.button}
+                                >
+                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                </Button>
+
+                            </div>
+                        </div>
+
+
+
+                    </StepContent>
+                </Step>
+                <Step >
                     <StepLabel>Link your Github</StepLabel>
                     <StepContent>
                         <Typography>
@@ -345,12 +387,14 @@ function CreateProject() {
                             title,
                             story,
                             timeline,
-                            fundraisingGoal,
+                            fundraising_goal,
+                            image,
                             github,
                             language,
                             stage,
                             data
                         }
+                        
 
                     }} >
                         <Button onClick={submitValue} className={classes.button}>

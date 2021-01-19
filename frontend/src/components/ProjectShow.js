@@ -8,13 +8,40 @@ import Grow from '@material-ui/core/Grow';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import ProjectTabs from './Tabs/ProjectTabs';
 import {useLocation} from "react-router-dom";
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import { Link } from '@material-ui/core';
 
 
 
 
 const ProjectShow = () =>  {
-  console.log(useLocation())
+  const useStyle = makeStyles({
+    root: {
+        minWidth: 275,
+        height: 400
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+  });
+  
+  // console.log(useLocation())
   const data = useLocation()
+  const styles = useStyle();
+  // const bull = <span className={classes.bullet}>•</span>;
   const useStyles = makeStyles((theme) => ({
     root: {
       height: 180,
@@ -78,23 +105,33 @@ const ProjectShow = () =>  {
           </Grow>
         </div>
       </div>
-      <ProjectTabs project={data.state.project} user={data.state.user}/>
+      <Card className={styles.root} variant="outlined">
+            <CardContent>
+                <Typography className={styles.title} color="textSecondary" gutterBottom>
+                    {data.state.project.title}
+          </Typography>
+                <Typography variant="h5" component="h2">
+                   {data.state.project.story}
+          </Typography>
+                <Typography className={styles.pos} color="textSecondary">
+                   timeline: {data.state.project.timeline} days
+          </Typography>
+                <Typography variant="body2" component="p">
+                    fundraising goal: ${data.state.project.fundraising_goal}
+            <br />
+        
+                <Link href={data.state.project.github} >
+                    <GitHubIcon />
+                </Link>
+                </Typography>
+            </CardContent>
+      
+        </Card>
+  
+      <ProjectTabs project={data.state.project} user={data.state.user} posts={data.state.posts}
+                  supporters={data.state.supporters}/>
       </div>
     
-  
-    
-
-        
-          
-     
-        
-/* <Grid
-  container
-  direction="row"
-  justify="center"
-  alignItems="center"
-  
->hello</Grid> */
 
 
         )

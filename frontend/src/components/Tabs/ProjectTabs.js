@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -14,6 +14,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import { SnackbarContent } from '@material-ui/core';
+import SupporterCard from '../SupporterCard'
+
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,6 +65,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const useSnackStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 600,
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 export default function NewProjectTabs(props) {
   
   const [open, setOpen] = React.useState(false);
@@ -73,6 +87,7 @@ export default function NewProjectTabs(props) {
     setOpen(false);
   };
   const classes = useStyles();
+  const snackClasses = useSnackStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -81,6 +96,13 @@ export default function NewProjectTabs(props) {
 
   const [post, setPost] = useState('');
   // console.log(props.user)
+  const [allPosts, setAllPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/v1/posts')
+      .then(res => res.json())
+      .then(allPosts => setAllPosts(allPosts));
+  }, []);
 
   const addPost = () => {
     setOpen(false);
@@ -102,13 +124,14 @@ export default function NewProjectTabs(props) {
 
 
   .then(r => r.json())
-  .then(post => console.log(post))
+  .then(post =>  setAllPosts([...allPosts, post]))
   
 
   }
 
-  
 
+  
+// console.log(props.supporters)
   return (
       <div>
           <h2>Community</h2>
@@ -158,16 +181,19 @@ export default function NewProjectTabs(props) {
           </Button>
         </DialogActions>
       </Dialog>
-       
-        Updates
+      <div className={snackClasses.root}>
+      {allPosts.map(p =>  <SnackbarContent message={p.blurb}  />)}
+      </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
     
         Comments
       </TabPanel>
       <TabPanel value={value} index={2}>
+    
+      {props.supporters.map(s =>  <SupporterCard supporter={s} key={s.id}  />)}
    
-        Supporters
+        
       </TabPanel>
       <TabPanel value={value} index={3}>
     

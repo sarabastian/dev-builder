@@ -38,9 +38,14 @@ componentDidMount() {
           
 
 <div>
-    <MainNavbar user={this.state.user} key={this.state.user.id} />
+    <MainNavbar user={this.state.user} key={this.state.user.id} projects_supported={this.state.user.projects_supported}
+                collaborate_requests={this.state.user.collaborate_project_requests}/>
 
-  {this.state.projects.map(project => <ProjectCard user={this.state.user} project={project} key={project.id} />)}
+  {this.state.projects.map(project => <ProjectCard user={this.state.user} project={project} key={project.id}
+                                                   posts={project.posts} supporters={project.supporters}
+                                                   comments={project.comments} commenters={project.commenters}
+                                                   collaborate_requests={project.collaborate_requests}
+                                                   requesters={project.requesters} />)}
 
   </div>
 

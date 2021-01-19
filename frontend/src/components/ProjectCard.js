@@ -16,7 +16,14 @@ class ProjectCard extends React.Component {
 
 state = {
 
-    clicked: false
+    clicked: false,
+    project: []
+}
+
+componentDidMount(){
+  fetch(`http://localhost:3001/api/v1/projects/${this.props.project.id}`)
+  .then(r=>r.json())
+  .then(project => this.setState({ project}))
 }
 
 handleClick = () => {
@@ -26,6 +33,7 @@ handleClick = () => {
     })
 }
  render(){
+  //  console.log(this.state.project.supporters)
 
     return (
        
@@ -38,10 +46,10 @@ handleClick = () => {
     
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {this.props.project.title}
+                        {this.state.project.title}
           </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {this.props.project.story}
+                        {this.state.project.story}
           </Typography>
                 </CardContent>
             </CardActionArea>
@@ -53,9 +61,14 @@ handleClick = () => {
         <Link to={{
             pathname: "/show",
             state: {
-              project: this.props.project,
-              key: this.props.project.id,
-              user: this.props.user
+              project: this.state.project,
+              key: this.state.project.id,
+              user: this.props.user,
+              posts: this.state.project.posts,
+              comments: this.state.project.comments,
+              commenters: this.state.project.commenters,
+              supporters: this.state.project.supporters,
+              requesters: this.state.project.requesters
     
             }
             

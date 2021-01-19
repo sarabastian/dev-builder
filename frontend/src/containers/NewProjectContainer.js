@@ -11,6 +11,7 @@ function NewProjectContainer() {
 
 
     const props = useLocation();
+    console.log(props.state)
     // const project = [project, setProject] = useState({})
     // const [projects, setProjects] = useState([]);
 
@@ -65,7 +66,7 @@ function NewProjectContainer() {
             <NewProjectTabs title={props.state.title} story={props.state.story} timeline={props.state.timeline}
                             fundraising_goal={props.state.fundraising_goal} image={props.state.image}
                             github={props.state.github} language={props.state.language} stage={props.state.stage}
-                            user_id= {props.state.data.state.user.id} />
+                            user_id= {props.state.data.state.user.id} project_id={props.state.projectId} />
         </div>
     )
 

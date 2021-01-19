@@ -9,6 +9,7 @@ import {useLocation} from "react-router-dom";
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Link } from '@material-ui/core';
 
+
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
@@ -52,12 +53,11 @@ function NewProjectCard(props) {
                     <GitHubIcon />
                 </Link>
                 </Typography>
+            {/* <image src={props.image}></image> */}
             </CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
-            </CardActions>
+        
         </Card>
-
+       
     )
 }
 

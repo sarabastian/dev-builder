@@ -47,9 +47,10 @@ function CreateProject() {
     const [github, setGithub] = useState('');
     const [language, setLanguage] = useState('');
     const [stage, setStage] = useState('');
+    const [project, setProject] = useState([]);
     const data = useLocation();
 
- 
+
 
     const handleNext = (e) => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -66,14 +67,14 @@ function CreateProject() {
 
 
     
-    const [projects, setProjects] = useState([]);
-    const token = localStorage.getItem('token');
+    // const [projects, setProjects] = useState([]);
+    // const token = localStorage.getItem('token');
 
-    useEffect(() => {
-        fetch('http://localhost:3001/api/v1/projects')
-          .then(res => res.json())
-          .then(projects => setProjects(projects));
-      }, []);
+    // useEffect(() => {
+    //     fetch('http://localhost:3001/api/v1/projects')
+    //       .then(res => res.json())
+    //       .then(projects => setProjects(projects));
+    //   }, []);
 
     const createNew = () => {
         fetch('http://localhost:3001/api/v1/projects',
@@ -100,24 +101,25 @@ function CreateProject() {
 
 
         .then(r => r.json())
-        .then(project => {
-            setProjects([...projects, project]);
-        
-    })
-    const details = {
-        'Title': title,
-        'Story': story,
-        'Timeline': timeline,
-        'Fundraising Goal': fundraising_goal,
-        'Image': image,
-        'Github': github,
-        'Language': language,
-        'Stage': stage,
-        'User': data.state.user
+        .then(project => 
+            setProject([project]))
+         }
 
-    }
-    console.log(details);
-}
+
+    // const details = {
+    //     'Title': title,
+    //     'Story': story,
+    //     'Timeline': timeline,
+    //     'Fundraising Goal': fundraising_goal,
+    //     'Image': image,
+    //     'Github': github,
+    //     'Language': language,
+    //     'Stage': stage,
+    //     'User': data.state.user
+
+    // }
+    // console.log(details);
+
 
 
     return (
@@ -414,7 +416,7 @@ function CreateProject() {
                     <Link to={{
                         pathname: "/new",
                         state: {
-                           
+                            project,
                             title,
                             story,
                             timeline,

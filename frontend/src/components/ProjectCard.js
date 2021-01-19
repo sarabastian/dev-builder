@@ -8,7 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+
 
 
 class ProjectCard extends React.Component {

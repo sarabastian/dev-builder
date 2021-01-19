@@ -12,6 +12,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
+import {useLocation} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function MenuAppBar(props) {
+export default function ProjectShowNav(props) {
     const classes = useStyles();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,6 +43,8 @@ export default function MenuAppBar(props) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const data = useLocation()
+// console.log(data)
 
     return (
         <div className={classes.root}>
@@ -61,7 +64,7 @@ export default function MenuAppBar(props) {
           </Typography> */}
                     {auth && (
                         <div>
-                            <Avatar alt="Remy Sharp" src='{props.user.profile_pic}'
+                            <Avatar alt="Remy Sharp" src={props.user.profile_pic}
 
                                 aria-label="account of current user"
                                 aria-controls="menu-appbar"

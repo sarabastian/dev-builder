@@ -10,9 +10,9 @@ class Api::V1::ProjectsController < ApplicationController
     end
 
     def create 
-      
-        project = Project.new(project_params)
-        #   byebug
+            # byebug
+        project = Project.create(project_params)
+    
         render json: project
     end
 

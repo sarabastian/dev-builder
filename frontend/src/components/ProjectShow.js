@@ -1,17 +1,20 @@
 import React from 'react';
-import ProjectShowNav from './ProjectShowNav';
+import ProjectShowNav from './Navbars/ProjectShowNav';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Paper from '@material-ui/core/Paper';
 import Grow from '@material-ui/core/Grow';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import ProjectTabs from './Tabs/ProjectTabs';
+import {useLocation} from "react-router-dom";
 
 
 
 
 const ProjectShow = () =>  {
-  // console.log(location)
+  console.log(useLocation())
+  const data = useLocation()
   const useStyles = makeStyles((theme) => ({
     root: {
       height: 180,
@@ -40,11 +43,13 @@ const ProjectShow = () =>  {
     const handleChange = () => {
       setChecked((prev) => !prev);
     };
+    const info = useLocation()
+    // console.log(data.state)
 
     return (
 
   <div>
-      <ProjectShowNav  />
+      <ProjectShowNav user={info.state.user} project={info.state.project}/>
    
       <div className={classes.root}>
         <FormControlLabel
@@ -73,6 +78,7 @@ const ProjectShow = () =>  {
           </Grow>
         </div>
       </div>
+      <ProjectTabs project={data.state.project} user={data.state.user}/>
       </div>
     
   

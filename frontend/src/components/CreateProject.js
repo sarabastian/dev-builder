@@ -33,11 +33,6 @@ function getSteps() {
     return ['1', '2', '3', '4', '5', '6', '7', '8'];
   }
   
-
-
-
-
-
 function CreateProject() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -52,28 +47,7 @@ function CreateProject() {
     const [stage, setStage] = useState('');
     const data = useLocation();
 
-
-
-
-    function submitValue ()  {
-        const details = {
-            'Title': title,
-            'Story': story,
-            'Timeline': timeline,
-            'Fundraising Goal': fundraising_goal,
-            'Image': image,
-            'Github': github,
-            'Language': language,
-            'Stage': stage,
-            'User': data.state.user
-
-        }
-        console.log(details);
-
-    }
  
-      
-
 
     const handleNext = (e) => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -89,7 +63,59 @@ function CreateProject() {
     };
 
 
+    
+    const [projects, setProjects] = useState([]);
+    const token = localStorage.getItem('token');
 
+    useEffect(() => {
+        fetch('http://localhost:3001/api/v1/projects')
+          .then(res => res.json())
+          .then(projects => setProjects(projects));
+      }, []);
+
+    const createNew = () => {
+        fetch('http://localhost:3001/api/v1/projects',
+        {
+            method: 'POST',
+            headers: {
+                // Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+
+            },
+            body: JSON.stringify({
+                title: title,
+                story: story,
+                timeline: parseInt(timeline),
+                fundraising_goal: parseInt(fundraising_goal),
+                image: image,
+                github: github,
+                language: language,
+                stage: stage,
+                user_id: data.state.user.id
+            }),
+        })
+
+
+        .then(r => r.json())
+        .then(project => {
+            setProjects([...projects, project]);
+        
+    })
+    const details = {
+        'Title': title,
+        'Story': story,
+        'Timeline': timeline,
+        'Fundraising Goal': fundraising_goal,
+        'Image': image,
+        'Github': github,
+        'Language': language,
+        'Stage': stage,
+        'User': data.state.user
+
+    }
+    console.log(details);
+}
 
 
     return (
@@ -384,6 +410,7 @@ function CreateProject() {
                     <Link to={{
                         pathname: "/new",
                         state: {
+                           
                             title,
                             story,
                             timeline,
@@ -397,7 +424,7 @@ function CreateProject() {
                         
 
                     }} >
-                        <Button onClick={submitValue} className={classes.button}>
+                       <Button onClick={createNew}  className={classes.button}>
                             Create
           </Button>
                     </Link>

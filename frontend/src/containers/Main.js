@@ -2,7 +2,7 @@ import React from 'react';
 
 import ProjectCard from '../components/ProjectCard';
 // import { Paper } from '@material-ui/core';
-import MainNavbar from '../components/MainNavbar'
+import MainNavbar from '../components/Navbars/MainNavbar'
 
 
 class Main extends React.Component {

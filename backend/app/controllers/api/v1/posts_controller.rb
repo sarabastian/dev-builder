@@ -10,7 +10,8 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def create 
-        post = Post.new(post_params)
+        # byebug
+        post = Post.create(post_params)
         render json: post
     end
 

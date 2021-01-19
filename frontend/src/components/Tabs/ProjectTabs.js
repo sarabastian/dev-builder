@@ -15,9 +15,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import { SnackbarContent } from '@material-ui/core';
-import SupporterCard from '../SupporterCard'
-
-
+import SupporterCard from '../SupporterCard';
+import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
+import Paper from '@material-ui/core/Paper';
 
 
 function TabPanel(props) {
@@ -74,6 +75,19 @@ const useSnackStyles = makeStyles((theme) => ({
   },
 }));
 
+const useCommentStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    overflow: 'hidden',
+    padding: theme.spacing(0, 3),
+  },
+  paper: {
+    maxWidth: 400,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: theme.spacing(2),
+  },
+}));
+
 export default function NewProjectTabs(props) {
   
   const [open, setOpen] = React.useState(false);
@@ -88,6 +102,7 @@ export default function NewProjectTabs(props) {
   };
   const classes = useStyles();
   const snackClasses = useSnackStyles();
+  const commentClasses = useCommentStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -125,13 +140,11 @@ export default function NewProjectTabs(props) {
 
   .then(r => r.json())
   .then(post =>  setAllPosts([...allPosts, post]))
-  
 
   }
+let commenters = props.commenters.filter(com => com.id == props.comments.map(c => c.user_id))
+// console.log(commenters[0].name)
 
-
-  
-// console.log(props.supporters)
   return (
       <div>
           <h2>Community</h2>
@@ -150,7 +163,7 @@ export default function NewProjectTabs(props) {
         <Tab label="Updates" {...a11yProps(0)} ></Tab>
         <Tab label="Comments" {...a11yProps(1)} />
         <Tab label="Supporters" {...a11yProps(2)} />
-        <Tab label="Collaboration Requests" {...a11yProps(3)} />
+        
 
       </Tabs>
       <TabPanel value={value} index={0} >
@@ -186,8 +199,20 @@ export default function NewProjectTabs(props) {
       </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-    
-        Comments
+      <div className={commentClasses.root}>
+      {props.comments.map(c =>  <Paper className={commentClasses.paper}>
+        <Grid container wrap="nowrap" spacing={2}>
+          <Grid item>
+            <Avatar src={commenters[0].profile_pic}></Avatar>
+          </Grid>
+          <Grid item xs>
+            <Typography>{c.blurb} <br></br><br></br>- {commenters[0].name}</Typography>
+          </Grid>
+        </Grid>
+      </Paper>
+      )}
+
+      </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
     
@@ -195,10 +220,7 @@ export default function NewProjectTabs(props) {
    
         
       </TabPanel>
-      <TabPanel value={value} index={3}>
-    
-        Collaboration Requests
-      </TabPanel>
+
 
     </div>
     </div>

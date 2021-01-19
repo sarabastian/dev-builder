@@ -20,7 +20,7 @@ u1 = User.create(username: 'sbastian', password: '123', name: 'Sara', location: 
                  bio: 'Aspiring fullstack software engineer looking to make an impact with clean code')
 
 u2 = User.create(username: 'smori', password: '123', name: 'Sienna', location: 'New York, NY',
-                profile_pic: ' ',
+                profile_pic: 'https://scontent-lga3-2.xx.fbcdn.net/v/t1.0-9/72638171_10215658714401918_3218729541950242816_n.jpg?_nc_cat=103&ccb=2&_nc_sid=09cbfe&_nc_ohc=yY3VuIzhOUQAX9Wbfck&_nc_ht=scontent-lga3-2.xx&oh=0168f855bb4b33061370457561d8075e&oe=602E5777',
                 bio: 'Credit Researcher looking to learn Python')
 
 p1 = Project.create(title: 'RVBnB', story: 'A marketplace for users to rent and list campervans, RVs, and trailers',

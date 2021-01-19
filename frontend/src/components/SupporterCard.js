@@ -51,8 +51,8 @@ export default function SupporterCard(props) {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+          <Avatar aria-label="recipe" className={classes.avatar} src={props.supporter.profile_pic}>
+            
           </Avatar>
         }
         action={

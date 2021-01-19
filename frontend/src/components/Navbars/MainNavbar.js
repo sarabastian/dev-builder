@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function MainNavBar(props) {
-  console.log(props.projects_supported)
+  // console.log(props.projects_supported)
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);

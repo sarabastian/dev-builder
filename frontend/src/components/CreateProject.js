@@ -10,7 +10,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import {useLocation} from "react-router-dom";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import MainNavBar from './Navbars/MainNavbar'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -119,6 +121,8 @@ function CreateProject() {
 
 
     return (
+      
+       
         <div className={classes.root}>
             <Stepper activeStep={activeStep} orientation="vertical">
 
@@ -435,6 +439,7 @@ function CreateProject() {
                 </Paper>
             )}
         </div>
+ 
     );
 }
 

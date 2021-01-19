@@ -41,7 +41,6 @@ const ProjectShow = () =>  {
   // console.log(useLocation())
   const data = useLocation()
   const styles = useStyle();
-  // const bull = <span className={classes.bullet}>•</span>;
   const useStyles = makeStyles((theme) => ({
     root: {
       height: 180,
@@ -129,7 +128,8 @@ const ProjectShow = () =>  {
         </Card>
   
       <ProjectTabs project={data.state.project} user={data.state.user} posts={data.state.posts}
-                  supporters={data.state.supporters}/>
+                  supporters={data.state.supporters} comments={data.state.comments}
+                  commenters={data.state.commenters} />
       </div>
     
 

@@ -23,6 +23,10 @@ u2 = User.create(username: 'smori', password: '123', name: 'Sienna', location: '
                 profile_pic: 'https://scontent-lga3-2.xx.fbcdn.net/v/t1.0-9/72638171_10215658714401918_3218729541950242816_n.jpg?_nc_cat=103&ccb=2&_nc_sid=09cbfe&_nc_ohc=yY3VuIzhOUQAX9Wbfck&_nc_ht=scontent-lga3-2.xx&oh=0168f855bb4b33061370457561d8075e&oe=602E5777',
                 bio: 'Credit Researcher looking to learn Python')
 
+u3 = User.create(username: 'waltlo', password: '123', name: 'Walter', location: 'Philadelphia, PA',
+                profile_pic: 'https://www.facebook.com/photo/?fbid=2630960153595462&set=a.158043177553851&__tn__=%3C',
+                bio: 'Multitalented human looking for design inspiration, currently top program coordinator for Princeton in Africa')
+
 p1 = Project.create(title: 'RVBnB', story: 'A marketplace for users to rent and list campervans, RVs, and trailers',
                     timeline: 60, fundraising_goal: 1000, image: 'https://i.pinimg.com/564x/86/36/ce/8636ce9e4053b3a46356325742b78214.jpg',
                     github: 'https://github.com/sarabastian/Phase-4-Project,',
@@ -35,8 +39,11 @@ ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! just 
 r1 = Reply.create(post_id: ps1.id, user_id: u2.id, reply: 'love it. 10/10')
 
 c1 = Comment.create(project_id: p1.id, user_id: u2.id, blurb: 'just found your page...like what you are up to keep it up')
+c2 = Comment.create(project_id: p1.id, user_id: u3.id, blurb: 'how close are you to reaching your fundraising goal?')
 
 s1 = Supportership.create(project_id: p1.id, user_id: u2.id)
+s2 = Supportership.create(project_id: p1.id, user_id: u3.id)
 
 
 collab1 = CollaborateRequest.create(project_id: p1.id, user_id: u2.id)
+collab2 = CollaborateRequest.create(project_id: p1.id, user_id: u3.id)

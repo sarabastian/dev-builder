@@ -39,7 +39,7 @@ class Login extends React.Component {
             console.log(data)
             localStorage.setItem('token', data.user_info.user_id)
             this.props.handleLogin()
-            this.props.history.push('/')
+            this.props.history.push('/my-projects')
         })
   
   }

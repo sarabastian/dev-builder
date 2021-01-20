@@ -139,9 +139,23 @@ export default function NewProjectTabs(props) {
   .then(r => r.json())
   .then(post => setAllPosts([...allPosts, post]));
 
-  }
-let commenters = props.commenters.filter(com => com.id == props.comments.map(c => c.user_id))
-// console.log(commenters[0].name)
+  };
+
+  const [allCommenters, setAllCommenters] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
+      .then(res => res.json())
+      .then(project => setAllCommenters(project.commenters));
+  }, []);
+  // const [userCommenter, setUser] = useState([])
+  // const getCommenter = (id) => {
+
+  //   fetch(`http://localhost:3001/api/v1/users/${id}`)
+  //   .then(r => r.json())
+  //   .then( user => setUser(user))
+  // }
+// let commenters = props.commenters.filter(com => com.id == props.comments.map(c => c.user_id))
+console.log(allCommenters)
 
   return (
       <div>
@@ -196,22 +210,49 @@ let commenters = props.commenters.filter(com => com.id == props.comments.map(c =
        {allPosts.map(p => <SnackbarContent message={p.blurb}  />)}
       </div>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-      <div className={commentClasses.root}>
-      {props.comments.map(c =>  <Paper className={commentClasses.paper}>
+      
+    
+      <TabPanel 
+      value={value} index={1}>
+       
+         <Paper className={commentClasses.paper}>
+         {props.comments.map(c => 
+   <div className={commentClasses.root}>
+ 
+   {allCommenters.forEach(com =>  com.id == c.user_id ? null :
+
         <Grid container wrap="nowrap" spacing={2}>
+       
+     
           <Grid item>
-            <Avatar src={commenters[0].profile_pic}></Avatar>
+
+           <Avatar src={com.profile_pic}></Avatar> 
           </Grid>
           <Grid item xs>
-            <Typography>{c.blurb} <br></br><br></br>- {commenters[0].name}</Typography>
-          </Grid>
-        </Grid>
-      </Paper>
-      )}
+             <Typography>{c.blurb} <br></br><br></br>- 
+           
+             {com.name}
+            </Typography> 
 
-      </div>
+          </Grid>
+         
+
+       
+        </Grid> 
+           )}
+       
+       </div> 
+        )}
+       
+      </Paper>
+        
+     
+    
+
+ 
       </TabPanel>
+      
+         
       <TabPanel value={value} index={2}>
     
       {props.supporters.map(s =>  <SupporterCard supporter={s} key={s.id}  />)}

@@ -41,7 +41,7 @@ export default function CommmentCard(props) {
           </Grid>
           <Grid item xs zeroMinWidth>
             <Typography >{props.comment.blurb} 
-             <br></br>-{thisCommenter.length == 1 ? thisCommenter[0].name : null}
+             <br></br>@{thisCommenter.length == 1 ? thisCommenter[0].username : null}
             </Typography>
           </Grid>
         </Grid>

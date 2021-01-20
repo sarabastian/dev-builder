@@ -17,32 +17,49 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { IconButton } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import Alert from '@material-ui/lab/Alert';
+import { Redirect } from 'react-router-dom';
 
+
+const useStyle = makeStyles({
+  root: {
+      minWidth: 275,
+      height: 400
+  },
+  bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+  },
+  title: {
+      fontSize: 14,
+  },
+  pos: {
+      marginBottom: 12,
+  },
+});
+
+const useDeleteStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 const ProjectShow = () =>  {
-  const useStyle = makeStyles({
-    root: {
-        minWidth: 275,
-        height: 400
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
-    },
-  });
-  const styles = useStyle();
+  
+    const styles = useStyle();
+    const deleteClasses = useDeleteStyles();
 
     const [open, setOpen] = React.useState(false);
     const [story, setStory] = React.useState('');
     const [timeline, setTimeline] = React.useState(null);
     const [fundraising_goal, setFundraisingGoal] = React.useState(null);
+    const [deleteAlert, setDeleteAlert] = React.useState(false);
+    const [deleted, setDelete] = React.useState(false)
   
     const handleStoryChange = (event) => {
       
@@ -65,7 +82,19 @@ const ProjectShow = () =>  {
     const handleClose = () => {
       setOpen(false);
     };
+    const handleDeleteAlert = () => {
+      setDeleteAlert(true)
+    };
   
+    const handleDelete = () => {
+      setDelete(true);
+      fetch(`http://localhost:3001/api/v1/projects/${data.state.project.id}`, {
+        method: 'DELETE'
+        })
+      
+    }
+
+   
   // console.log(useLocation())
   const data = useLocation()
  
@@ -74,15 +103,28 @@ const ProjectShow = () =>  {
     // console.log(data.state)
 
     return (
-
+      deleted ? <Redirect to="/my-projects" /> : 
   <div>
+  
+   
       <ProjectShowNav user={data.state.user} project={data.state.project}/>
 
+      <div>
       <Card className={styles.root} variant="outlined">
             <CardContent>
                 <Typography className={styles.title} color="textSecondary" gutterBottom>
                     {data.state.project.title}
+                    <IconButton><DeleteOutlinedIcon onClick={handleDeleteAlert} color="secondary"/>
+                    {deleteAlert ? 
+                    <div className={deleteClasses.root}>
+                      
+                      <Alert onClick ={handleDelete} severity="error">Are you sure you want to delete this project?</Alert>
+                    </div> : null}
+                   
+                    </IconButton>
           </Typography>
+        
+          
                 <Typography variant="h5" component="h2">
                    {data.state.project.story}<IconButton onClick={handleClickOpen}><EditIcon/> </IconButton>
                    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -162,16 +204,25 @@ const ProjectShow = () =>  {
                 </Link><IconButton onClick={handleClickOpen}><EditIcon/></IconButton>
                   
                 </Typography>
+
             </CardContent>
       
         </Card>
+        </div>
+      
   
       <ProjectTabs project={data.state.project} user={data.state.user} posts={data.state.posts}
                   supporters={data.state.supporters} comments={data.state.comments}
                   commenters={data.state.commenters} />
-      </div>
-    
-
+                
+                    
+                    
+               
+              </div>      
+ 
+                    
+                    
+                    
 
         )
     }

@@ -114,17 +114,16 @@ export default function NewProjectTabs(props) {
   const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/v1/posts')
+    fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
       .then(res => res.json())
-      .then(allPosts => setAllPosts(allPosts));
+      .then(project => setAllPosts(project.posts));
   }, []);
-
+// console.log(props.project.id)
   const addPost = () => {
     setOpen(false);
-    fetch('http://localhost:3001/api/v1/posts', {
+    fetch(`http://localhost:3001/api/v1/posts`, {
       method: 'POST',
       headers: {
-          // Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           'Accept': 'application/json',
 
@@ -133,13 +132,12 @@ export default function NewProjectTabs(props) {
         project_id: props.project.id,
         user_id: props.user.id,
         blurb: post
-
       }),
   })
 
 
   .then(r => r.json())
-  .then(post =>  setAllPosts([...allPosts, post]))
+  .then(post => setAllPosts([...allPosts, post]));
 
   }
 let commenters = props.commenters.filter(com => com.id == props.comments.map(c => c.user_id))
@@ -195,7 +193,7 @@ let commenters = props.commenters.filter(com => com.id == props.comments.map(c =
         </DialogActions>
       </Dialog>
       <div className={snackClasses.root}>
-      {allPosts.map(p =>  <SnackbarContent message={p.blurb}  />)}
+       {allPosts.map(p => <SnackbarContent message={p.blurb}  />)}
       </div>
       </TabPanel>
       <TabPanel value={value} index={1}>

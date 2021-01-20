@@ -129,7 +129,7 @@ export default function NewProjectTabs(props) {
 
       },
       body: JSON.stringify({
-        project_id: props.project_id,
+        project_id: props.project.id,
         user_id: props.user_id,
         blurb: post
 

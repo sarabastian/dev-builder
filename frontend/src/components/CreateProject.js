@@ -64,6 +64,7 @@ function CreateProject() {
     const handleReset = () => {
         setActiveStep(0);
     };
+  
 
 
     
@@ -81,7 +82,6 @@ function CreateProject() {
         {
             method: 'POST',
             headers: {
-                // Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
 
@@ -102,7 +102,7 @@ function CreateProject() {
 
         .then(r => r.json())
         .then(project => 
-            setProject([project]))
+            console.log(project))
          }
 
 
@@ -416,7 +416,7 @@ function CreateProject() {
                     <Link to={{
                         pathname: "/new",
                         state: {
-                            project,
+                            // project,
                             title,
                             story,
                             timeline,

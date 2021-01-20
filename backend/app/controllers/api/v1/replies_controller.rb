@@ -10,7 +10,7 @@ class Api::V1::RepliesController < ApplicationController
     end
 
     def create 
-        reply = Reply.new(reply_params)
+        reply = Reply.create(reply_params)
         render json: reply
     end
 

@@ -10,7 +10,7 @@ class Api::V1::CollaborateRequestsController < ApplicationController
     end
 
     def create 
-        collaborate_request = CollaborateRequest.new(collaborate_request _params)
+        collaborate_request = CollaborateRequest.create(collaborate_request _params)
         render json: collaborate_request 
     end
 

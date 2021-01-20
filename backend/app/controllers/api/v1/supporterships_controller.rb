@@ -10,7 +10,7 @@ class Api::V1::SupportershipsController < ApplicationController
     end
 
     def create 
-        supportership = Supportership.new(supportership_params)
+        supportership = Supportership.create(supportership_params)
         render json: supportership
     end
 

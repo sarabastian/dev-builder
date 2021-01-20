@@ -4,6 +4,8 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import IconButton from '@material-ui/core/IconButton';
+
 
 
 const useSearchStyles = makeStyles((theme) => ({
@@ -73,27 +75,50 @@ export default function Search() {
 
     const classes = useStyles();
     const searchClasses = useSearchStyles();
+    const [val,setVal]= React.useState({})
 
     const [projects, setProjects] = React.useState([]) ;
+
+    const handleClick = () => {
+        setVal(projects[0]);//you pass any value from the array of top100Films
+       // set value in TextField from dropdown list
+     };
+    
    
 
 
-console.log(projects)
-
-
+// console.log(projects)
+// console.log(search)
     return (
         <div className={searchClasses.root}>
+          
       <Autocomplete
+        
         multiple
         limitTags={2}
         id="multiple-limit-tags"
         options={projects}
         getOptionLabel={(option) => option.language}
+        // handleParams(option.language)
+        
+
         // defaultValue={[top100Films[13], top100Films[12], top100Films[11]]}
+ 
         renderInput={(params) => (
-          <TextField {...params} color='secondary' placeholder="Search Projects by language" />
+          <TextField {...params}  color='secondary' placeholder="Search Projects by language" />
+       
+        
         )}
+  
       />
-    </div>
+      <IconButton><SearchIcon />
+      
+      </IconButton>
+ 
+
+</div>
+
+             
+
     )
 }

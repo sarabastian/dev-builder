@@ -70,24 +70,6 @@ export default function MainNavBar(props) {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            My Projects
-          </Typography>
-          <NavLink   exact activeStyle={{color: 'red'}} to={{
-
-            pathname: "/create",
-          
-            state: {
-              user: props.user
-            }
-           }}>
-          <Fab variant="extended" color="secondary" aria-label="add" >
-          <AddIcon className={classes.extendedIcon}
-            onClick={handleShow}
-          />Create
-         
-          </Fab> 
-          </NavLink>
           {auth && (
             <div>
               <Avatar alt="Remy Sharp" src={props.user.profile_pic}
@@ -119,6 +101,25 @@ export default function MainNavBar(props) {
               </Menu>
             </div>
           )}
+          <Typography variant="h6" className={classes.title}>
+            My Projects
+          </Typography>
+          <NavLink   exact activeStyle={{color: 'red'}} to={{
+
+            pathname: "/create",
+          
+            state: {
+              user: props.user
+            }
+           }}>
+          <Fab variant="extended" color="secondary" aria-label="add" >
+          <AddIcon className={classes.extendedIcon}
+            onClick={handleShow}
+          />Create
+         
+          </Fab> 
+          </NavLink>
+
         </Toolbar>
       </AppBar>
     </div>

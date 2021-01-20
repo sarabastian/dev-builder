@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
 import {useLocation} from "react-router-dom";
+import Badge from '@material-ui/core/Badge';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,9 +26,18 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
 }));
+const useStyle = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+          margin: theme.spacing(1),
+        },
+      },
+    }));
+    
 
 export default function ProjectShowNav(props) {
     const classes = useStyles();
+    const badgeClasses = useStyle();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -44,7 +54,7 @@ export default function ProjectShowNav(props) {
         setAnchorEl(null);
     };
     const data = useLocation()
-// console.log(data)
+console.log(props)
 
     return (
         <div className={classes.root}>
@@ -64,6 +74,26 @@ export default function ProjectShowNav(props) {
           </Typography> */}
                     {auth && (
                         <div>
+                  
+                               {props.project.collaborate_requests.length == 0 ? 
+                                         
+                    
+                            
+                                
+
+                                <Avatar alt="Remy Sharp" src={props.user.profile_pic}
+
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleMenu}
+                            color="inherit"
+                            /> :
+
+                            <div className={badgeClasses.root}>
+                            <Badge color="secondary" variant="dot">
+                                            
+      
                             <Avatar alt="Remy Sharp" src={props.user.profile_pic}
 
                                 aria-label="account of current user"
@@ -72,7 +102,12 @@ export default function ProjectShowNav(props) {
                                 onClick={handleMenu}
                                 color="inherit"
                             />
-                        
+                            
+                                </Badge> 
+                                </div>
+
+
+                           }
                             <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorEl}

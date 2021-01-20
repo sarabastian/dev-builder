@@ -2,21 +2,21 @@ import React from 'react';
 import ProjectShowNav from './Navbars/ProjectShowNav';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
-import Paper from '@material-ui/core/Paper';
-import Grow from '@material-ui/core/Grow';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import ProjectTabs from './Tabs/ProjectTabs';
 import {useLocation} from "react-router-dom";
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Link } from '@material-ui/core';
-
-
+import EditIcon from '@material-ui/icons/Edit';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { IconButton } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 
 const ProjectShow = () =>  {
@@ -37,91 +37,130 @@ const ProjectShow = () =>  {
         marginBottom: 12,
     },
   });
+  const styles = useStyle();
+
+    const [open, setOpen] = React.useState(false);
+    const [story, setStory] = React.useState('');
+    const [timeline, setTimeline] = React.useState(null);
+    const [fundraising_goal, setFundraisingGoal] = React.useState(null);
+  
+    const handleStoryChange = (event) => {
+      
+      setStory(event.target.value) ;
+    };
+
+    const handleTimelineChange = (event) => {
+     
+      setTimeline(event.target.value) ;
+    };
+  
+    const handleFundraisingChange = (event) => {
+    
+      setFundraisingGoal(event.target.value)
+    };
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
   
   // console.log(useLocation())
   const data = useLocation()
-  const styles = useStyle();
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      height: 180,
-    },
-    container: {
-      display: 'flex',
-    },
-    paper: {
-      margin: theme.spacing(1),
-    },
-    svg: {
-      width: 100,
-      height: 100,
-    },
-    polygon: {
-      fill: theme.palette.common.white,
-      stroke: theme.palette.divider,
-      strokeWidth: 1,
-    },
-  }));
-  
+ 
 
-    const classes = useStyles();
-    const [checked, setChecked] = React.useState(false);
   
-    const handleChange = () => {
-      setChecked((prev) => !prev);
-    };
-    const info = useLocation()
     // console.log(data.state)
 
     return (
 
   <div>
-      <ProjectShowNav user={info.state.user} project={info.state.project}/>
-   
-      <div className={classes.root}>
-        <FormControlLabel
-          control={<Switch checked={checked} onChange={handleChange} />}
-          label="Show"
-        />
-        <div className={classes.container}>
-          <Grow in={checked}>
-            <Paper elevation={4} className={classes.paper}>
-              <svg className={classes.svg}>
-                <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
-              </svg>
-            </Paper>
-          </Grow>
-          {/* Conditionally applies the timeout prop to change the entry speed. */}
-          <Grow
-            in={checked}
-            style={{ transformOrigin: '0 0 0' }}
-            {...(checked ? { timeout: 1000 } : {})}
-          >
-            <Paper elevation={4} className={classes.paper}>
-              <svg className={classes.svg}>
-                <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
-              </svg>
-            </Paper>
-          </Grow>
-        </div>
-      </div>
+      <ProjectShowNav user={data.state.user} project={data.state.project}/>
+
       <Card className={styles.root} variant="outlined">
             <CardContent>
                 <Typography className={styles.title} color="textSecondary" gutterBottom>
                     {data.state.project.title}
           </Typography>
                 <Typography variant="h5" component="h2">
-                   {data.state.project.story}
+                   {data.state.project.story}<IconButton onClick={handleClickOpen}><EditIcon/> </IconButton>
+                   <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle >Edit your Story</DialogTitle>
+        <DialogContent>
+       
+          <TextField onChange={e => handleStoryChange(e)}
+            autoFocus
+            margin="dense"
+            value={data.state.project.story}
+    
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Update
+          </Button>
+        </DialogActions>
+      </Dialog>
+     
           </Typography>
                 <Typography className={styles.pos} color="textSecondary">
-                   timeline: {data.state.project.timeline} days
+                   timeline: {data.state.project.timeline} days <IconButton onClick={handleClickOpen}><EditIcon/></IconButton>
+                   <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Edit your Timeline</DialogTitle>
+        <DialogContent>
+       
+          <TextField
+            autoFocus
+            margin="dense"
+            value={data.state.project.timeline}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Update
+          </Button>
+        </DialogActions>
+      </Dialog>
+                   
           </Typography>
                 <Typography variant="body2" component="p">
-                    fundraising goal: ${data.state.project.fundraising_goal}
+                    fundraising goal: ${data.state.project.fundraising_goal} <IconButton onClick={handleClickOpen}><EditIcon/></IconButton>
+                    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Edit your Goal</DialogTitle>
+        <DialogContent>
+       
+          <TextField onChange={e => handleFundraisingChange(e)}
+            autoFocus
+            margin="dense"
+            id="name"
+            value={data.state.project.fundraising_goal}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Update
+          </Button>
+        </DialogActions>
+      </Dialog>
             <br />
         
                 <Link href={data.state.project.github} >
                     <GitHubIcon />
-                </Link>
+                </Link><IconButton onClick={handleClickOpen}><EditIcon/></IconButton>
+                  
                 </Typography>
             </CardContent>
       

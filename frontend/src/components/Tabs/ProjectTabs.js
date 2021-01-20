@@ -158,7 +158,7 @@ let commenters = props.commenters.filter(com => com.id == props.comments.map(c =
         aria-label="Vertical tabs example"
         className={classes.tabs}
       >
-        <Tab label="Updates" {...a11yProps(0)} ></Tab>
+        <Tab label="Your Updates" {...a11yProps(0)} ></Tab>
         <Tab label="Comments" {...a11yProps(1)} />
         <Tab label="Supporters" {...a11yProps(2)} />
         

@@ -19,6 +19,7 @@ import SupporterCard from '../SupporterCard';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
+import CommentCard from '../CommentCard'
 
 
 function TabPanel(props) {
@@ -91,7 +92,6 @@ const useCommentStyles = makeStyles((theme) => ({
 export default function NewProjectTabs(props) {
   
   const [open, setOpen] = React.useState(false);
-  const token = localStorage.getItem('token');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -102,7 +102,7 @@ export default function NewProjectTabs(props) {
   };
   const classes = useStyles();
   const snackClasses = useSnackStyles();
-  const commentClasses = useCommentStyles();
+ 
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -141,12 +141,7 @@ export default function NewProjectTabs(props) {
 
   };
 
-  const [allCommenters, setAllCommenters] = useState([]);
-  useEffect(() => {
-    fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
-      .then(res => res.json())
-      .then(project => setAllCommenters(project.commenters));
-  }, []);
+ 
   // const [userCommenter, setUser] = useState([])
   // const getCommenter = (id) => {
 
@@ -155,7 +150,7 @@ export default function NewProjectTabs(props) {
   //   .then( user => setUser(user))
   // }
 // let commenters = props.commenters.filter(com => com.id == props.comments.map(c => c.user_id))
-console.log(allCommenters)
+
 
   return (
       <div>
@@ -214,41 +209,8 @@ console.log(allCommenters)
     
       <TabPanel 
       value={value} index={1}>
-       
-         <Paper className={commentClasses.paper}>
-         {props.comments.map(c => 
-   <div className={commentClasses.root}>
- 
-   {allCommenters.forEach(com =>  com.id == c.user_id ? null :
-
-        <Grid container wrap="nowrap" spacing={2}>
-       
-     
-          <Grid item>
-
-           <Avatar src={com.profile_pic}></Avatar> 
-          </Grid>
-          <Grid item xs>
-             <Typography>{c.blurb} <br></br><br></br>- 
-           
-             {com.name}
-            </Typography> 
-
-          </Grid>
+        {props.comments.map(c => <CommentCard comment={c} key={c.id} project={props.project} />)}
          
-
-       
-        </Grid> 
-           )}
-       
-       </div> 
-        )}
-       
-      </Paper>
-        
-     
-    
-
  
       </TabPanel>
       

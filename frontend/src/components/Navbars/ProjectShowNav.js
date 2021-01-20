@@ -5,14 +5,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Badge from '@material-ui/core/Badge';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -25,6 +24,7 @@ import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
 
@@ -66,6 +66,7 @@ export default function ProjectShowNav(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [openRequests, setOpenRequests] = React.useState(false)
     const open = Boolean(anchorEl);
+   
 
 
     const handleRequest = () => {
@@ -94,7 +95,7 @@ export default function ProjectShowNav(props) {
     };
     const listClasses = useListStyles();
 
-
+  
 
 
     const data = useLocation()
@@ -110,9 +111,9 @@ export default function ProjectShowNav(props) {
             </FormGroup>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
+                 <Link to={{pathname: '/my-projects'}}> <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <ArrowBackIcon color='secondary'/>
+                    </IconButton>  </Link>
                     {/* <Typography variant="h6" className={classes.title}>
             My Projects
           </Typography> */}

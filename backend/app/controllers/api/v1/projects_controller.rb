@@ -18,7 +18,7 @@ class Api::V1::ProjectsController < ApplicationController
 
     def update
         project = Project.find(params[:id])
-        project.update 
+        project.update(project_params)
         project.save
 
         render json: project

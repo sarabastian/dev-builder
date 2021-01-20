@@ -15,6 +15,8 @@ import  AddIcon  from '@material-ui/icons/Add';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,9 +69,9 @@ export default function NewProjectNav() {
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+        <Link to={{pathname: '/my-projects'}}> <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <ArrowBackIcon color='secondary'/>
+                    </IconButton>  </Link>
           <Typography variant="h6" className={classes.title}>
             Overview
           </Typography>

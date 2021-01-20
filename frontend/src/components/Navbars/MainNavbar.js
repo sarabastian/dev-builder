@@ -14,6 +14,7 @@ import { Fab } from '@material-ui/core';
 import  AddIcon  from '@material-ui/icons/Add';
 import Avatar from '@material-ui/core/Avatar';
 import { Link, NavLink } from 'react-router-dom';
+import Search from '../../containers/Search';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,6 +71,7 @@ export default function MainNavBar(props) {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
+         
           {auth && (
             <div>
               <Avatar alt="Remy Sharp" src={props.user.profile_pic}
@@ -104,6 +106,9 @@ export default function MainNavBar(props) {
           <Typography variant="h6" className={classes.title}>
             My Projects
           </Typography>
+          <div>
+          <Search />
+          </div>
           <NavLink   exact activeStyle={{color: 'red'}} to={{
 
             pathname: "/create",

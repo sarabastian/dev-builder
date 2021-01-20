@@ -67,20 +67,22 @@ const ProjectShow = () =>  {
     const [githubChange, setGithubChange] = React.useState(data.state.project.github);
     const [currentProject, setCurrentProject] = React.useState([])
     const [updatedProject, setUpdatedProject] = React.useState([])
-    const [changedProject, setClickforChanged] = React.useState(false)
+    const [changedStory, setClickforChangedStory] = React.useState(false)
+    const [changedTimeline, setClickforChangedTimeline] = React.useState(false)
+    const [changedFundraising, setClickforChangedFundraising] = React.useState(false)
   
     const handleStoryChange = (event) => {
-      setClickforChanged(true);
+      setClickforChangedStory(true);
       setStory(event.target.value) ;
     };
 
     const handleTimelineChange = (event) => {
-     
+      setClickforChangedTimeline(true);
       setTimeline(event.target.value) ;
     };
   
     const handleFundraisingChange = (event) => {
-    
+      setClickforChangedFundraising(true);
       setFundraisingGoal(event.target.value)
     };
 
@@ -154,20 +156,20 @@ const handleFundraisingUpdate = () => {
   .then(project => setUpdatedProject(project))
 }
 
-const handleGithubUpdate = () => {
-  fetch(`http://localhost:3001/api/v1/projects/${data.state.project.id}`, {
-    method:'PATCH',
-    headers:{
-      'Content-Type':'application/json',
-        Accept: 'application/json',
-    },
-    body: JSON.stringify({
-      github: githubChange
-    })
-  })
-  .then(res => res.json())
-  .then(project => setUpdatedProject(project))
-  }
+// const handleGithubUpdate = () => {
+//   fetch(`http://localhost:3001/api/v1/projects/${data.state.project.id}`, {
+//     method:'PATCH',
+//     headers:{
+//       'Content-Type':'application/json',
+//         Accept: 'application/json',
+//     },
+//     body: JSON.stringify({
+//       github: githubChange
+//     })
+//   })
+//   .then(res => res.json())
+//   .then(project => setUpdatedProject(project))
+//   }
 
 useEffect(() => {
   fetch(`http://localhost:3001/api/v1/projects/${data.state.project.id}`)
@@ -224,11 +226,11 @@ useEffect(() => {
       <Accordion>
     
         <AccordionSummary
-          expandIcon={< EditIcon onClick={handleGithubUpdate}/>}
+          expandIcon={< EditIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={accordionClasses.heading}>{changedProject ? updatedProject.story : currentProject.story}</Typography>
+          <Typography className={accordionClasses.heading}>{changedStory ? updatedProject.story : currentProject.story}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <form>
@@ -237,7 +239,6 @@ useEffect(() => {
             fullWidth
             defaultValue={currentProject.story}
             name='story'
-            variant="filled"
     
             fullWidth
           />
@@ -258,7 +259,7 @@ useEffect(() => {
           id="panel1a-header"
           minWidth
         >
-          <Typography className={accordionClasses.heading}> timeline: {changedProject ? updatedProject.timeline : currentProject.timeline} days</Typography>
+          <Typography className={accordionClasses.heading}> timeline: {changedTimeline ? updatedProject.timeline : currentProject.timeline} days</Typography>
 
           </AccordionSummary>
           <AccordionDetails>
@@ -285,7 +286,7 @@ useEffect(() => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={accordionClasses.heading}>fundraising goal: ${changedProject ? updatedProject.fundraising_goal : currentProject.fundraising_goal}</Typography>
+          <Typography className={accordionClasses.heading}>fundraising goal: ${changedFundraising ? updatedProject.fundraising_goal : currentProject.fundraising_goal}</Typography>
 
           </AccordionSummary>
           <AccordionDetails>
@@ -305,10 +306,10 @@ useEffect(() => {
         </IconButton>
 
                 
-        <Link href={changedProject ? updatedProject.github : currentProject.github} >
+        {/* <Link href={changedProject ? updatedProject.github : currentProject.github} >
           <GitHubIcon />
-          </Link>
-        <Accordion>
+          </Link> */}
+        {/* <Accordion>
         <AccordionSummary
           expandIcon={< EditIcon />}
           aria-controls="panel1a-content"
@@ -323,10 +324,10 @@ useEffect(() => {
             defaultValue={currentProject.github}
             name='github'
             fullWidth
-          />
+          /> */}
         
     
-        <Typography className={accordionClasses.heading}>
+        {/* <Typography className={accordionClasses.heading}>
 
           
              
@@ -334,7 +335,7 @@ useEffect(() => {
                 </Typography>
                 </AccordionDetails>
               </Accordion>
-          
+           */}
 
             </CardContent>
       

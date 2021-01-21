@@ -15,13 +15,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import { SnackbarContent } from '@material-ui/core';
-import SupporterCard from '../SupporterCard';
-import Grid from '@material-ui/core/Grid';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
+import PostCard from '../PostCard';
+
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+    const { children, value, index, ...other } = props;
 
   return (
     <div
@@ -110,16 +108,22 @@ export default function SupportingProjectTab(props) {
   const [comment, setComment] = useState('');
 
   const [allComments, setAllComments] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
+  
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
       .then(res => res.json())
-      .then(project => setAllComments(project.comments));
+      .then(project => {
+          setAllComments(project.comments);
+          setAllPosts(project.posts)
+          
+      });
   }, []);
-  const addComment = (props) => {
+  const addComment = () => {
     setOpen(false);
-    fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`, {
-      method: 'PATCH',
+    fetch(`http://localhost:3001/api/v1/comments`, {
+      method: 'POST',
       headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -139,6 +143,9 @@ export default function SupportingProjectTab(props) {
 
   }
 
+//   
+
+  console.log(allComments)
   return (
     <div> 
       <h2>Community</h2>
@@ -155,8 +162,14 @@ export default function SupportingProjectTab(props) {
        >
          <Tab label="Updates" {...a11yProps(0)} ></Tab>
          <Tab label="Comments" {...a11yProps(1)} />
-         <Tab label="Supporters" {...a11yProps(2)} />
+         </Tabs>
          
+         <TabPanel 
+      value={value} index={0}>
+        {allPosts.map(p => <PostCard post={p} key={p.id} project={props.project} />)}
+         
+ 
+      </TabPanel>
          <TabPanel value={value} index={1} >
         <IconButton aria-label="add" onClick={handleClickOpen}>
             <AddIcon />
@@ -190,7 +203,7 @@ export default function SupportingProjectTab(props) {
        {allComments.map(c => <SnackbarContent message={c.blurb}  />)}
       </div>
       </TabPanel>
-       </Tabs>
+     
 
  
  

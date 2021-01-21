@@ -10,6 +10,7 @@ class Api::V1::CommentsController < ApplicationController
     end
 
     def create 
+        # byebug
         comment = Comment.create(comment_params)
         render json: comment
     end
@@ -24,6 +25,6 @@ class Api::V1::CommentsController < ApplicationController
     private
 
     def comment_params
-        params.require(:comment).permit(:project_id, :commenter_id, :blurb)
+        params.require(:comment).permit(:project_id, :user_id, :blurb)
     end
 end

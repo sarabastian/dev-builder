@@ -12,22 +12,23 @@ import SupportingProjectTab from './Tabs/SupportingProjectTab';
 
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     root: {
-      display: 'flex',
-      height: 500
+        minWidth: 275,
+        height: 400
     },
-    details: {
-      display: 'flex',
-      flexDirection: 'column',
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
     },
-    content: {
-      flex: '1 0 auto',
+    title: {
+        fontSize: 24,
     },
-    cover: {
-      width: 600,
+    pos: {
+        marginBottom: 12,
     },
-  }));
+  });
 
 
 export default function SupportingProjectShow()  {

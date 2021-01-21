@@ -11,7 +11,7 @@ const SupportingProjectsContainer = () => {
     const data = useLocation()
     const user = data.state.user
     const projectsSupported = user.projects_supported
-    console.log(projectsSupported)
+    console.log(user)
 
   
 
@@ -31,7 +31,7 @@ const SupportingProjectsContainer = () => {
 
 
 
-                {projectsSupported.map(project => <SupportingProjectsCard project={project} key={project.id} />)}
+                {projectsSupported.map(project => <SupportingProjectsCard project={project} key={project.id} user={data.state.user} />)}
             </Grid>
 
 

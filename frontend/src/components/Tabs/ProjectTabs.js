@@ -14,11 +14,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import { SnackbarContent } from '@material-ui/core';
+import PostCard from '../PostCard';
 import SupporterCard from '../SupporterCard';
-import Grid from '@material-ui/core/Grid';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
+
 import CommentCard from '../CommentCard'
 
 
@@ -72,22 +70,12 @@ const useSnackStyles = makeStyles((theme) => ({
     maxWidth: 600,
     '& > * + *': {
       marginTop: theme.spacing(2),
+
+    
     },
   },
 }));
 
-const useCommentStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    overflow: 'hidden',
-    padding: theme.spacing(0, 3),
-  },
-  paper: {
-    maxWidth: 400,
-    margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
-  },
-}));
 
 export default function NewProjectTabs(props) {
   
@@ -201,9 +189,9 @@ export default function NewProjectTabs(props) {
           </Button>
         </DialogActions>
       </Dialog>
-      <div className={snackClasses.root}>
-       {allPosts.map(p => <SnackbarContent message={p.blurb}  />)}
-      </div>
+    
+       {allPosts.map(p => <PostCard post={p} key={p.id} project={props.project} user={props.user}/>)}
+    
       </TabPanel>
       
     

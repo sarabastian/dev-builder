@@ -18,35 +18,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const message = `Truncation should be conditionally applicable on this long line of text
- as this is a much longer line than what the container can support. `;
 
-export default function CommmentCard(props) {
-  const classes = useStyles();
-  const [allCommenters, setAllCommenters] = useState([]);
-  useEffect(() => {
-    fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
-      .then(res => res.json())
-      .then(project => setAllCommenters(project.commenters));
-  }, []);
 
-  let thisCommenter = allCommenters.filter(commenter => commenter.id == props.comment.user_id )
+export default function SupportingProjectCommentCard(props){
+    const classes = useStyles();
+    const [allCommenters, setAllCommenters] = useState([]);
 
-  return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container wrap="nowrap" spacing={2}>
-          <Grid item>
-          {thisCommenter.length == 1 ? <Avatar src={thisCommenter[0].profile_pic}></Avatar> : null }
-          </Grid>
-          <Grid item xs zeroMinWidth>
-            <Typography >{props.comment.blurb} 
-             <br></br>@{thisCommenter.length == 1 ? thisCommenter[0].username : null}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Paper>
-     
-    </div>
-  );
+    useEffect(() => {
+        fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
+          .then(res => res.json())
+          .then(project => setAllCommenters(project.commenters));
+      }, []);
+    
+      
+      let thisCommenter = allCommenters.filter(commenter => commenter.id == props.comment.user_id )
+      const avatar = (i) => {
+      for (i=0; i< thisCommenter.length; i++) {
+          return thisCommenter[i].profile_pic }
+      }
+
+      const username = (i) => {
+        for (i=0; i< thisCommenter.length; i++) {
+            return thisCommenter[i].username }
+      }
+
+
+    
+console.log(thisCommenter)
+return(
+
+
+
+<Paper className={classes.paper}>
+<Grid container wrap="nowrap" spacing={2}>
+  <Grid item>
+  <Avatar src={avatar()}></Avatar> 
+
+  </Grid>
+  <Grid item xs zeroMinWidth>
+    <Typography >
+    {props.comment.blurb}
+     <br></br>@{username()}
+    </Typography>
+  </Grid>
+</Grid>
+</Paper>
+)
+
 }

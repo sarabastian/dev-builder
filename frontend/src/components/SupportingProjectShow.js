@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import SupportingProjectTab from './Tabs/SupportingProjectTab';
+import SupportingProjectShowNavbar from './Navbars/SupportingProjectShowNavbar'
 
 
 
@@ -37,32 +38,25 @@ export default function SupportingProjectShow()  {
     const classes = useStyles();
     const theme = useTheme();
     const project = data.state.project
-    console.log(data)
+    // console.log(data.state.projectOwner)
+    const projectOwner = data.state.projectOwner
     const user = data.state.user
-    const [fullProject, setFullProject] = React.useState({})
 
-
-    useEffect(() => {
-        fetch(`http://localhost:3001/api/v1/projects/${data.state.project.id}`)
-          .then(res => res.json())
-          .then(project => {
-              setFullProject(project)
-              
-          });
-      }, []);
-
-      console.log(fullProject.user)
     return (
      <div>
+         <SupportingProjectShowNavbar user={user} />
 <div>
       <Card className={classes.root}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
-            {project.title}
+            {project.title} 
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
 {project.story}          
+</Typography>
+<Typography variant="subtitle2" color="textSecondary">
+by {projectOwner.name} / @{projectOwner.username}      
 </Typography>
         </CardContent>
 
@@ -76,7 +70,7 @@ export default function SupportingProjectShow()  {
     </div>
  
                     <div>
-                    <SupportingProjectTab project={project} user={user} projectOwner={fullProject.user}/>
+                    <SupportingProjectTab project={project} user={user} projectOwner={projectOwner}/>
                     </div>
                     </div>
              

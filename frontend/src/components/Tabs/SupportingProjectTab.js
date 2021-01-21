@@ -195,7 +195,7 @@ export default function SupportingProjectTab(props) {
       </Dialog>
       
       <div className={classesC.root}>
-      {allComments.map(c => <SupportingProjectCommentCard comment={c} key={c.id} project={props.project}/>)}
+      {allComments.map(c => <SupportingProjectCommentCard comment={c} key={c.id} project={props.project} projectOwner={props.projectOwner}/>)}
       
 
 

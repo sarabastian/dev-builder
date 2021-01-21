@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -27,6 +27,20 @@ const SupportingProjectCard = (props) => {
 
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
+
+    const [fullProject, setFullProject] = React.useState({})
+
+
+    useEffect(() => {
+        fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
+          .then(res => res.json())
+          .then(project => {
+              setFullProject(project)
+              
+          });
+      }, []);
+
+      console.log(fullProject)
     return (
 
 
@@ -70,7 +84,8 @@ const SupportingProjectCard = (props) => {
             pathname: "/supporting-project",
             state: {
               project: props.project,
-              user: props.user        
+              user: props.user, 
+              projectOwner: fullProject.user       
             }
             
            }} >

@@ -35,7 +35,6 @@ export default function PostCard(props) {
           <Grid item xs zeroMinWidth>
             <Typography >
             {props.post.blurb}
-             {/* <br></br>@{thisCommenter.length == 1 ? thisCommenter[0].username : null} */}
             </Typography>
           </Grid>
         </Grid>

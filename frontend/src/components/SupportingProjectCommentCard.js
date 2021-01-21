@@ -44,7 +44,7 @@ export default function SupportingProjectCommentCard(props){
 
 
     
-console.log(thisCommenter)
+// console.log(thisCommenter)
 return(
 
 

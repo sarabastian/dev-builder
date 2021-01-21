@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     pos: {
         marginBottom: 12,
     },
+ 
   });
 
 
@@ -38,8 +39,19 @@ export default function SupportingProjectShow()  {
     const project = data.state.project
     console.log(data)
     const user = data.state.user
+    const [fullProject, setFullProject] = React.useState({})
 
 
+    useEffect(() => {
+        fetch(`http://localhost:3001/api/v1/projects/${data.state.project.id}`)
+          .then(res => res.json())
+          .then(project => {
+              setFullProject(project)
+              
+          });
+      }, []);
+
+      console.log(fullProject.user)
     return (
      <div>
 <div>
@@ -64,7 +76,7 @@ export default function SupportingProjectShow()  {
     </div>
  
                     <div>
-                    <SupportingProjectTab project={project} user={user}/>
+                    <SupportingProjectTab project={project} user={user} projectOwner={fullProject.user}/>
                     </div>
                     </div>
              

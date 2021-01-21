@@ -30,7 +30,7 @@ export default function PostCard(props) {
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
              
-          {/* {thisCommenter.length == 1 ? <Avatar src={thisCommenter[0].profile_pic}></Avatar> : null } */}
+          <Avatar src={props.projectOwner.profile_pic}></Avatar> 
           </Grid>
           <Grid item xs zeroMinWidth>
             <Typography >

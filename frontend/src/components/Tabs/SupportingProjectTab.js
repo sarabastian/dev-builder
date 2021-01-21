@@ -160,7 +160,7 @@ export default function SupportingProjectTab(props) {
          
          <TabPanel 
       value={value} index={0}>
-        {allPosts.map(p => <PostCard post={p} key={p.id} project={props.project} />)}
+        {allPosts.map(p => <PostCard post={p} key={p.id} project={props.project} projectOwner={props.projectOwner}/>)}
          
  
       </TabPanel>

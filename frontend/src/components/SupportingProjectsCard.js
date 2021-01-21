@@ -6,8 +6,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions'
@@ -76,7 +74,7 @@ const SupportingProjectCard = (props) => {
             }
             
            }} >
-        <Button size="small" color="primary" onClick={console.log('working')}>
+        <Button size="small" color="primary" >
           See More
          
         </Button>

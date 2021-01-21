@@ -75,14 +75,12 @@ export default function Search() {
 
     const classes = useStyles();
     const searchClasses = useSearchStyles();
-    const [val,setVal]= React.useState({})
 
     const [projects, setProjects] = React.useState([]) ;
+    const onSearch = (search: string) => {
+        // fetchOptions(search).then(setOptions);
+      };
 
-    const handleClick = () => {
-        setVal(projects[0]);//you pass any value from the array of top100Films
-       // set value in TextField from dropdown list
-     };
     
    
 
@@ -105,7 +103,7 @@ export default function Search() {
         // defaultValue={[top100Films[13], top100Films[12], top100Films[11]]}
  
         renderInput={(params) => (
-          <TextField {...params}  color='secondary' placeholder="Search Projects by language" />
+          <TextField {...params}  onChange={(event) => onSearch(event.currentTarget.value)} color='secondary' placeholder="Search Projects by language" />
        
         
         )}

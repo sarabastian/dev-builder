@@ -4,16 +4,15 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { Fab } from '@material-ui/core';
-import  AddIcon  from '@material-ui/icons/Add';
+import AddIcon from '@material-ui/icons/Add';
 import Avatar from '@material-ui/core/Avatar';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Search from '../../containers/Search';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,16 +46,12 @@ export default function MainNavBar(props) {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
- 
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
 
-  const [show, setShow] = useState(false);
-
-
-  const handleShow = () => setShow(true);
 
   return (
     <div className={classes.root}>
@@ -68,10 +63,8 @@ export default function MainNavBar(props) {
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-         
+
+
           {auth && (
             <div>
               <Avatar alt="Remy Sharp" src={props.user.profile_pic}
@@ -82,7 +75,7 @@ export default function MainNavBar(props) {
                 onClick={handleMenu}
                 color="inherit"
               />
-            
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -98,8 +91,16 @@ export default function MainNavBar(props) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <Link to={{
+                  pathname:'/supporting-projects',
+                  state: {
+                    user: props.user
+                  }
+                }}style={{ textDecoration: 'none' }}>
+                  <MenuItem>Saved Projects</MenuItem>
+                </Link>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
+            
               </Menu>
             </div>
           )}
@@ -107,23 +108,24 @@ export default function MainNavBar(props) {
             My Projects
           </Typography>
           <div>
-          <Search />
+            <Search />
           </div>
-          <NavLink   exact activeStyle={{color: 'red'}} to={{
+          <Link to={{
 
             pathname: "/create",
-          
+
             state: {
               user: props.user
             }
-           }}>
-          <Fab variant="extended" color="secondary" aria-label="add" >
-          <AddIcon className={classes.extendedIcon}
-            onClick={handleShow}
-          />Create
-         
-          </Fab> 
-          </NavLink>
+          }} style={{ textDecoration: 'none' }}>
+            <Fab variant="extended" color="secondary" aria-label="add" >
+              <AddIcon className={classes.extendedIcon}
+               
+
+              />Create
+
+          </Fab>
+          </Link>
 
         </Toolbar>
       </AppBar>

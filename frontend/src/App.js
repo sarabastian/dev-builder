@@ -7,7 +7,9 @@ import Main from './containers/Main';
 import Login from './components/Login';
 import ProjectShow from './components/ProjectShow';
 import CreateProject from './components/CreateProject';
-import NewProjectContainer from './containers/NewProjectContainer'
+import NewProjectContainer from './containers/NewProjectContainer';
+import SupportingProjectsContainer from './containers/SupportingProjectsContainer';
+import SupportingProjectShow from './components/SupportingProjectShow';
 
 class App extends React.Component {
   state = {
@@ -41,6 +43,8 @@ class App extends React.Component {
             <Route exact path="/show" component={() => <ProjectShow />} />
             <Route exact path="/create" component={() => <CreateProject />} />
             <Route exact path="/new" component={() => <NewProjectContainer />} />
+            <Route exact path="/supporting-projects" component={() => <SupportingProjectsContainer />} />
+            <Route exact path="/supporting-project" component={() => <SupportingProjectShow />} />
            
    
 

@@ -14,10 +14,25 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import { SnackbarContent } from '@material-ui/core';
 import PostCard from '../PostCard';
+import SupportingProjectCommentCard from '../SupportingProjectCommentCard';
 
 
+
+
+
+const useCStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+      overflow: 'hidden',
+      padding: theme.spacing(0, 3),
+    },
+    paper: {
+      maxWidth: 400,
+      margin: `${theme.spacing(1)}px auto`,
+      padding: theme.spacing(2),
+    },
+  }));
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -63,30 +78,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const useSnackStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 600,
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
 
-const useCommentStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    overflow: 'hidden',
-    padding: theme.spacing(0, 3),
-  },
-  paper: {
-    maxWidth: 400,
-    margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
-  },
-}));
+
 
 
 export default function SupportingProjectTab(props) {
+    const classesC = useCStyles();
+
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -97,8 +95,6 @@ export default function SupportingProjectTab(props) {
     setOpen(false);
   };
   const classes = useStyles();
-  const snackClasses = useSnackStyles();
-  const commentClasses = useCommentStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -143,9 +139,9 @@ export default function SupportingProjectTab(props) {
 
   }
 
-//   
+ 
 
-  console.log(allComments)
+//   console.log(thisCommenter)
   return (
     <div> 
       <h2>Community</h2>
@@ -199,9 +195,17 @@ export default function SupportingProjectTab(props) {
           </Button>
         </DialogActions>
       </Dialog>
-      <div className={snackClasses.root}>
-       {allComments.map(c => <SnackbarContent message={c.blurb}  />)}
-      </div>
+      
+      <div className={classesC.root}>
+      {allComments.map(c => <SupportingProjectCommentCard comment={c} key={c.id} project={props.project}/>)}
+      
+
+
+    
+     
+    </div>
+       
+   
       </TabPanel>
      
 

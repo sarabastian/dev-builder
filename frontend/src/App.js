@@ -10,6 +10,8 @@ import CreateProject from './components/CreateProject';
 import NewProjectContainer from './containers/NewProjectContainer';
 import SupportingProjectsContainer from './containers/SupportingProjectsContainer';
 import SupportingProjectShow from './components/SupportingProjectShow';
+import { Redirect } from "react-router-dom";
+
 
 class App extends React.Component {
   state = {
@@ -38,13 +40,17 @@ class App extends React.Component {
           <Switch>
            
             
-            <Route path="/login" component={() => <Login login={this.state.isloggedin} handleLogin={this.handleLogin} />} />
+            <Route exact path="/login" component={() => <Login login={this.state.isloggedin} handleLogin={this.handleLogin} />} />
             <Route exact path="/my-projects" component={() => <Main  /> } />
             <Route exact path="/show" component={() => <ProjectShow />} />
             <Route exact path="/create" component={() => <CreateProject />} />
             <Route exact path="/new" component={() => <NewProjectContainer />} />
             <Route exact path="/supporting-projects" component={() => <SupportingProjectsContainer />} />
             <Route exact path="/supporting-project" component={() => <SupportingProjectShow />} />
+            <Route exact path ="/logout" component = {()=>{
+              localStorage.clear()
+             
+              return <Redirect to="/login"/>     }}/>
            
    
 

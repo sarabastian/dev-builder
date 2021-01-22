@@ -14,6 +14,8 @@ import AddIcon from '@material-ui/icons/Add';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import Search from '../../containers/Search';
+import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,10 +40,10 @@ export default function MainNavBar(props) {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const history = useHistory();
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+
+
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -51,16 +53,17 @@ export default function MainNavBar(props) {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+
+    history.push({
+      pathname: "/logout"})
+  }
+
 
 
   return (
     <div className={classes.root}>
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>
+
       <AppBar position="static">
         <Toolbar>
 
@@ -100,6 +103,7 @@ export default function MainNavBar(props) {
                   <MenuItem>Saved Projects</MenuItem>
                 </Link>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
             
               </Menu>
             </div>

@@ -5,21 +5,34 @@ import { withRouter } from 'react-router';
 import { InputLabel } from '@material-ui/core';
 import { FormControl } from '@material-ui/core';
 import { Input } from '@material-ui/core';
-import { FormGroup } from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 
-class Login extends React.Component {
-    state = {
-      username: "",
-      password: ""
-    }
-  
-  handleInput = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-  })
+
+export default function Login(props){
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+
+  const handleUsername = (e) => {
+    setUsername(e.target.value)
   }
-  
-  handleSubmit = (e) => {
+
+  const handlePassword = (e) => {
+
+    setPassword(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
     console.log(this.state)
     e.preventDefault()
   
@@ -38,19 +51,19 @@ class Login extends React.Component {
             console.log(data.user_info)
             console.log(data)
             localStorage.setItem('token', data.user_info.user_id)
-            this.props.handleLogin()
-            this.props.history.push('/my-projects')
+            props.handleLogin()
+            history.push('/my-projects')
         })
   
   }
   
   
   
-  render () {
+ 
    
   return (
 
-    <form onSubmit={this.handleSubmit}>
+    <form onSubmit={handleSubmit}>
 
  
     
@@ -59,12 +72,12 @@ class Login extends React.Component {
             <FormControl>
                  <InputLabel>Username</InputLabel>
           
-             <Input name="username" placeholder="Username" onChange={this.handleInput} value={this.state.username}/>
+             <Input name="username" placeholder="Username" onChange={handleUsername} value={username}/>
              </FormControl>
            
             <FormControl>
                 <InputLabel>Password</InputLabel>
-                <Input name="password" type="password" placeholder="Password" onChange={this.handleInput} value={this.state.password}/>
+                <Input name="password" type="password" placeholder="Password" onChange={handlePassword} value={password}/>
             </FormControl>
         
             <Button  type="submit" className="btn-lg btn-dark btn-block">Log in</Button>
@@ -75,135 +88,9 @@ class Login extends React.Component {
     
     </form>
     )
+  
   }
-  }
-  export default withRouter(Login);
+  
 
 
-    // function Login(props){
-    //     const [username, setUsername] = useState("")
-    //     const [password, setPassword] = useState("")
-    
-    //     const handleUsernameChange = (e) => {
-    //         setUsername(e.target.value)
-    //     }
-    
-    //     const handlePasswordChange = (e) => {
-    //         setPassword(e.target.value)
-    //     }
-    
-    //     const handleSubmit = (e) => {
-    //         e.preventDefault()
-    //         fetch(`http://localhost:3001/api/v1/login`, {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Accept": "application/json"
-    //             },
-    //             body: JSON.stringify({
-    //                 username,
-    //                 password
-    //             })
-    //         })
-    //         .then(resp => resp.json())
-    //         .then(data => {
-    //             localStorage.setItem("token", data.jwt)
-    //             props.handleLogin(data.user)
-    //             props.history.push("/")
-    //         })
-    //         setUsername("")
-    //         setPassword("")
-
-    //     }
-    //     const formDivStyle = {
-    //         margin: "auto",
-    //         padding: "20px",
-    //         width: "80%"
-    //     }
-    //     return(
-    //         <div>
-    //             {/* <Paper elevation={0} /> */}
-
-    //             <div style={formDivStyle}>
-    //             <h1>Log In</h1>
-    //             <form class="ui form" onSubmit={handleSubmit}>
-    //                 <div class="field">
-    //                     <label>Username</label>
-    //                     <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
-    //                 </div>
-    //                 <div class="field">
-    //                     <label>Password</label>
-    //                     <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
-    //                 </div>
-                    
-    //                 <button class="ui button" type="submit">Submit</button>
-    //             </form>
-    //         </div>
-    //         {/* <Paper /> */}
-    //         </div>
-    //     )
-    // } 
-
-// class Login extends React.Component {
-//     state = ({
-//         username: "",
-//         password: ""
-//     })
-
-//     handleInput = (e) => {
-//         this.setState({
-//             [e.target.name]: e.target.value
-//         })
-//     }
-
-//     handleSubmit = (e) => {
-//         e.preventDefault()
-    
-//         fetch('http://localhost:3001/api/v1/users',{
-//           method: 'POST',
-//           headers: {
-//             'Content-Type': 'application/json',
-//             "Accept": "application/json"
-//           },
-//           body: JSON.stringify({
-//             user: this.state
-//           })
-//         }).then(res => res.json())
-//         .then(data => {
-
-//             localStorage.setItem('token', data.jwt)
-//             this.props.history.push('/')
-   
-     
-//         })
-        
-//       }
-    
-
-//     render() {
-//         return(
-//             <section>
-   
-//             <Form onSubmit={this.handleSubmit} className="login-form" style={{width:"100%", maxWidth:"330px", padding:"15px", margin:"auto", height:"100%"}}>
-//                 <h1>
-//                     {/* <span className="font-weight-bold">VanBnB</span> */}
-//                 </h1>
-//                 <h2 className="text-center">Welcome</h2>
-//                 <FormGroup>
-//                     <Form.Label>Username</Form.Label>
-//                     <Form.Control name="username" placeholder="Username" onChange={this.handleInput} value={this.state.username} />
-//                 </FormGroup>
-//                 <FormGroup>
-//                     <Form.Label>Password</Form.Label>
-//                     <Form.Control name="password" type="password" placeholder="Password" onChange={this.handleInput} value={this.state.password} />
-//                 </FormGroup>
-//                 <Button  type="submit" className="btn-lg btn-dark btn-block">Log in</Button>
-                
-              
-//             </Form>
-    
-//         </section>
-//         )
-//     }
-// }
 

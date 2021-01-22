@@ -69,18 +69,6 @@ function CreateProject() {
     const history = useHistory();
 
   
-
-
-    
-    // const [projects, setProjects] = useState([]);
-    // const token = localStorage.getItem('token');
-
-    // useEffect(() => {
-    //     fetch('http://localhost:3001/api/v1/projects')
-    //       .then(res => res.json())
-    //       .then(projects => setProjects(projects));
-    //   }, []);
-
     const createNew = () => {
         fetch('http://localhost:3001/api/v1/projects',
         {

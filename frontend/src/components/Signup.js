@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from "react-router-dom";
+
 
 function Copyright() {
   return (
@@ -46,8 +48,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const history = useHistory();
+
+  const handleUsername = (e) => {
+    setUsername(e.target.value)
+  }
+
+  const handlePassword = (e) => {
+
+    setPassword(e.target.value)
+  }
+
+  const handleName = (e) => {
+      setName(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    console.log('working')
+    e.preventDefault()
+  
+    fetch('http://localhost:3001/api/v1/signup',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {  
+        name: name,
+        username: username,
+        password: password
+        }
+      })
+    }).then(response => response.json())
+  
+    .then(data => {
+        
+            console.log(data.user_info)
+            console.log(data)
+            localStorage.setItem('auth_key', data["auth_key"])
+            props.handleLogin()
+            history.push('/')
+        })
+  
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -62,9 +110,10 @@ export default function SignUp() {
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <TextField onChange={handleName}
                 autoComplete="fname"
                 name="firstName"
+                value={name}
                 variant="outlined"
                 required
                 fullWidth
@@ -85,22 +134,24 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <TextField onChange={handleUsername}
                 variant="outlined"
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
-                name="email"
+                label="Username"
+                name="username"
+                value={username}
                 autoComplete="email"
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <TextField onChange={handlePassword}
                 variant="outlined"
                 required
                 fullWidth
                 name="password"
+                value={password}
                 label="Password"
                 type="password"
                 id="password"
@@ -114,7 +165,7 @@ export default function SignUp() {
               />
             </Grid>
           </Grid>
-          <Button
+          <Button onClick={handleSubmit}
             type="submit"
             fullWidth
             variant="contained"

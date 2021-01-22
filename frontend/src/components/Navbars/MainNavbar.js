@@ -43,9 +43,7 @@ export default function MainNavBar(props) {
   const history = useHistory();
 
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -65,13 +63,7 @@ export default function MainNavBar(props) {
 
   return (
     <div className={classes.root}>
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-       
-      </FormGroup>
+
       <AppBar position="static">
         <Toolbar>
 

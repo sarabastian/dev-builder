@@ -77,7 +77,7 @@ const useSnackStyles = makeStyles((theme) => ({
 }));
 
 
-export default function NewProjectTabs(props) {
+export default function ProjectTabs(props) {
   
   const [open, setOpen] = React.useState(false);
 

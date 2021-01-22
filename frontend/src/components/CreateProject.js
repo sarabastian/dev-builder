@@ -11,6 +11,9 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import {useLocation} from "react-router-dom";
 import { withRouter } from 'react-router-dom';
+import { checkPropTypes } from 'prop-types';
+import { useHistory } from "react-router-dom";
+
 
 
 
@@ -63,6 +66,8 @@ function CreateProject() {
     const handleReset = () => {
         setActiveStep(0);
     };
+    const history = useHistory();
+
   
 
 
@@ -101,8 +106,12 @@ function CreateProject() {
 
         .then(r => r.json())
         .then(project => 
-            console.log(project))
-         }
+          history.push({
+              pathname: "/new", 
+              state: {
+                  project
+              }})
+          )}
 
 
     // const details = {
@@ -412,27 +421,11 @@ function CreateProject() {
             {activeStep === steps.length && (
                 <Paper square elevation={0} className={classes.resetContainer}>
                     <Typography>All steps completed - you&apos;re finished</Typography>
-                    <Link to={{
-                        pathname: "/new",
-                        state: {
-                            // project,
-                            title,
-                            story,
-                            timeline,
-                            fundraising_goal,
-                            image,
-                            github,
-                            language,
-                            stage,
-                            data
-                        }
-                        
-
-                    }} >
+              
                        <Button onClick={createNew}  className={classes.button}>
                             Create
           </Button>
-                    </Link>
+                
                     <Button onClick={handleReset} className={classes.button}>
                         Reset
           </Button>

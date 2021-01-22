@@ -14,11 +14,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import { SnackbarContent } from '@material-ui/core';
-import SupporterCard from '../SupporterCard';
-import Grid from '@material-ui/core/Grid';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
+import NewProjectPostCard from '../NewProjectPostCard';
+import NewProjectSupporterCard from '../NewProjectSupporterCard';
+import NewProjectCommentCard from '../NewProjectCommentCard'
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,32 +64,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const useSnackStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 600,
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
 
-const useCommentStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    overflow: 'hidden',
-    padding: theme.spacing(0, 3),
-  },
-  paper: {
-    maxWidth: 400,
-    margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
-  },
-}));
 
 
 export default function NewProjectTabs(props) {
+  
   const [open, setOpen] = React.useState(false);
-  const token = localStorage.getItem('token');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -100,8 +79,7 @@ export default function NewProjectTabs(props) {
     setOpen(false);
   };
   const classes = useStyles();
-  const snackClasses = useSnackStyles();
-  const commentClasses = useCommentStyles();
+ 
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -112,102 +90,106 @@ export default function NewProjectTabs(props) {
   // console.log(props.user)
   const [allPosts, setAllPosts] = useState([]);
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:3001/api/v1/${props.project_id}`)
-  //     .then(res => res.json())
-  //     .then(allPosts => setAllPosts(allPosts));
-  // }, []);
-  // console.log(props.project_id)
-  const addPost = (props) => {
+  useEffect(() => {
+    fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
+      .then(res => res.json())
+      .then(project => setAllPosts(project.posts));
+  }, []);
+// console.log(props.project.id)
+  const addPost = () => {
     setOpen(false);
-    fetch(`http://localhost:3001/api/v1/projects/${props.project_id}`, {
-      method: 'PATCH',
+    fetch(`http://localhost:3001/api/v1/posts`, {
+      method: 'POST',
       headers: {
-          // Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           'Accept': 'application/json',
 
       },
       body: JSON.stringify({
         project_id: props.project.id,
-        user_id: props.user_id,
+        user_id: props.user.id,
         blurb: post
-
       }),
   })
 
 
   .then(r => r.json())
-  .then(post =>  console.log(post))
+  .then(post => setAllPosts([...allPosts, post]));
 
-  }
+  };
+
+ 
+  // const [userCommenter, setUser] = useState([])
+  // const getCommenter = (id) => {
+
+  //   fetch(`http://localhost:3001/api/v1/users/${id}`)
+  //   .then(r => r.json())
+  //   .then( user => setUser(user))
+  // }
+// let commenters = props.commenters.filter(com => com.id == props.comments.map(c => c.user_id))
+
 
   return (
-    <div> 
-      <h2>Community</h2>
-
-      <div className={classes.root}>
-       
-       <Tabs
-         orientation="vertical"
-         variant="scrollable"
-         value={value}
-         onChange={handleChange}
-         aria-label="Vertical tabs example"
-         className={classes.tabs}
-       >
-         <Tab label="Updates" {...a11yProps(0)} ></Tab>
-         <Tab label="Comments" {...a11yProps(1)} />
-         <Tab label="Supporters" {...a11yProps(2)} />
-         
- 
-       </Tabs>
-       <TabPanel value={value} index={0} >
-         <IconButton aria-label="add" onClick={handleClickOpen}>
-             <AddIcon />
-             </IconButton>
-             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-         <DialogTitle id="form-dialog-title">Add an update about your project</DialogTitle>
-         <DialogContent>
-           <DialogContentText>
-             Keep your community informed of your progress.
-           </DialogContentText>
-           <TextField  onChange={e => setPost(e.target.value)}
-             autoFocus
-             margin="dense"
-             id="name"
-             label="update"
-             type="text"
-             fullWidth
-           />
-         </DialogContent>
-         <DialogActions>
-           <Button onClick={handleClose} color="primary">
-             Cancel
-           </Button>
-           <Button onClick={addPost} color="primary">
-             Post
-           </Button>
-         </DialogActions>
-       </Dialog>
-       <div className={snackClasses.root}>
-       {allPosts.map(p =>  <SnackbarContent message={p.blurb}  />)}
-       </div>
-       </TabPanel>
-       <TabPanel value={value} index={1}>
-      
- 
-
-       </TabPanel>
-       <TabPanel value={value} index={2}>
+      <div>
+          <h2>Community</h2>
      
 
+    <div className={classes.root}>
+       
+      <Tabs
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        className={classes.tabs}
+      >
+        <Tab label="Your Updates" {...a11yProps(0)} ></Tab>
+  
+        
+
+      </Tabs>
+      <TabPanel value={value} index={0} >
+        <IconButton aria-label="add" onClick={handleClickOpen}>
+            <AddIcon />
+            </IconButton>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Add an update about your project</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Keep your community informed of your progress.
+          </DialogContentText>
+          <TextField  onChange={e => setPost(e.target.value)}
+            autoFocus
+            margin="dense"
+            id="name"
+            label="update"
+            type="text"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={addPost} color="primary">
+            Post
+          </Button>
+        </DialogActions>
+      </Dialog>
     
+       {allPosts.map(p => <NewProjectPostCard post={p} key={p.id} project={props.project} user={props.user}/>)}
+    
+      </TabPanel>
+      
+    
+    
+      
          
-       </TabPanel>
  
- 
-     </div>
-   </div>
+
+
+    </div>
+    </div>
   );
 }

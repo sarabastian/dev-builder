@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function CommentCard(props){
+export default function NewProjectCommentCard(props){
     const classes = useStyles();
     const [allCommenters, setAllCommenters] = useState([]);
 

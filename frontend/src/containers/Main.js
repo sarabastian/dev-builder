@@ -30,9 +30,7 @@ componentDidMount() {
 
 
     render() {
-                // console.log(this.state.user)
 
-                console.log(localStorage.getItem('Phase4'))
 
         return(
         

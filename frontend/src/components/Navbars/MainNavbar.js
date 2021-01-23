@@ -112,7 +112,7 @@ export default function MainNavBar(props) {
             My Projects
           </Typography>
           <div>
-            <Search />
+            <Search user={props.user}/>
           </div>
           <Link to={{
 

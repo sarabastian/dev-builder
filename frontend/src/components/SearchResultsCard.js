@@ -27,7 +27,6 @@ const SearchResultsCard = (props) => {
 
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
-
     const [fullProject, setFullProject] = React.useState({})
 
 
@@ -40,7 +39,7 @@ const SearchResultsCard = (props) => {
           });
       }, []);
 
-      console.log(fullProject)
+    //   console.log(fullProject)
     return (
 
 
@@ -81,14 +80,14 @@ const SearchResultsCard = (props) => {
     
 
         <Link to={{
-            pathname: "/supporting-project",
+            pathname: "/search-results",
             state: {
               project: props.project,
               user: props.user, 
               projectOwner: fullProject.user       
             }
             
-           }} >
+           }} style={{ textDecoration: 'none' }}>
         <Button size="small" color="primary" >
           See More
          

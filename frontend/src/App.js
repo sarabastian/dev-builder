@@ -12,6 +12,7 @@ import NewProjectContainer from './containers/NewProjectContainer';
 import SupportingProjectsContainer from './containers/SupportingProjectsContainer';
 import SupportingProjectShow from './components/SupportingProjectShow';
 import SearchResultsContainer from './containers/SearchResultsContainer';
+import SearchResultsShow from './components/SearchResultsShow';
 import { Redirect } from "react-router-dom";
 
 
@@ -46,6 +47,7 @@ class App extends React.Component {
             <Route exact path="/signup" component={() => <Signup login={this.state.isloggedin} handleLogin={this.handleLogin} />} />
             <Route exact path="/my-projects" component={() => <Main  /> } />
             <Route exact path="/search" component={() => <SearchResultsContainer />} />
+            <Route exact path="/search-results" component={() => <SearchResultsShow />} />
             <Route exact path="/show" component={() => <ProjectShow />} />
             <Route exact path="/create" component={() => <CreateProject />} />
             <Route exact path="/new" component={() => <NewProjectContainer />} />

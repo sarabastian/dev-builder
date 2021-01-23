@@ -52,7 +52,36 @@ export default function SearchResultsShow()  {
     console.log(data.state.projectOwner)
     const projectOwner = data.state.projectOwner
     const user = data.state.user
-    // console.log(
+    const [supporterships, setSupporterships] = React.useState([]);
+    console.log(user)
+
+    useEffect(() => {
+    fetch('http://localhost:3001/api/v1/supporterships/')
+    .then(res => res.json())
+    .then(supporterships => setSupporterships(supporterships));
+    }, [])
+
+
+    const createSupportership = () => {
+        fetch('http://localhost:3001/api/v1/supporterships',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+
+            },
+            body: JSON.stringify({
+              project_id: project.id,
+              user_id: user.id
+            }),
+        })
+
+
+        .then(r => r.json())
+        .then(result => 
+          setSupporterships([...supporterships, result]))
+    }
 
     return (
      <div>
@@ -71,20 +100,22 @@ export default function SearchResultsShow()  {
 by {projectOwner.name} / @{projectOwner.username}      
 </Typography>
 
-{project.supporters.forEach(s => s.id != user.id) ? 
+{user.projects_supported.forEach(p => p.id === project.id) ? 
+
 <Button
+         variant="contained"
+         color="secondary"
+         className={classes.button}
+         startIcon={<AddIcon />}
+         >Already Supporting</Button> :
+<Button onClick={createSupportership()}
         variant="contained"
         color="secondary"
         className={classes.button}
         startIcon={<AddIcon />}
       >
         Support
-      </Button> : <Button
-         variant="contained"
-         color="secondary"
-         className={classes.button}
-         startIcon={<AddIcon />}
-         >Already Supporting</Button>}
+      </Button> }
         </CardContent>
 
      

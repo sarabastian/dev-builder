@@ -85,7 +85,7 @@ export default function SearchResultsShow()  {
 
     return (
      <div>
-<SearchResultsNav project={data.state.project} user={data.state.user} />
+<SearchResultsNav project={data.state.project} user={data.state.user} language={data.state.project.language}/>
 <div>
       <Card className={classes.root}>
       <div className={classes.details}>

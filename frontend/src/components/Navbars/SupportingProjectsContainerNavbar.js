@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
               </div>
             )}
             <Typography variant="h6" className={classes.title}>
-              {props.language} Projects
+              {props.language} Projects I'm Supporting
             </Typography>
             <div>
               <Search user={props.user}/>

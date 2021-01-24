@@ -88,7 +88,7 @@ const SupportingProjectCard = (props) => {
               projectOwner: fullProject.user       
             }
             
-           }} >
+           }} style={{ textDecoration: 'none' }}>
         <Button size="small" color="primary" >
           See More
          

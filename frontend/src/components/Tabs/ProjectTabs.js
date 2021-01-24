@@ -16,6 +16,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import PostCard from '../PostCard';
 import SupporterCard from '../SupporterCard';
+import Grid from '@material-ui/core/Grid';
 
 import CommentCard from '../CommentCard'
 
@@ -204,10 +205,15 @@ export default function ProjectTabs(props) {
       
          
       <TabPanel value={value} index={2}>
-    
+      <Grid
+                container
+                direction="row"
+                justify="space-evenly"
+                alignItems="center"
+                >
       {props.supporters.map(s =>  <SupporterCard supporter={s} key={s.id}  />)}
    
-        
+      </Grid>
       </TabPanel>
 
 

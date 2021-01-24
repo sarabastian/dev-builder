@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import SupportingProjectTab from './Tabs/SupportingProjectTab';
-import SupportingProjectShowNavbar from './Navbars/SupportingProjectShowNavbar'
+import SupportingProjectsContainerNavbar from './Navbars/SupportingProjectsContainerNavbar'
 
 
 
@@ -44,7 +44,7 @@ export default function SupportingProjectShow()  {
 
     return (
      <div>
-         <SupportingProjectShowNavbar user={user} />
+         <SupportingProjectsContainerNavbar user={user} />
 <div>
       <Card className={classes.root}>
       <div className={classes.details}>

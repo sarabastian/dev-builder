@@ -10,7 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import SupportingProjectTab from './Tabs/SupportingProjectTab';
 import Icon from '@material-ui/core/Icon';
 import AddIcon from '@material-ui/icons/Add';
-import SupportingProjectShowNavbar from './Navbars/SupportingProjectShowNavbar'
+import SearchResultsNav from './Navbars/SearchResultsNav'
 
 
 
@@ -85,7 +85,7 @@ export default function SearchResultsShow()  {
 
     return (
      <div>
- {/* <SupportingProjectShowNavbar user={user} />  */}
+<SearchResultsNav project={data.state.project} user={data.state.user} />
 <div>
       <Card className={classes.root}>
       <div className={classes.details}>

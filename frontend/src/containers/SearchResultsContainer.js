@@ -24,7 +24,7 @@ function SearchResultsContainer() {
       
        
         <div>
-            <SearchResultsNav project={data.state.user} user={data.state.user} />
+            <SearchResultsNav project={data.state.project} user={data.state.user} />
             <SearchResultsCard project={data.state.project} user={data.state.user} />
 
        

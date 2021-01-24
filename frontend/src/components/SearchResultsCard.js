@@ -8,7 +8,8 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import { Link } from 'react-router-dom';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions'
+import CardActions from '@material-ui/core/CardActions';
+
 
 
 const useStyles = makeStyles({
@@ -41,7 +42,8 @@ const SearchResultsCard = (props) => {
 
     //   console.log(fullProject)
     return (
-
+      <div>
+     
 
         <Card className={classes.root} variant="outlined">
             <CardActionArea>
@@ -100,6 +102,7 @@ const SearchResultsCard = (props) => {
 
         
         </Card>
+        </div>
        
     )
 }

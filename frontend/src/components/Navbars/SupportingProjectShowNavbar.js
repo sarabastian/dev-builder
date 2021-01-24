@@ -100,13 +100,14 @@ export default function SupportingProjectShowNavbar(props) {
 
             <AppBar position="static">
                 <Toolbar>
-                    <Link to={{ 
+                    <Link to={{
                         pathname: '/supporting-projects',
                         state: {
                             user: props.user
-                        } }}> <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <ArrowBackIcon color='secondary' />
-                    </IconButton>  </Link>
+                        }
+                    }}> <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                            <ArrowBackIcon color='secondary' />
+                        </IconButton>  </Link>
 
                     {auth && (
                         <div>
@@ -144,6 +145,23 @@ export default function SupportingProjectShowNavbar(props) {
                         open={open}
                         onClose={handleClose}
                     >
+                        <Link to={{
+                            pathname: '/my-projects',
+                            state: {
+                                user: props.user
+                            }
+                        }} style={{ textDecoration: 'none' }}>
+                            <MenuItem >My projects</MenuItem>
+                        </Link>
+                        <Link to={{
+                            pathname: '/supporting-projects',
+                            state: {
+                                user: props.user
+                            }
+                        }} style={{ textDecoration: 'none' }}>
+                            <MenuItem>Saved Projects</MenuItem>
+
+                        </Link>
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
                         <MenuItem onClick={handleClose}>My account</MenuItem>
 

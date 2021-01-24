@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     },
     extendedIcon: {
         marginRight: theme.spacing(1),
-      },
-    
+    },
+
 }));
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -60,7 +60,7 @@ export default function SupportingProjectsContainerNavbar(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [openRequests, setOpenRequests] = React.useState(false)
     const open = Boolean(anchorEl);
-   
+
 
 
     const handleRequest = () => {
@@ -89,7 +89,7 @@ export default function SupportingProjectsContainerNavbar(props) {
     };
     const listClasses = useListStyles();
 
-  
+
 
 
     const data = useLocation()
@@ -100,28 +100,28 @@ export default function SupportingProjectsContainerNavbar(props) {
 
             <AppBar position="static">
                 <Toolbar>
-                 <Link to={{pathname: '/my-projects'}}> <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <ArrowBackIcon color='secondary'/>
+                    <Link to={{ pathname: '/my-projects' }}> <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <ArrowBackIcon color='secondary' />
                     </IconButton>  </Link>
-                
+
                     {auth && (
                         <div>
 
-        
 
 
 
 
 
-                                <Avatar alt="Remy Sharp" src={props.user.profile_pic}
 
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    onClick={handleMenu}
-                                    color="inherit"
-                                /> 
-                                </div>
+                            <Avatar alt="Remy Sharp" src={props.user.profile_pic}
+
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleMenu}
+                                color="inherit"
+                            />
+                        </div>
 
                     )}
 
@@ -140,33 +140,50 @@ export default function SupportingProjectsContainerNavbar(props) {
                         open={open}
                         onClose={handleClose}
                     >
+                        <Link to={{
+                            pathname: '/my-projects',
+                            state: {
+                                user: props.user
+                            }
+                        }} style={{ textDecoration: 'none' }}>
+                            <MenuItem >My projects</MenuItem>
+                        </Link>
+                        <Link to={{
+                            pathname: '/supporting-projects',
+                            state: {
+                                user: props.user
+                            }
+                        }} style={{ textDecoration: 'none' }}>
+                            <MenuItem>Saved Projects</MenuItem>
+
+                        </Link>
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
                         <MenuItem onClick={handleClose}>My account</MenuItem>
-                       
-  
-    
 
 
 
 
-                     
+
+
+
+
                     </Menu>
                     <Link to={{
 
-pathname: "/create",
+                        pathname: "/create",
 
-state: {
-  user: props.user
-}
-}} style={{ textDecoration: 'none' }}>
-<Fab variant="extended" color="secondary" aria-label="add" >
-  <AddIcon className={classes.extendedIcon}
-   
+                        state: {
+                            user: props.user
+                        }
+                    }} style={{ textDecoration: 'none' }}>
+                        <Fab variant="extended" color="secondary" aria-label="add" >
+                            <AddIcon className={classes.extendedIcon}
 
-  />Create
+
+                            />Create
 
 </Fab>
-</Link>
+                    </Link>
 
                 </Toolbar>
             </AppBar>

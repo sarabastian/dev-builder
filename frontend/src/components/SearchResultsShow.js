@@ -55,11 +55,11 @@ export default function SearchResultsShow()  {
     const [supporterships, setSupporterships] = React.useState([]);
     console.log(user)
 
-    useEffect(() => {
-    fetch('http://localhost:3001/api/v1/supporterships/')
-    .then(res => res.json())
-    .then(supporterships => setSupporterships(supporterships));
-    }, [])
+    // useEffect(() => {
+    // fetch('http://localhost:3001/api/v1/supporterships/')
+    // .then(res => res.json())
+    // .then(supporterships => setSupporterships(supporterships));
+    // }, [])
 
 
     const createSupportership = () => {
@@ -85,7 +85,7 @@ export default function SearchResultsShow()  {
 
     return (
      <div>
- <SupportingProjectShowNavbar user={user} /> 
+ {/* <SupportingProjectShowNavbar user={user} />  */}
 <div>
       <Card className={classes.root}>
       <div className={classes.details}>
@@ -100,7 +100,7 @@ export default function SearchResultsShow()  {
 by {projectOwner.name} / @{projectOwner.username}      
 </Typography>
 
-{user.projects_supported.forEach(p => p.id === project.id) ? 
+{/* {user.projects_supported.forEach(p => p.id === project.id) ? 
 
 <Button
          variant="contained"
@@ -115,7 +115,7 @@ by {projectOwner.name} / @{projectOwner.username}
         startIcon={<AddIcon />}
       >
         Support
-      </Button> }
+      </Button> } */}
         </CardContent>
 
      

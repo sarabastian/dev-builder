@@ -1,7 +1,8 @@
 import { TableFooter } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
-import SearchResultsCard from '../components/SearchResultsCard'
+import SearchResultsCard from '../components/SearchResultsCard';
+import SearchResultsNav from '../components/Navbars/SearchResultsNav'
 
 
 
@@ -19,7 +20,11 @@ function SearchResultsContainer() {
   
 
     return (
+        
+      
+       
         <div>
+            <SearchResultsNav project={data.state.user} user={data.state.user} />
             <SearchResultsCard project={data.state.project} user={data.state.user} />
 
        

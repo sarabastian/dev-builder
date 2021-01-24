@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import SupportingProjectsCard from '../components/SupportingProjectsCard';
 import Grid from '@material-ui/core/Grid';
@@ -8,13 +8,21 @@ import SupportingProjectsContainerNavbar from '../components/Navbars/SupportingP
 
 
 const SupportingProjectsContainer = () => {
+    useEffect(() => {
+        fetch('http://localhost:3001/api/v1/supporterships/')
+        .then(res => res.json())
+        .then(supporterships => setSupporterships(supporterships));
+        }, [])
 
     const data = useLocation()
     const user = data.state.user
-    const projectsSupported = user.projects_supported
-    console.log(user)
+    const [supporterships, setSupporterships] = React.useState([]);
 
-  
+    console.log(supporterships)
+    const projectsSupported = supporterships.filter(s => s.user_id === user.id)
+    console.log(projectsSupported)
+
+
 
 
     return (
@@ -34,7 +42,7 @@ const SupportingProjectsContainer = () => {
 
 
 
-                {projectsSupported.map(project => <SupportingProjectsCard project={project} key={project.id} user={data.state.user} />)}
+                {projectsSupported.map(project => <SupportingProjectsCard project={project.project} key={project.project.id} user={data.state.user} />)}
             </Grid>
 
 

@@ -24,8 +24,10 @@ import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-
-
+import Search from '../../containers/Search';
+import { useHistory } from "react-router-dom";
+import { Fab } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -94,7 +96,13 @@ export default function ProjectShowNav(props) {
     };
     const listClasses = useListStyles();
 
-  
+    const handleLogout = () => {
+
+      history.push({
+        pathname: "/logout"})
+    }
+    const history = useHistory();
+
 
 
     const data = useLocation()
@@ -148,7 +156,7 @@ export default function ProjectShowNav(props) {
                         </div>
 
                     )}
-
+  <div>
                     <Menu
                         id="menu-appbar"
                         anchorEl={anchorEl}
@@ -164,8 +172,27 @@ export default function ProjectShowNav(props) {
                         open={open}
                         onClose={handleClose}
                     >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>My account</MenuItem>
+
+<Link to={{
+                  pathname:'/my-projects',
+                  state: {
+                    user: props.user
+                  }
+                }}style={{ textDecoration: 'none' }}>
+                <MenuItem >My projects</MenuItem>
+                </Link>
+                <Link to={{
+                  pathname:'/supporting-projects',
+                  state: {
+                    user: props.user
+                  }
+                }}style={{ textDecoration: 'none' }}>
+                  <MenuItem>Saved Projects</MenuItem>
+            
+                </Link>
+               
+          
+                      
                         {props.project.collaborate_requests.length == 0 ? null : <MenuItem onClick={handleRequest}>Collaboration Requests</MenuItem> }
                         {openRequests ? <div>       <Dialog
                             open={open2}
@@ -262,8 +289,31 @@ export default function ProjectShowNav(props) {
           </Button>
                             </DialogActions>
                         </Dialog> </div> : null}
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
+</div>
+<Typography variant="h6" className={classes.title}>
+            {/* {props.project.title}  */}
+          </Typography>
+                    <div>
+            <Search user={props.user}/>
+          </div>
+          <Link to={{
 
+            pathname: "/create",
+
+            state: {
+              user: props.user
+            }
+          }} style={{ textDecoration: 'none' }}>
+            <Fab variant="extended" color="secondary" aria-label="add" >
+              <AddIcon className={classes.extendedIcon}
+               
+
+              />Create
+
+          </Fab>
+          </Link>
 
                 </Toolbar>
             </AppBar>

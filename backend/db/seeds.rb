@@ -29,6 +29,10 @@ u3 = User.create(username: 'waltlo', password: '123', name: 'Walter', location: 
 u4 = User.create(username: 'js', password: '123', name: 'James', location: 'San Francisco, CA',
                 profile_pic: 'https://media-exp1.licdn.com/dms/image/C4E03AQGnDtN-P4PsAg/profile-displayphoto-shrink_400_400/0/1592974724644?e=1617235200&v=beta&t=q5YBYkf-UlFZPkc_zs1YmjWyhBl-4jPvy7CRvRfXRgo', bio: 'I build systems in my life to take the drag out of being a human being, to make more time for the things that make me feel alive and happy. Like dopamine fasting!')
 
+u5 = User.create(username: 'lc', password: '123', name: 'Lauren', location: 'Dallas, TX',
+                profile_pic: 'https://ksr-ugc.imgix.net/assets/025/645/887/bd0c4d3740ac91136f052c345a36c308_original.JPG?ixlib=rb-2.1.0&w=160&h=160&fit=crop&v=1561757827&auto=format&frame=1&q=92&s=c0b090cdc38a7993a0722ef40788f751',
+                bio: 'I love solving problems and I believe that kindness is always in style.')
+
 p1 = Project.create(title: 'RVnB', story: 'A marketplace for users to rent and list campervans, RVs, and trailers',
                     timeline: 60, fundraising_goal: 1000, image: 'https://i.pinimg.com/564x/86/36/ce/8636ce9e4053b3a46356325742b78214.jpg',
                     github: 'https://github.com/sarabastian/Phase-4-Project,',
@@ -40,6 +44,7 @@ p3 = Project.create(title: 'Hypnos', story: 'A digital sleep journal that helps 
                     timeline: 31, fundraising_goal: 20000, image: 'https://ksr-ugc.imgix.net/assets/031/751/755/04532425626d51b2f25a4146a6f43b1f_original.jpg?ixlib=rb-2.1.0&w=680&fit=max&v=1608049915&auto=format&frame=1&q=92&s=1724efe58649ae47ee6232a5a5b515db',
                     github: 'https://www.kickstarter.com/projects/hypnos-sleep-journal/hypnos-a-sleep-journal-that-helps-you-get-better-sleep/description',
                     language: 'Python', stage: 'mid', user_id: u4.id)
+p4 = Project.create(title: 'RecommendMe', story: 'Have you ever been worried about recommendation letters for college, graduate school, jobs, or fellowships?   Recommendations without the hassle', timeline: 30, fundraising_goal: 5000, image: 'https://media-exp1.licdn.com/dms/image/C4E0BAQFWi24p-qas3g/company-logo_200_200/0/1548826620340?e=2159024400&v=beta&t=t-fQzWuV5MJ7_gUFoRVl3ly47Ur1uyZBgARWEJfYsVg', github: 'https://github.com/sarabastian', language: 'Python', stage: 'early', user_id: u5.id)
 
 ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! just updated the homepage - check it out and let me know what you think!')
 
@@ -53,6 +58,7 @@ c4 = Comment.create(project_id: p3.id, user_id: u2.id, blurb: 'Having struggled 
 s1 = Supportership.create(project_id: p1.id, user_id: u2.id)
 s2 = Supportership.create(project_id: p1.id, user_id: u3.id)
 s3 = Supportership.create(project_id: p2.id, user_id: u2.id)
+s4 = Supportership.create(project_id: p2.id, user_id: u5.id)
 
 
 collab1 = CollaborateRequest.create(project_id: p1.id, user_id: u2.id)

@@ -44,7 +44,7 @@ const SearchResultsCard = (props) => {
     return (
       <div>
      
-
+    
         <Card className={classes.root} variant="outlined">
             <CardActionArea>
                 <CardMedia

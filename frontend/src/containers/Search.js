@@ -7,6 +7,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 import { Link, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -40,15 +41,7 @@ const useStyles = makeStyles((theme) => ({
         width: 'auto'
       },
     },
-    searchIcon: {
-      padding: theme.spacing(0, 0),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+
     inputRoot: {
       color: 'inherit',
     },
@@ -80,6 +73,12 @@ export default function Search(props) {
 
     const [projects, setProjects] = React.useState([]) ;
     const [language, setLanguage] = React.useState('');
+    const [click, setClick] = React.useState(false);
+    const history = useHistory();
+
+    const handleClick = (e) => {
+      setClick(true)
+    }
 
     const handleLanguage = (e) => {
         setLanguage(e.target.value)
@@ -90,41 +89,66 @@ export default function Search(props) {
         console.log('hi')
     }
 
-    // console.log(language)
+    console.log(language)
     
     const searchResults = projects.filter(project => project.language.toUpperCase() === language.toUpperCase() )
         // 
     const accurateResults = searchResults.filter(r => r.user_id != props.user.id)
+    console.log(accurateResults.map)
     return (
         <div className={classes.root}>
 
 
 <div className={classes.search}>
             {/* <div className={classes.searchIcon}> */}
-              {accurateResults.map(project =>  <Link to={{
-                pathname: '/search',
-                state: {
-                    project,
-                    user: props.user
-                }
-               }}>
-               
-               <IconButton 
-                // onClick={handleSubmit}
-                >
-              <SearchIcon />
-              </IconButton>
-              </Link> )}
+            {/* <IconButton onClick={handleClick}  >
+            {accurateResults.map(project => <Link to={{
+              pathname: '/search',
+              state: {
+                project: project,
+                user: props.user
+              }
+            }}> 
+                <SearchIcon />
+                </Link>)}
+             </IconButton> */}
 
-            {/* </div> */}
+
+
+
+  <Link to={{
+    pathname: '/search',
+    state: {
+      accurateResults,
+      user: props.user
+    } }} >
+      <IconButton onClick={handleClick}  > <SearchIcon />
+      </IconButton>  
+      </Link>
+
+ 
+
+
+
+{/* {click ? accurateResults.map(project => history.push({
+                  pathname: '/search',
+                  state: {
+                    project: project,
+                    user: props.user
+                  }
+                })  ) : null} */}
+
+           
             <InputBase onChange={handleLanguage}
               placeholder="Search for projects by language"
+             
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
              value={language}
+             
                  />
           </div>
           </div>

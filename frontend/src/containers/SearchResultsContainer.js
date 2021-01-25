@@ -26,14 +26,14 @@ function SearchResultsContainer() {
       
        
         <div>
-            <SearchResultsNav project={data.state.project} user={data.state.user} language={data.state.project.language}/>
+            <SearchResultsNav user={data.state.user} />
             <Grid
                 container
                 direction="row"
                 justify="space-evenly"
                 alignItems="center"
                 >
-            <SearchResultsCard project={data.state.project} user={data.state.user} />
+            {data.state.accurateResults.map(project => <SearchResultsCard project={project} key={project.id} user={data.state.user} />)}
 
             </Grid>
        

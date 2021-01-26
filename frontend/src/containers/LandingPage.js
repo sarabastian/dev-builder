@@ -6,12 +6,15 @@ import LandingPageNav from '../components/Navbars/LandingPageNav';
 import devstarter from './dev-starter.jpg'
 
 export default function LandingPage() {
+
+   
+
   return (
     <React.Fragment>
  
       <LandingPageNav />
-      <Container style={{backgroundImage: `url(${devstarter})`}}>
-         
+      <Container >
+         <img src={devstarter} />
          
       </Container>
      

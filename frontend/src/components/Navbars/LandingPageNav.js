@@ -35,8 +35,8 @@ export default function LandingPageNav() {
           <Typography variant="h6" className={classes.title}>
             
           </Typography> 
-          <Link to='/login' style={{ textDecoration: 'none' }}> <Button color="inherit" className={classes.menuButton}>Login</Button> </Link>
-          <Link to='/signup'  style={{ textDecoration: 'none' }}> <Button color="inherit" className={classes.menuButton}>Signup</Button></Link>
+          <Link to='/login' style={{ textDecoration: 'none', color: 'white'}}> <Button color="inherit" className={classes.menuButton}>Login</Button> </Link>
+          <Link to='/signup'  style={{ textDecoration: 'none', color: 'white' }}> <Button color="inherit" className={classes.menuButton}>Signup</Button></Link>
         </Toolbar>
       </AppBar>
     </div>

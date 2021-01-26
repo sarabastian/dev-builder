@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+      paddingLeft: `calc(1em + ${theme.spacing(1)}px)`,
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
@@ -140,7 +140,7 @@ export default function Search(props) {
 
            
             <InputBase onChange={handleLanguage}
-              placeholder="Search for projects by language"
+              placeholder="Search by language"
              
               classes={{
                 root: classes.inputRoot,

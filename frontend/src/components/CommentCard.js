@@ -50,7 +50,7 @@ return(
 
 
 <Paper className={classes.paper}>
-<Grid container wrap="nowrap" spacing={2}>
+<Grid container wrap="nowrap" spacing={2} >
   <Grid item>
   <Avatar src={avatar()}></Avatar> 
 

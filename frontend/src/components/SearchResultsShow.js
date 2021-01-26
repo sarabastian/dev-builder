@@ -13,8 +13,6 @@ import AddIcon from '@material-ui/icons/Add';
 import SearchResultsNav from './Navbars/SearchResultsNav'
 
 
-
-
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -134,9 +132,9 @@ console.log(supporterships)
         </Card>
       </div>
 
-      {/* <div>
+      <div>
                     <SupportingProjectTab project={project} user={user} projectOwner={projectOwner}/>
-                    </div> */}
+                    </div> 
     </div>
 
 

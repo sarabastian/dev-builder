@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ProjectTabs from './Tabs/ProjectTabs';
 import {useLocation} from "react-router-dom";
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import EditIcon from '@material-ui/icons/Edit';
@@ -19,15 +19,32 @@ import { Redirect } from 'react-router-dom';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import CardContent from '@material-ui/core/CardContent';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
+
+const paperStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(1),
+      width: theme.spacing(16),
+      height: theme.spacing(16),
+    },
+  },
+}));
 
 
 const useStyle = makeStyles({
   root: {
       minWidth: 275,
-      height: 400
+      height: 200
   },
   bullet: {
       display: 'inline-block',
@@ -41,6 +58,34 @@ const useStyle = makeStyles({
       marginBottom: 12,
   },
 });
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    height: 250
+  },
+  details: {
+    display: 'center',
+    // flexDirection: 'column',
+  },
+  content: {
+    flex: '1 0 auto',
+  },
+  cover: {
+    width: 750,
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
+  playIcon: {
+    height: 38,
+    width: 38,
+  },
+}));
+
 
 
 const useAccordionStyles = makeStyles((theme) => ({
@@ -56,8 +101,9 @@ const useAccordionStyles = makeStyles((theme) => ({
 const ProjectShow = () =>  {
     const data = useLocation()
     const styles = useStyle();
+    const paperClasses = paperStyles();
     const accordionClasses = useAccordionStyles();
-
+    const classes = useStyles();
 
     const [open, setOpen] = React.useState(false);
     const [story, setStory] = React.useState(data.state.project.story);
@@ -106,9 +152,6 @@ const ProjectShow = () =>  {
         })
       
     }
-
-   
-  // console.log(useLocation())
 
  
   const handleStoryUpdate = () => {
@@ -184,13 +227,20 @@ useEffect(() => {
       deleted ? <Redirect to="/my-projects" /> : 
   <div>
   
-   
+  
       <ProjectShowNav user={data.state.user} project={data.state.project}/>
 
-      <div>
-        <Grid>
-      <Card className={styles.root} variant="outlined">
-            <CardContent>
+      
+       
+      {/* <Paper elevation={2} > */}
+       
+        {/* <div className={paperClasses.root}> * */}
+<Grid>
+         <Card elevation={3} className={classes.root} >
+   
+    
+         <div className={classes.details}>
+        <CardContent className={classes.content}>
                 <Typography className={styles.title} color="textSecondary" gutterBottom>
                     {currentProject.title}
                     <IconButton  onClick={handleClickOpen}><DeleteOutlinedIcon  color="secondary"/>
@@ -219,8 +269,12 @@ useEffect(() => {
                     </IconButton>
           </Typography>
         
-          
-       
+          {/* </Paper> */}
+          {/* <Paper elevation={3} > */}
+
+         
+            
+        
                  
                    <IconButton onClick={handleStoryUpdate} >   
                    <div className={accordionClasses.root}>         
@@ -246,10 +300,11 @@ useEffect(() => {
           </form>
         </AccordionDetails>
       </Accordion>
-      </div>
+    </div>
       </IconButton>
-         
-            
+   
+      <div className={classes.controls}>
+            {/* </Paper> */}
                    <IconButton onClick={handleTimelineUpdate}>
                    <div className={accordionClasses.root}>         
       <Accordion>
@@ -260,7 +315,7 @@ useEffect(() => {
           id="panel1a-header"
           minWidth
         >
-          <Typography className={accordionClasses.heading}> timeline: {changedTimeline ? updatedProject.timeline : currentProject.timeline} days</Typography>
+          <Typography className={accordionClasses.heading}> {changedTimeline ? updatedProject.timeline : currentProject.timeline} days left</Typography>
 
           </AccordionSummary>
           <AccordionDetails>
@@ -277,17 +332,20 @@ useEffect(() => {
           </Accordion>
           </div>        
         </IconButton>
-
+        {/* <Paper elevation={3} > */}
+      
         <IconButton onClick={handleFundraisingUpdate}>
-                   <div className={accordionClasses.root}>         
+                   <div className={accordionClasses.root}>   
+          <Typography>Fundraising Goal</Typography>            
       <Accordion>
     
         <AccordionSummary
           expandIcon={< EditIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          
         >
-          <Typography className={accordionClasses.heading}>fundraising goal: ${changedFundraising ? updatedProject.fundraising_goal : currentProject.fundraising_goal}</Typography>
+          <Typography className={accordionClasses.heading}>${changedFundraising ? updatedProject.fundraising_goal : currentProject.fundraising_goal}</Typography>
 
           </AccordionSummary>
           <AccordionDetails>
@@ -297,7 +355,7 @@ useEffect(() => {
             id="name"
             defaultValue={currentProject.fundraising_goal}
             name='fundraising_goal'
-            fullWidth
+           
           />
         
      
@@ -306,45 +364,50 @@ useEffect(() => {
           </div>        
         </IconButton>
 
-                
+
+           
+
+     
+  </div>
+{/* </Paper> */}
+
+{/* </div> */}
+              
         {/* <Link href={changedProject ? updatedProject.github : currentProject.github} >
           <GitHubIcon />
           </Link> */}
-        {/* <Accordion>
-        <AccordionSummary
-          expandIcon={< EditIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          size='xs'
-        />
-         <AccordionDetails>
-          <TextField onChange={e => handleGithubChange(e)}
-            autoFocus
-            margin="dense"
-            id="name"
-            defaultValue={currentProject.github}
-            name='github'
-            fullWidth
-          /> */}
+
+
+</CardContent>
+   
+
+{/* // </Paper> */}
+      </div>
         
+      <CardMedia
+        className={classes.cover}
+        image={currentProject.image}
+     
+      />
+
+      </Card>
+      </Grid>
     
-        {/* <Typography className={accordionClasses.heading}>
 
-          
-             
-             
-                </Typography>
-                </AccordionDetails>
-              </Accordion>
-           */}
+      <AppBar position="static" color='white'>
+  <Toolbar variant="dense">
+   
 
-            </CardContent>
-      
-        </Card>
-        </Grid>
-        </div>
-      
+  <Link href={data.state.project.github} variant="body2">
+        <GitHubIcon />   
+                </Link>
   
+    <Typography variant="h6" color="inherit">
+      
+    </Typography>
+  </Toolbar>
+</AppBar>
+
       <ProjectTabs project={data.state.project} user={data.state.user} posts={data.state.posts}
                   supporters={data.state.supporters} comments={data.state.comments}
                   commenters={data.state.commenters} />

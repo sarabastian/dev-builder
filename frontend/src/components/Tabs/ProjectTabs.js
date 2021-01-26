@@ -54,6 +54,19 @@ function a11yProps(index) {
   };
 }
 
+const useGridStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    height: 140,
+    width: 100,
+  },
+  control: {
+    padding: theme.spacing(2),
+  },
+}));
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -79,7 +92,8 @@ const useSnackStyles = makeStyles((theme) => ({
 
 
 export default function ProjectTabs(props) {
-  
+  const [spacing, setSpacing] = React.useState(2);
+  const gridClasses = useGridStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -205,15 +219,16 @@ export default function ProjectTabs(props) {
       
          
       <TabPanel value={value} index={2}>
-      <Grid
-                container
-                direction="row"
-                justify="space-evenly"
-                alignItems="center"
-                >
-      {props.supporters.map(s =>  <SupporterCard supporter={s} key={s.id}  />)}
+      <Grid container
+  direction="row"
+  justify="center"
+  alignItems="center"
+>    
    
+      {props.supporters.map(s =>  <SupporterCard supporter={s} key={s.id}  />)}
+          
       </Grid>
+     
       </TabPanel>
 
 

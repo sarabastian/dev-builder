@@ -48,6 +48,7 @@ export default function SupporterCard(props) {
   };
 
   return (
+
     <Card className={classes.root}>
       <CardHeader
         avatar={

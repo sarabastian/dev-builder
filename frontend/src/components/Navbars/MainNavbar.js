@@ -95,7 +95,7 @@ export default function MainNavBar(props) {
                   state: {
                     user: props.user
                   }
-                }}style={{ textDecoration: 'none' }}>
+                }}style={{ textDecoration: 'none', color: 'black' }}>
                   <MenuItem>Saved Campaigns</MenuItem>
                 </Link>
               

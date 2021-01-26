@@ -33,7 +33,7 @@ return lang[0]
       
        
         <div>
-            <SearchResultsNav user={data.state.user} language={f()}/>
+            <SearchResultsNav user={data.state.user} language={f()} accurateResults={data.state.accurateResults}/>
 <Container>
             <Grid
                 container

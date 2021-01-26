@@ -14,7 +14,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import NewProjectPostCard from '../NewProjectPostCard';
+import NewProjectPostCardContainer from '../../containers/NewProjectPostCardContainer';
 import NewProjectSupporterCard from '../NewProjectSupporterCard';
 import NewProjectCommentCard from '../NewProjectCommentCard'
 
@@ -86,38 +86,7 @@ export default function NewProjectTabs(props) {
     setValue(newValue);
   };
 
-  const [post, setPost] = useState('');
-  // console.log(props.user)
-  const [allPosts, setAllPosts] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
-      .then(res => res.json())
-      .then(project => setAllPosts(project.posts));
-  }, []);
-// console.log(props.project.id)
-  const addPost = () => {
-    setOpen(false);
-    fetch(`http://localhost:3001/api/v1/posts`, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-
-      },
-      body: JSON.stringify({
-        project_id: props.project.id,
-        user_id: props.user.id,
-        blurb: post
-      }),
-  })
-
-
-  .then(r => r.json())
-  .then(post => setAllPosts([...allPosts, post]));
-
-  };
-
+  
  
   // const [userCommenter, setUser] = useState([])
   // const getCommenter = (id) => {
@@ -150,7 +119,8 @@ export default function NewProjectTabs(props) {
 
       </Tabs>
       <TabPanel value={value} index={0} >
-        <IconButton aria-label="add" onClick={handleClickOpen}>
+
+        {/* <IconButton aria-label="add" onClick={handleClickOpen}>
             <AddIcon />
             </IconButton>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -176,9 +146,9 @@ export default function NewProjectTabs(props) {
             Post
           </Button>
         </DialogActions>
-      </Dialog>
-    
-       {allPosts.map(p => <NewProjectPostCard post={p} key={p.id} project={props.project} user={props.user}/>)}
+      </Dialog> */}
+
+    <NewProjectPostCardContainer project={props.project} key={props.project.id} user={props.user}/>
     
       </TabPanel>
       

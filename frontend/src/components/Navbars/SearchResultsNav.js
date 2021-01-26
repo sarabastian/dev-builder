@@ -5,12 +5,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import { Fab } from '@material-ui/core';
+import { Fab, Icon } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import Search from '../../containers/Search';
 import { useHistory } from "react-router-dom";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -61,7 +62,7 @@ export default function SearchResultsNav(props) {
     <div className={classes.root}>
 
       <AppBar position="static">
-        <Toolbar>
+<Toolbar>
 
 
           {auth && (
@@ -95,7 +96,7 @@ export default function SearchResultsNav(props) {
                   state: {
                     user: props.user
                   }
-                }}style={{ textDecoration: 'none' }}>
+                }}style={{ textDecoration: 'none', color: 'black' }}>
                 <MenuItem >My Campaigns</MenuItem>
                 </Link>
                 <Link to={{
@@ -103,7 +104,7 @@ export default function SearchResultsNav(props) {
                   state: {
                     user: props.user
                   }
-                }}style={{ textDecoration: 'none' }}>
+                }}style={{ textDecoration: 'none', color: 'black' }}>
                   <MenuItem>Saved Campaigns</MenuItem>
             
                 </Link>

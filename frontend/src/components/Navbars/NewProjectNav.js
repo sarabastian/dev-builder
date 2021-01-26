@@ -113,9 +113,7 @@ export default function ProjectShowNav(props) {
                  <Link to={{pathname: '/my-projects'}}> <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <ArrowBackIcon color='secondary'/>
                     </IconButton>  </Link>
-                    {/* <Typography variant="h6" className={classes.title}>
-            My Projects
-          </Typography> */}
+                   
                     {auth && (
                         <div>
 

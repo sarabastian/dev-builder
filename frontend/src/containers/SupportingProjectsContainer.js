@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 import SupportingProjectsCard from '../components/SupportingProjectsCard';
 import Grid from '@material-ui/core/Grid';
@@ -16,11 +16,8 @@ const SupportingProjectsContainer = () => {
 
     const data = useLocation()
     const user = data.state.user
-    const [supporterships, setSupporterships] = React.useState([]);
-
-    console.log(supporterships)
+    const [supporterships, setSupporterships] = useState([]);
     const projectsSupported = supporterships.filter(s => s.user_id === user.id)
-    console.log(projectsSupported)
 
 
 

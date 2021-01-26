@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
                       user: props.user
                     }
                   }}style={{ textDecoration: 'none' }}>
-                  <MenuItem >My projects</MenuItem>
+                  <MenuItem >My Campaigns</MenuItem>
                   </Link>
                   <Link to={{
                     pathname:'/supporting-projects',
@@ -111,17 +111,17 @@ const useStyles = makeStyles((theme) => ({
                       user: props.user
                     }
                   }}style={{ textDecoration: 'none' }}>
-                    <MenuItem>Saved Projects</MenuItem>
+                    <MenuItem>Saved Campaigns</MenuItem>
               
                   </Link>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
               
                 </Menu>
               </div>
             )}
             <Typography variant="h6" className={classes.title}>
-              {props.language} Projects I'm Supporting
+              {props.language} Campaigns I'm Supporting
             </Typography>
             <div>
               <Search user={props.user}/>

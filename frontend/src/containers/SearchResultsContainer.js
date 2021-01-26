@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import SearchResultsCard from '../components/SearchResultsCard';
 import SearchResultsNav from '../components/Navbars/SearchResultsNav';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+
 
 
 
@@ -18,6 +20,11 @@ function SearchResultsContainer() {
     // const project = props.state.project
 
 
+const f = () => {
+let lang = data.state.accurateResults.map(project => project.language)
+return lang[0]
+}
+
 
   
 
@@ -26,7 +33,8 @@ function SearchResultsContainer() {
       
        
         <div>
-            <SearchResultsNav user={data.state.user} />
+            <SearchResultsNav user={data.state.user} language={f()}/>
+<Container>
             <Grid
                 container
                 direction="row"
@@ -36,7 +44,7 @@ function SearchResultsContainer() {
             {data.state.accurateResults.map(project => <SearchResultsCard project={project} key={project.id} user={data.state.user} />)}
 
             </Grid>
-       
+            </Container>
         </div> 
     )
 

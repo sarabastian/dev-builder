@@ -13,6 +13,7 @@ import SupportingProjectsContainer from './containers/SupportingProjectsContaine
 import SupportingProjectShow from './components/SupportingProjectShow';
 import SearchResultsContainer from './containers/SearchResultsContainer';
 import SearchResultsShow from './components/SearchResultsShow';
+import LandingPage from './containers/LandingPage';
 import { Redirect } from "react-router-dom";
 
 
@@ -42,7 +43,7 @@ class App extends React.Component {
         <Router>
           <Switch>
            
-            
+            <Route exact path="/" component={()=> <LandingPage />} />
             <Route exact path="/login" component={() => <Login login={this.state.isloggedin} handleLogin={this.handleLogin} />} />
             <Route exact path="/signup" component={() => <Signup login={this.state.isloggedin} handleLogin={this.handleLogin} />} />
             <Route exact path="/my-projects" component={() => <Main  /> } />

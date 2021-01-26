@@ -19,6 +19,8 @@ import { Redirect } from 'react-router-dom';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 
 
@@ -186,6 +188,7 @@ useEffect(() => {
       <ProjectShowNav user={data.state.user} project={data.state.project}/>
 
       <div>
+        <Grid>
       <Card className={styles.root} variant="outlined">
             <CardContent>
                 <Typography className={styles.title} color="textSecondary" gutterBottom>
@@ -338,6 +341,7 @@ useEffect(() => {
             </CardContent>
       
         </Card>
+        </Grid>
         </div>
       
   

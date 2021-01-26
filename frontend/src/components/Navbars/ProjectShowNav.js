@@ -179,7 +179,7 @@ export default function ProjectShowNav(props) {
                     user: props.user
                   }
                 }}style={{ textDecoration: 'none' }}>
-                <MenuItem >My projects</MenuItem>
+                <MenuItem >My Campaigns</MenuItem>
                 </Link>
                 <Link to={{
                   pathname:'/supporting-projects',
@@ -187,7 +187,7 @@ export default function ProjectShowNav(props) {
                     user: props.user
                   }
                 }}style={{ textDecoration: 'none' }}>
-                  <MenuItem>Saved Projects</MenuItem>
+                  <MenuItem>Saved Campaigns</MenuItem>
             
                 </Link>
                

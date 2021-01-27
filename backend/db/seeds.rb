@@ -32,7 +32,7 @@ u4 = User.create(username: 'js', password: '123', name: 'James', location: 'San 
 u5 = User.create(username: 'lc', password: '123', name: 'Lauren', location: 'Dallas, TX',
                 profile_pic: 'https://ksr-ugc.imgix.net/assets/025/645/887/bd0c4d3740ac91136f052c345a36c308_original.JPG?ixlib=rb-2.1.0&w=160&h=160&fit=crop&v=1561757827&auto=format&frame=1&q=92&s=c0b090cdc38a7993a0722ef40788f751',
                 bio: 'I love solving problems and I believe that kindness is always in style.')
-u6 = User.create(username: 'hm', password: '123', name: 'Hannah', location: 'Washington, DC', profile_pic: 'https://lh3.googleusercontent.com/proxy/278ailWfimAk-Ny0jmd9QlLjp6DQMEhvw48LMNX-w46AP6HDFWBvV8oLvNoMy6iQkGg27EMor2vDd9bguQm7ENjbTWzWiHTdM8YY3nK5VC5YBuwKZRyGljIU6OA3tiwiVUpNMU8', bio: 'Lawyer turned software engineer')
+u6 = User.create(username: 'hm', password: '123', name: 'Hannah', location: 'Washington, DC', profile_pic: 'https://lh3.googleusercontent.com/proxy/xnKro7VQFHwIKyDhwlzA8rhkqaxtGugzkNnv4JlpNjg74g5QLC8Kje7F7itR6H139W4_jWsEmDTL1SkPW6hSp_u-gAfh9qJOl7YdPEbpOqalSoggKFc4FIYaQLTRpc4GDuNS724', bio: 'Lawyer turned software engineer')
 
 p1 = Project.create(title: 'RVnB', story: 'A marketplace for users to rent and list campervans, RVs, and trailers',
                     timeline: 60, fundraising_goal: 1000, image: 'https://i.pinimg.com/564x/86/36/ce/8636ce9e4053b3a46356325742b78214.jpg',
@@ -49,8 +49,12 @@ p4 = Project.create(title: 'RecommendMe', story: 'Have you ever been worried abo
 p5 = Project.create(title: 'eWho', story: 'A comprehensive health focused data collection mobile application.', timeline: 180, 
                     fundraising_goal: 77000, image: 'https://ksr-ugc.imgix.net/assets/031/523/778/1e7e565bec47e3b9a8e6dc0ae89b6cd9_original.png?ixlib=rb-2.1.0&crop=faces&w=1024&h=576&fit=crop&v=1606189024&auto=format&frame=1&q=92&s=ab76b1964d689f588531df795b8e40c4',
                     github: 'https://www.kickstarter.com/projects/harrycoffield/ewho-a-healthier-world-for-all-by-all?ref=discovery_category_popular', language: 'Python', stage: 'mid', user_id: u6.id)
-ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! just updated the homepage - check it out and let me know what you think!')
+p6 = Project.create(title: 'Survey Console - Intelligent classroom management', story: "A tool whose purpose is to optimize classroom management in order to analyze and strengthen students' learning and learning methods.", timeline: 12, fundraising_goal: 120000, image: 'https://ksr-ugc.imgix.net/assets/031/949/131/a3330ac8bfd6585b3a873a2f35662040_original.jpg?ixlib=rb-2.1.0&w=680&fit=max&v=1610099414&auto=format&frame=1&q=92&s=a0c19b8ece85c5b53ca730521c14ac25', github: 'https://www.kickstarter.com/projects/1465819932/survey-console-intelligent-classroom-management?ref=discovery_category_popular', language: 'Python', stage: 'late', user_id: u3.id)
+
+ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! looking for some more collaborators on this project - send me a request if you woudl be interested')
 ps2 = Post.create(project_id: p5.id, user_id: u6.id, blurb: 'Think of this application as a health study on a global scale and an opportunity to be a part of something bigger than yourself!')
+ps3 = Post.create(project_id: p2.id, user_id: u1.id, blurb: 'who has any new title ideas for me?')
+
 r1 = Reply.create(post_id: ps1.id, user_id: u2.id, reply: 'love it. 10/10')
 
 c1 = Comment.create(project_id: p1.id, user_id: u2.id, blurb: 'just found your page...like what you are up to keep it up')
@@ -65,5 +69,4 @@ s4 = Supportership.create(project_id: p2.id, user_id: u5.id)
 
 
 collab1 = CollaborateRequest.create(project_id: p1.id, user_id: u2.id)
-collab2 = CollaborateRequest.create(project_id: p1.id, user_id: u3.id)
-collab2 = CollaborateRequest.create(project_id: p2.id, user_id: u3.id)
+collab3 = CollaborateRequest.create(project_id: p2.id, user_id: u3.id)

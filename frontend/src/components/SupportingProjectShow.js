@@ -19,6 +19,18 @@ import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
 import TagFacesIcon from '@material-ui/icons/TagFaces';
 import Grid from '@material-ui/core/Grid';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CardActions from '@material-ui/core/CardActions';
+import IconButton from '@material-ui/core/IconButton';
+import CardHeader from '@material-ui/core/CardHeader';
+import Box from '@material-ui/core/Box';
+import CodeIcon from '@material-ui/icons/Code';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { green } from '@material-ui/core/colors';
 
 const useChipStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +50,7 @@ const useChipStyles = makeStyles((theme) => ({
 const useStyles = makeStyles({
     root: {
         display: 'flex',
-        height: 250
+        height: 400
        
     },
     details: {
@@ -49,7 +61,7 @@ const useStyles = makeStyles({
       flex: '1 0 auto',
     },
     cover: {
-      width: 450,
+      width: 650,
     },
     bullet: {
         display: 'inline-block',
@@ -63,10 +75,34 @@ const useStyles = makeStyles({
  
   });
 
+  const useOwnerStyles = makeStyles((theme) => ({
+    root: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 0,
+      paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+      transform: 'rotate(0deg)',
+      marginLeft: 'auto',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+      }),
+    },
+    expandOpen: {
+      transform: 'rotate(180deg)',
+    },
+    avatar: {
+     color: green[500],
+    },
+  
 
+  }));
 export default function SupportingProjectShow()  {
     const data = useLocation()
     const classes = useStyles();
+    const ownerClasses = useOwnerStyles();
     const theme = useTheme();
     const project = data.state.project
     // console.log(data.state.projectOwner)
@@ -87,16 +123,78 @@ export default function SupportingProjectShow()  {
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
             {project.title} 
+            <Link href={data.state.project.github}  variant="body2">
+        <GitHubIcon color='secondary'/>   
+                </Link>
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
 {project.story}          
 </Typography>
+
   
-<Chip variant="outlined" avatar={<Avatar src={projectOwner.profile_pic} />} 
-label={projectOwner.name} label={projectOwner.username}/>
 
 
 
+<Grid mx="auto"  p={2}
+container
+direction="row"
+justify="space-evenly"
+alignItems="center">
+  {/* <Box mx="auto"  p={2}> */}
+    <Card className={ownerClasses.root}  >
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={ownerClasses.avatar} src={projectOwner.profile_pic}>
+            
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={projectOwner.name}
+        // caption={projectOwner.username}
+        subheader={projectOwner.username}
+      />
+    
+      <CardContent>
+      <Typography variant="body1" color="textSecondary" component="p">
+      </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+        {projectOwner.bio}        </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="share">
+          <ShareIcon />
+        </IconButton>
+       
+      </CardActions>
+ 
+
+    </Card>
+    <Card  className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <AttachMoneyIcon className={ownerClasses.avatar}/> }
+  title={project.fundraising_goal}
+  subheader="goal" />
+  
+ 
+</Card> 
+<Card  className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <CalendarTodayIcon color='primary' /> }
+  title={project.timeline}
+  subheader="days remain" />
+  
+ 
+</Card> 
+
+    </Grid>
+   
 </CardContent>
 
 </div>
@@ -117,39 +215,29 @@ label={projectOwner.name} label={projectOwner.username}/>
 
 
     </Card>
+ 
     </Grid>
+   
     <Paper variant="dense" component="ul" className={chipClasses.root}>
-<Link href={data.state.project.github}  variant="body2">
-        <GitHubIcon color='secondary'/>   
-                </Link>
-               
-                <LocationOnIcon color='primary'></LocationOnIcon>
-    <Typography variant="sm" color="primary" >
+
+               <Chip variant="outlined" 
+label={projectOwner.location}
+icon={<LocationOnIcon color='primary'/>} />
+
+<Chip variant="outlined" 
+label={project.stage} 
+icon={<TimelapseIcon color='primary'/>} />
+                
+<Chip variant="outlined" 
+label={project.language} 
+icon={<CodeIcon color='primary'/>} />
+    
+
    
-    {projectOwner.location}
-    </Typography>
-    <TimelapseIcon color="secondary"/>
-    <Typography variant="sm" color="primary" >
-   
-   {project.stage} stage
-   </Typography>
-   
-            <Chip
-              // icon={icon}
-              label={project.language}
-             
-              className={classes.chip}
-            />
-             <Chip
-              // icon={icon}
-              label={project.stage}
-             
-              className={classes.chip}
-            />
           
     </Paper>
        
-    <AppBar position="static" color='white'>
+    {/* <AppBar position="static" color='white'>
   <Toolbar variant="dense">
    
 
@@ -168,7 +256,7 @@ label={projectOwner.name} label={projectOwner.username}/>
    {project.stage} stage
    </Typography>
   </Toolbar>
-</AppBar> 
+</AppBar>  */}
                     <SupportingProjectTab project={project} user={user} projectOwner={projectOwner}/>
                     </div>
   

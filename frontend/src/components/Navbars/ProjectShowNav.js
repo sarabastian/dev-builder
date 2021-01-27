@@ -28,7 +28,7 @@ import Search from '../../containers/Search';
 import { useHistory } from "react-router-dom";
 import { Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -173,27 +173,11 @@ export default function ProjectShowNav(props) {
                         onClose={handleClose}
                     >
 
-<Link to={{
-                  pathname:'/my-projects',
-                  state: {
-                    user: props.user
-                  }
-                }}style={{ textDecoration: 'none', color: 'black' }}>
-                <MenuItem >My Campaigns</MenuItem>
-                </Link>
-                <Link to={{
-                  pathname:'/supporting-projects',
-                  state: {
-                    user: props.user
-                  }
-                }}style={{ textDecoration: 'none', color: 'black' }}>
-                  <MenuItem>Saved Campaigns</MenuItem>
-            
-                </Link>
+
                
           
                       
-                        {props.project.collaborate_requests.length == 0 ? null : <MenuItem onClick={handleRequest}>Collaboration Requests</MenuItem> }
+                        {props.project.collaborate_requests.length == 0 ? null : <MenuItem onClick={handleRequest}> <IconButton> <PersonAddIcon color='secondary'/> </IconButton></MenuItem> }
                         {openRequests ? <div>       <Dialog
                             open={open2}
                             onClose={handleClose}
@@ -289,6 +273,23 @@ export default function ProjectShowNav(props) {
           </Button>
                             </DialogActions>
                         </Dialog> </div> : null}
+                        <Link to={{
+                  pathname:'/my-projects',
+                  state: {
+                    user: props.user
+                  }
+                }}style={{ textDecoration: 'none', color: 'black' }}>
+                <MenuItem >My Campaigns</MenuItem>
+                </Link>
+                <Link to={{
+                  pathname:'/supporting-projects',
+                  state: {
+                    user: props.user
+                  }
+                }}style={{ textDecoration: 'none', color: 'black' }}>
+                  <MenuItem>Saved Campaigns</MenuItem>
+            
+                </Link>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
 </div>

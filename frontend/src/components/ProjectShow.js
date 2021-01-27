@@ -29,6 +29,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
 import Chip from '@material-ui/core/Chip';
+import CodeIcon from '@material-ui/icons/Code';
+
 const paperStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -409,7 +411,7 @@ useEffect(() => {
 
       </Card>
       </Grid>
-    
+{/*     
       <Paper variant="dense" component="ul" className={chipClasses.root}>
 <Link href={data.state.project.github}  variant="body2">
         <GitHubIcon color='secondary'/>   
@@ -426,20 +428,8 @@ useEffect(() => {
    {data.state.project.stage} stage
    </Typography>
    
-            <Chip
-              // icon={icon}
-              label={data.state.project.language}
-             
-              className={classes.chip}
-            />
-             <Chip
-              // icon={icon}
-              label={data.state.project.stage}
-             
-              className={classes.chip}
-            />
-          
-    </Paper>
+         */}
+    {/* </Paper> */}
       <AppBar position="static" color='white'>
   <Toolbar variant="dense">
    
@@ -457,6 +447,11 @@ useEffect(() => {
     <Typography variant="sm" color="primary" >
    
    {data.state.project.stage} stage
+   </Typography>
+   <CodeIcon color='secondary'/> 
+   <Typography variant="sm" color="primary" >
+   
+   {data.state.project.language} 
    </Typography>
   </Toolbar>
 </AppBar>

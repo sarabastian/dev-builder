@@ -26,7 +26,8 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import TimelapseIcon from '@material-ui/icons/Timelapse';
 
 const paperStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +63,7 @@ const useStyle = makeStyles({
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    height: 250
+    height: 350
   },
   details: {
     display: 'center',
@@ -398,13 +399,20 @@ useEffect(() => {
   <Toolbar variant="dense">
    
 
-  <Link href={data.state.project.github} variant="body2">
-        <GitHubIcon />   
+  <Link href={data.state.project.github}  variant="body2">
+        <GitHubIcon color='secondary'/>   
                 </Link>
-  
-    <Typography variant="h6" color="inherit">
-      
+               
+                <LocationOnIcon color='primary'></LocationOnIcon>
+    <Typography variant="sm" color="primary" >
+   
+    {data.state.user.location}
     </Typography>
+    <TimelapseIcon color="secondary"/>
+    <Typography variant="sm" color="primary" >
+   
+   {currentProject.stage} stage
+   </Typography>
   </Toolbar>
 </AppBar>
 

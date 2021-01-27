@@ -92,7 +92,7 @@ export default function SignUp(props) {
             console.log(data)
             localStorage.setItem('auth_key', data["auth_key"])
             props.handleLogin()
-            history.push('/')
+            history.push('/login')
         })
   
   }

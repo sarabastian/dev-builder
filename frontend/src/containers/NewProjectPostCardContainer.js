@@ -28,27 +28,27 @@ const [post, setPost] = useState('');
       .then(project => setAllPosts(project.posts));
   }, []);
 // console.log(props.project.id)
-  const addPost = () => {
-    setOpen(false);
-    fetch(`http://localhost:3001/api/v1/posts`, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+  // const addPost = () => {
+  //   setOpen(false);
+  //   fetch(`http://localhost:3001/api/v1/posts`, {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/json',
+  //         'Accept': 'application/json',
 
-      },
-      body: JSON.stringify({
-        project_id: props.project.id,
-        user_id: props.user.id,
-        blurb: post
-      }),
-  })
+  //     },
+  //     body: JSON.stringify({
+  //       project_id: props.project.id,
+  //       user_id: props.user.id,
+  //       blurb: post
+  //     }),
+  // })
 
 
-  .then(r => r.json())
-  .then(post => setAllPosts([...allPosts, post]));
+  // .then(r => r.json())
+  // .then(post => setAllPosts([...allPosts, post]));
 
-  };
+  // };
 
   const [open, setOpen] = React.useState(false);
 
@@ -91,13 +91,13 @@ const [post, setPost] = useState('');
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={addPost} color="primary">
+          <Button color="primary">
             Post
           </Button>
         </DialogActions>
       </Dialog>
 
-    {allPosts.map(p => <NewProjectPostCard post={p} key={p.id} user={props.user}/>)}
+    {/* {allPosts.map(p => <NewProjectPostCard post={p} key={p.id} user={props.user}/>)} */}
     </div>
   )
 }

@@ -115,7 +115,7 @@ export default function SearchResultsNav(props) {
             </div>
           )}
           <Typography variant="h6" className={classes.title}>
-            {props.language} Campaigns
+           {props.language} focused Campaigns
           </Typography>
           <div>
             <Search user={props.user}/>

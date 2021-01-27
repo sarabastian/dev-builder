@@ -20,6 +20,12 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import NewProjectTabs from './Tabs/NewProjectTabs'
+import GitHubIcon from '@material-ui/icons/GitHub';
+import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import TimelapseIcon from '@material-ui/icons/Timelapse';
 
 
 
@@ -336,7 +342,27 @@ console.log(currentProject)
           </CardContent>
     
       </Card>
-     
+      {/* <AppBar position="static" color='white'>
+  <Toolbar variant="dense">
+   
+
+  <Link href={data.state.project.github}  variant="body2">
+        <GitHubIcon color='secondary'/>   
+                </Link>
+               
+                <LocationOnIcon color='primary'></LocationOnIcon>
+    <Typography variant="sm" color="primary" >
+   
+    {props.user.location}
+    </Typography>
+    <TimelapseIcon color="secondary"/>
+    <Typography variant="sm" color="primary" >
+   
+   {currentProject.stage} stage
+   </Typography>
+  </Toolbar> */}
+{/* </AppBar>
+      */}
       <NewProjectTabs project={currentProject} user={props.user}  
                       supporters={props.project.supporters} comments={props.project.comments}
                       commenters={props.project.commenters}/>

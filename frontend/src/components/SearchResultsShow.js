@@ -11,7 +11,12 @@ import SupportingProjectTab from './Tabs/SupportingProjectTab';
 import Icon from '@material-ui/core/Icon';
 import AddIcon from '@material-ui/icons/Add';
 import SearchResultsNav from './Navbars/SearchResultsNav'
-
+import GitHubIcon from '@material-ui/icons/GitHub';
+import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import TimelapseIcon from '@material-ui/icons/Timelapse';
 
 const useStyles = makeStyles({
   root: {
@@ -130,6 +135,26 @@ console.log(supporterships)
             image={project.image}
           />
         </Card>
+        <AppBar position="static" color='white'>
+  <Toolbar variant="dense">
+   
+
+  <Link href={data.state.project.github}  variant="body2">
+        <GitHubIcon color='secondary'/>   
+                </Link>
+               
+                <LocationOnIcon color='primary'></LocationOnIcon>
+    <Typography variant="sm" color="primary" >
+   
+    {project.user.location}
+    </Typography>
+    <TimelapseIcon color="secondary"/>
+    <Typography variant="sm" color="primary" >
+   
+   {project.stage} stage
+   </Typography>
+  </Toolbar>
+</AppBar>
       </div>
 
       <div>

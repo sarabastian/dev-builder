@@ -32,6 +32,7 @@ u4 = User.create(username: 'js', password: '123', name: 'James', location: 'San 
 u5 = User.create(username: 'lc', password: '123', name: 'Lauren', location: 'Dallas, TX',
                 profile_pic: 'https://ksr-ugc.imgix.net/assets/025/645/887/bd0c4d3740ac91136f052c345a36c308_original.JPG?ixlib=rb-2.1.0&w=160&h=160&fit=crop&v=1561757827&auto=format&frame=1&q=92&s=c0b090cdc38a7993a0722ef40788f751',
                 bio: 'I love solving problems and I believe that kindness is always in style.')
+u6 = User.create(username: 'hm', password: '123', name: 'Hannah', location: 'Washington, DC', profile_pic: 'https://lh3.googleusercontent.com/proxy/278ailWfimAk-Ny0jmd9QlLjp6DQMEhvw48LMNX-w46AP6HDFWBvV8oLvNoMy6iQkGg27EMor2vDd9bguQm7ENjbTWzWiHTdM8YY3nK5VC5YBuwKZRyGljIU6OA3tiwiVUpNMU8', bio: 'Lawyer turned software engineer')
 
 p1 = Project.create(title: 'RVnB', story: 'A marketplace for users to rent and list campervans, RVs, and trailers',
                     timeline: 60, fundraising_goal: 1000, image: 'https://i.pinimg.com/564x/86/36/ce/8636ce9e4053b3a46356325742b78214.jpg',
@@ -45,9 +46,11 @@ p3 = Project.create(title: 'Hypnos', story: 'A digital sleep journal that helps 
                     github: 'https://www.kickstarter.com/projects/hypnos-sleep-journal/hypnos-a-sleep-journal-that-helps-you-get-better-sleep/description',
                     language: 'Python', stage: 'mid', user_id: u4.id)
 p4 = Project.create(title: 'RecommendMe', story: 'Have you ever been worried about recommendation letters for college, graduate school, jobs, or fellowships?   Recommendations without the hassle', timeline: 30, fundraising_goal: 5000, image: 'https://media-exp1.licdn.com/dms/image/C4E0BAQFWi24p-qas3g/company-logo_200_200/0/1548826620340?e=2159024400&v=beta&t=t-fQzWuV5MJ7_gUFoRVl3ly47Ur1uyZBgARWEJfYsVg', github: 'https://github.com/sarabastian', language: 'Python', stage: 'early', user_id: u5.id)
-
+p5 = Project.create(title: 'eWho', story: 'A comprehensive health focused data collection mobile application.', timeline: 180, 
+                    fundraising_goal: 77000, image: 'https://ksr-ugc.imgix.net/assets/031/523/778/1e7e565bec47e3b9a8e6dc0ae89b6cd9_original.png?ixlib=rb-2.1.0&crop=faces&w=1024&h=576&fit=crop&v=1606189024&auto=format&frame=1&q=92&s=ab76b1964d689f588531df795b8e40c4',
+                    github: 'https://www.kickstarter.com/projects/harrycoffield/ewho-a-healthier-world-for-all-by-all?ref=discovery_category_popular', language: 'Python', stage: 'mid', user_id: u6.id)
 ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! just updated the homepage - check it out and let me know what you think!')
-
+ps2 = Post.create(project_id: p5.id, user_id: u6.id, blurb: 'Think of this application as a health study on a global scale and an opportunity to be a part of something bigger than yourself!')
 r1 = Reply.create(post_id: ps1.id, user_id: u2.id, reply: 'love it. 10/10')
 
 c1 = Comment.create(project_id: p1.id, user_id: u2.id, blurb: 'just found your page...like what you are up to keep it up')

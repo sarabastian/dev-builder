@@ -28,7 +28,6 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
 
 
-
 const useStyle = makeStyles({
   root: {
       minWidth: 275,
@@ -342,6 +341,27 @@ console.log(currentProject)
           </CardContent>
     
       </Card>
+
+      <AppBar position="static" color='white'>
+  <Toolbar variant="dense">
+   
+
+  <Link href={data.state.project.github}  variant="body2">
+        <GitHubIcon color='secondary'/>   
+                </Link>
+               
+                <LocationOnIcon color='primary'></LocationOnIcon>
+    <Typography variant="sm" color="primary" >
+   
+    {props.user.location}
+    </Typography>
+    <TimelapseIcon color="secondary"/>
+    <Typography variant="sm" color="primary" >
+   
+   {currentProject.stage} stage
+   </Typography>
+  </Toolbar>
+</AppBar>
       {/* <AppBar position="static" color='white'>
   <Toolbar variant="dense">
    

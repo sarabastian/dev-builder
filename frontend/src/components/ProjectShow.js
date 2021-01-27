@@ -306,8 +306,11 @@ useEffect(() => {
    
       <div className={classes.controls}>
             {/* </Paper> */}
+     
                    <IconButton onClick={handleTimelineUpdate}>
+                   
                    <div className={accordionClasses.root}>         
+                   <Typography>Timeline</Typography> 
       <Accordion>
     
         <AccordionSummary

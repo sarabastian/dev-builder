@@ -17,6 +17,7 @@ import Button from '@material-ui/core/Button';
 import PostCard from '../PostCard';
 import SupporterCard from '../SupporterCard';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 import CommentCard from '../CommentCard'
 
@@ -72,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    height: 900,
+    height: 600,
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -157,7 +158,7 @@ export default function ProjectTabs(props) {
 
   return (
       <div>
-          <h2>Community</h2>
+          <h2 >Community</h2>
      
 
     <div className={classes.root}>
@@ -219,15 +220,18 @@ export default function ProjectTabs(props) {
       
          
       <TabPanel value={value} index={2}>
-      <Grid container
-  direction="row"
-  justify="center"
-  alignItems="center"
->    
+        <Container>
+      <Grid 
+      container
+      direction="row"
+      justify="space-evenly"
+      alignItems="center"
+      >    
    
       {props.supporters.map(s =>  <SupporterCard supporter={s} key={s.id}  />)}
           
       </Grid>
+      </Container>
      
       </TabPanel>
 

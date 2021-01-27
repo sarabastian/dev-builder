@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,8 +49,9 @@ export default function SupporterCard(props) {
   };
 
   return (
-
-    <Card className={classes.root}>
+   <div>
+    
+    <Card className={classes.root}  >
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar} src={props.supporter.profile_pic}>
@@ -117,5 +119,7 @@ export default function SupporterCard(props) {
         </CardContent>
       </Collapse>
     </Card>
+    </div>
+    
   );
 }

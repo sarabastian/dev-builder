@@ -10,11 +10,14 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     overflow: 'hidden',
     padding: theme.spacing(0, 3),
+    
   },
   paper: {
-    maxWidth: 400,
+    maxWidth: 500,
+    minWidth: 400,
     margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+   
   },
 }));
 
@@ -27,8 +30,8 @@ export default function PostCard(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Grid container wrap="nowrap" spacing={2}>
-          <Grid item>
+        <Grid container wrap="nowrap" spacing={2}  alignItems="center">
+          <Grid item  >
              
            <Avatar src={props.user.profile_pic}></Avatar> 
           </Grid>

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
       maxWidth: 345,
     },
     media: {
-      height: 140,
+      height: 200,
     },
   });
 
@@ -45,7 +45,7 @@ const SearchResultsCard = (props) => {
       <div>
      
     
-        <Card className={classes.root} variant="outlined">
+        <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
           className={classes.media}

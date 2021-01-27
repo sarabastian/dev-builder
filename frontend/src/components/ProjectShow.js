@@ -28,8 +28,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
-import Chip from '@material-ui/core/Chip';
+import CardHeader from '@material-ui/core/CardHeader';
 import CodeIcon from '@material-ui/icons/Code';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { green } from '@material-ui/core/colors';
 
 const paperStyles = makeStyles((theme) => ({
   root: {
@@ -77,7 +80,7 @@ const useStyle = makeStyles({
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    height: 350
+    height: 250
   },
   details: {
     display: 'center',
@@ -87,7 +90,8 @@ const useStyles = makeStyles((theme) => ({
     flex: '1 0 auto',
   },
   cover: {
-    width: 750,
+    width: 850,
+    height: 250
   },
   controls: {
     display: 'flex',
@@ -411,26 +415,52 @@ useEffect(() => {
 
       </Card>
       </Grid>
-{/*     
       <Paper variant="dense" component="ul" className={chipClasses.root}>
-<Link href={data.state.project.github}  variant="body2">
-        <GitHubIcon color='secondary'/>   
+      <Link href={data.state.project.github}  variant="body2">
+  <Card  style={{ border: "none", boxShadow: "none" }}>
+  <CardHeader 
+  avatar={ <GitHubIcon color='secondary' /> }
+   />
+   </Card>
                 </Link>
-               
-                <LocationOnIcon color='primary'></LocationOnIcon>
-    <Typography variant="sm" color="primary" >
-   
-    {data.state.user.location}
-    </Typography>
-    <TimelapseIcon color="secondary"/>
-    <Typography variant="sm" color="primary" >
-   
-   {data.state.project.stage} stage
-   </Typography>
-   
-         */}
-    {/* </Paper> */}
-      <AppBar position="static" color='white'>
+    <Card style={{ border: "none", boxShadow: "none" }} >
+  <CardHeader 
+  avatar={ <LocationOnIcon color='primary' /> }
+  title={data.state.user.location}
+ />
+  
+ 
+</Card> 
+
+<Card style={{ border: "none", boxShadow: "none" }} >
+  <CardHeader 
+  avatar={ <TimelapseIcon color='primary' /> }
+  title={currentProject.stage}
+  subheader='stage'
+ />
+  
+ 
+</Card> 
+  
+
+
+
+
+<Card style={{ border: "none", boxShadow: "none" }} >
+  <CardHeader 
+  avatar={ <CodeIcon color='primary' /> }
+  title={currentProject.language}
+   />
+  
+ 
+</Card> 
+
+
+          
+    </Paper>
+
+
+      {/* <AppBar position="static" color='white'>
   <Toolbar variant="dense">
    
 
@@ -454,7 +484,7 @@ useEffect(() => {
    {data.state.project.language} 
    </Typography>
   </Toolbar>
-</AppBar>
+</AppBar> */}
 
       <ProjectTabs project={data.state.project} user={data.state.user} posts={data.state.posts}
                   supporters={data.state.supporters} comments={data.state.comments}

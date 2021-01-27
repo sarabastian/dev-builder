@@ -77,6 +77,7 @@ const useStyles = makeStyles({
 
   const useOwnerStyles = makeStyles((theme) => ({
     root: {
+      marginTop: 50,
       maxWidth: 345,
     },
     media: {
@@ -153,9 +154,10 @@ alignItems="center">
             <MoreVertIcon />
           </IconButton>
         }
-        title={projectOwner.name}
+        title='About the Developer'
         // caption={projectOwner.username}
-        subheader={projectOwner.username}
+        subheader={projectOwner.name}
+
       />
     
       <CardContent>
@@ -176,22 +178,7 @@ alignItems="center">
  
 
     </Card>
-    <Card  className={ownerClasses.root}>
-  <CardHeader 
-  avatar={ <AttachMoneyIcon className={ownerClasses.avatar}/> }
-  title={project.fundraising_goal}
-  subheader="goal" />
-  
- 
-</Card> 
-<Card  className={ownerClasses.root}>
-  <CardHeader 
-  avatar={ <CalendarTodayIcon color='primary' /> }
-  title={project.timeline}
-  subheader="days remain" />
-  
- 
-</Card> 
+
 
     </Grid>
    
@@ -219,21 +206,53 @@ alignItems="center">
     </Grid>
    
     <Paper variant="dense" component="ul" className={chipClasses.root}>
+    <Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <LocationOnIcon color='primary' /> }
+  title={projectOwner.location}
+ />
+  
+ 
+</Card> 
 
-               <Chip variant="outlined" 
-label={projectOwner.location}
-icon={<LocationOnIcon color='primary'/>} />
+<Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <TimelapseIcon color='primary' /> }
+  title={project.stage}
+  subheader='stage'
+ />
+  
+ 
+</Card> 
+  
+  <Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <AttachMoneyIcon className={ownerClasses.avatar}/> }
+  title={project.fundraising_goal}
+  subheader="goal" />
+  
+ 
+</Card> 
 
-<Chip variant="outlined" 
-label={project.stage} 
-icon={<TimelapseIcon color='primary'/>} />
-                
-<Chip variant="outlined" 
-label={project.language} 
-icon={<CodeIcon color='primary'/>} />
-    
+<Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <CalendarTodayIcon color='primary' /> }
+  title={project.timeline}
+  subheader="days remain" />
+  
+ 
+</Card> 
 
-   
+<Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <CodeIcon color='primary' /> }
+  title={project.language}
+   />
+  
+ 
+</Card> 
+
+
           
     </Paper>
        

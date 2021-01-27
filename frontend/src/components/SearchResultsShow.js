@@ -35,7 +35,7 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-    height: 300
+    height: 400
   },
   bullet: {
     display: 'inline-block',
@@ -144,9 +144,7 @@ console.log(supporterships)
               <Typography variant="subtitle1" color="textSecondary">
                 {project.story}
               </Typography>
-              <Typography variant="subtitle2" color="textSecondary">
-                by {projectOwner.name} / @{projectOwner.username}
-              </Typography>
+            
         
               {alreadySupportingBtn.length > 0 ?
   
@@ -196,34 +194,15 @@ alignItems="center">
         <Typography variant="body2" color="textSecondary" component="p">
         {projectOwner.bio}        </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-       
-      </CardActions>
- 
+      <CardMedia
+        className={ownerClasses.cover}
+        image={project.image}
+     
+      />
 
     </Card>
-    <Card  className={ownerClasses.root}>
-  <CardHeader 
-  avatar={ <AttachMoneyIcon className={ownerClasses.avatar}/> }
-  title={project.fundraising_goal}
-  subheader="goal" />
-  
- 
-</Card> 
-<Card  className={ownerClasses.root}>
-  <CardHeader 
-  avatar={ <CalendarTodayIcon color='primary' /> }
-  title={project.timeline}
-  subheader="days remain" />
-  
- 
-</Card> 
+
+
 
     </Grid>
           </div>
@@ -237,19 +216,49 @@ alignItems="center">
    
 
   <Link href={data.state.project.github}  variant="body2">
-        <GitHubIcon color='secondary'/>   
+  <Card  style={{ border: "none", boxShadow: "none" }}className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <GitHubIcon color='secondary' /> }
+   />
+   </Card>
                 </Link>
-               
-                <LocationOnIcon color='primary'></LocationOnIcon>
-    <Typography variant="sm" color="primary" >
-   
-    {project.user.location}
-    </Typography>
+  <Card  style={{ border: "none", boxShadow: "none" }}className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <LocationOnIcon color='primary' /> }
+  title={project.user.location}
+ />
+  
+ 
+</Card> 
+{/* <Card  style={{ border: "none", boxShadow: "none" }}className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <TimelapseIcon color='secondary' /> }
+  title={project.stage}
+  subheader='stage' />
+  
+ 
+</Card>       */}
     <TimelapseIcon color="secondary"/>
     <Typography variant="sm" color="primary" >
    
    {project.stage} stage
    </Typography>
+   <Card  style={{ border: "none", boxShadow: "none" }}className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <CalendarTodayIcon color='primary' /> }
+  title={project.timeline}
+  subheader="days remain" />
+  
+ 
+</Card> 
+<Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <AttachMoneyIcon className={ownerClasses.avatar}/> }
+  title={project.fundraising_goal}
+  subheader="goal" />
+  
+
+</Card> 
   </Toolbar>
 </AppBar>
       </div>

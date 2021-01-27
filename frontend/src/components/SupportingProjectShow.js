@@ -49,7 +49,7 @@ const useStyles = makeStyles({
       flex: '1 0 auto',
     },
     cover: {
-      width: 550,
+      width: 450,
     },
     bullet: {
         display: 'inline-block',
@@ -114,31 +114,11 @@ label={projectOwner.name} label={projectOwner.username}/>
 
      
    
-   
-              {/* <AppBar position="static" color='white'>
-  <Toolbar variant="dense">
-   
 
-  <Link href={data.state.project.github}  variant="body2">
-        <GitHubIcon color='secondary'/>   
-                </Link>
-               
-                <LocationOnIcon color='primary'></LocationOnIcon>
-    <Typography variant="sm" color="primary" >
-   
-    {projectOwner.location}
-    </Typography>
-    <TimelapseIcon color="secondary"/>
-    <Typography variant="sm" color="primary" >
-   
-   {project.stage} stage
-   </Typography>
-  </Toolbar>
-</AppBar> */}
 
     </Card>
     </Grid>
-    <Paper  component="ul" className={chipClasses.root}>
+    <Paper variant="dense" component="ul" className={chipClasses.root}>
 <Link href={data.state.project.github}  variant="body2">
         <GitHubIcon color='secondary'/>   
                 </Link>
@@ -168,6 +148,27 @@ label={projectOwner.name} label={projectOwner.username}/>
             />
           
     </Paper>
+       
+    <AppBar position="static" color='white'>
+  <Toolbar variant="dense">
+   
+
+  <Link href={data.state.project.github}  variant="body2">
+        <GitHubIcon color='secondary'/>   
+                </Link>
+               
+                <LocationOnIcon color='primary'></LocationOnIcon>
+    <Typography variant="sm" color="primary" >
+   
+    {projectOwner.location}
+    </Typography>
+    <TimelapseIcon color="secondary"/>
+    <Typography variant="sm" color="primary" >
+   
+   {project.stage} stage
+   </Typography>
+  </Toolbar>
+</AppBar> 
                     <SupportingProjectTab project={project} user={user} projectOwner={projectOwner}/>
                     </div>
   

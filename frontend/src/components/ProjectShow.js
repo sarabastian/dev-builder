@@ -28,7 +28,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
-
+import Chip from '@material-ui/core/Chip';
 const paperStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -40,7 +40,19 @@ const paperStyles = makeStyles((theme) => ({
     },
   },
 }));
-
+const useChipStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    listStyle: 'none',
+    padding: theme.spacing(0.5),
+    margin: 0,
+  },
+  chip: {
+    margin: theme.spacing(0.5),
+  },
+}));
 
 const useStyle = makeStyles({
   root: {
@@ -117,7 +129,8 @@ const ProjectShow = () =>  {
     const [changedStory, setClickforChangedStory] = React.useState(false)
     const [changedTimeline, setClickforChangedTimeline] = React.useState(false)
     const [changedFundraising, setClickforChangedFundraising] = React.useState(false)
-  
+    const chipClasses = useChipStyles();
+
     const handleStoryChange = (event) => {
       setClickforChangedStory(true);
       setStory(event.target.value) ;
@@ -390,14 +403,43 @@ useEffect(() => {
         
       <CardMedia
         className={classes.cover}
-        image={currentProject.image}
+        image={data.state.project.image}
      
       />
 
       </Card>
       </Grid>
     
-
+      <Paper variant="dense" component="ul" className={chipClasses.root}>
+<Link href={data.state.project.github}  variant="body2">
+        <GitHubIcon color='secondary'/>   
+                </Link>
+               
+                <LocationOnIcon color='primary'></LocationOnIcon>
+    <Typography variant="sm" color="primary" >
+   
+    {data.state.user.location}
+    </Typography>
+    <TimelapseIcon color="secondary"/>
+    <Typography variant="sm" color="primary" >
+   
+   {data.state.project.stage} stage
+   </Typography>
+   
+            <Chip
+              // icon={icon}
+              label={data.state.project.language}
+             
+              className={classes.chip}
+            />
+             <Chip
+              // icon={icon}
+              label={data.state.project.stage}
+             
+              className={classes.chip}
+            />
+          
+    </Paper>
       <AppBar position="static" color='white'>
   <Toolbar variant="dense">
    
@@ -414,7 +456,7 @@ useEffect(() => {
     <TimelapseIcon color="secondary"/>
     <Typography variant="sm" color="primary" >
    
-   {currentProject.stage} stage
+   {data.state.project.stage} stage
    </Typography>
   </Toolbar>
 </AppBar>

@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import LandingPageNav from '../components/Navbars/LandingPageNav';
-import devstarter from './dev-starter.jpg'
+import landing  from './landing.gif'
 
 export default function LandingPage() {
 
@@ -14,7 +14,7 @@ export default function LandingPage() {
  
       <LandingPageNav />
       <Container >
-         <img src={devstarter} />
+         <img src={landing} maxWidth/>
          
       </Container>
      

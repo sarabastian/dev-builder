@@ -94,16 +94,17 @@ export default function SupportingProjectShow()  {
   
 <Chip variant="outlined" avatar={<Avatar src={projectOwner.profile_pic} />} 
 label={projectOwner.name} label={projectOwner.username}/>
-<CardMedia
-        className={classes.cover}
-        image={project.image}
-     
-      />
+
 
 
 </CardContent>
 
 </div>
+<CardMedia
+        className={classes.cover}
+        image={project.image}
+     
+      />
 {/* <Typography variant="subtitle2" color="textSecondary"> */}
 
 {/* </Typography> */}

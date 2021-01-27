@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,7 +51,7 @@ export default function SupporterCard(props) {
 
   return (
    <div>
-    
+      <Box mx="auto"  p={3}>
     <Card className={classes.root}  >
       <CardHeader
         avatar={
@@ -119,6 +120,7 @@ export default function SupporterCard(props) {
         </CardContent>
       </Collapse>
     </Card>
+    </Box>
     </div>
     
   );

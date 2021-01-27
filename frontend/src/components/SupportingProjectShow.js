@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {useLocation} from "react-router-dom";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import SupportingProjectTab from './Tabs/SupportingProjectTab';
@@ -15,22 +15,48 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
+import Chip from '@material-ui/core/Chip';
+import Paper from '@material-ui/core/Paper';
+import TagFacesIcon from '@material-ui/icons/TagFaces';
+import Grid from '@material-ui/core/Grid';
 
+const useChipStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    listStyle: 'none',
+    padding: theme.spacing(0.5),
+    margin: 0,
+  },
+  chip: {
+    margin: theme.spacing(0.5),
+  },
+}));
 
 
 const useStyles = makeStyles({
     root: {
-        minWidth: 275,
-        height: 400
+        display: 'flex',
+        height: 250
+       
+    },
+    details: {
+      display: 'center',
+      // flexDirection: 'column',
+    },
+    content: {
+      flex: '1 0 auto',
+    },
+    cover: {
+      width: 550,
     },
     bullet: {
         display: 'inline-block',
         margin: '0 2px',
         transform: 'scale(0.8)',
     },
-    title: {
-        fontSize: 24,
-    },
+  
     pos: {
         marginBottom: 12,
     },
@@ -47,11 +73,16 @@ export default function SupportingProjectShow()  {
     const projectOwner = data.state.projectOwner
     const user = data.state.user
 
+    const chipClasses = useChipStyles();
+   
+
     return (
-     <div>
+      <div>
          <SupportingProjectsContainerNavbar user={user} />
-<div>
-      <Card className={classes.root}>
+
+<Grid>
+
+      <Card elevation={3} className={classes.root}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
@@ -60,18 +91,30 @@ export default function SupportingProjectShow()  {
           <Typography variant="subtitle1" color="textSecondary">
 {project.story}          
 </Typography>
-<Typography variant="subtitle2" color="textSecondary">
-by {projectOwner.name} / @{projectOwner.username}      
-</Typography>
-        </CardContent>
-
-     
-      </div>
-      <CardMedia
+  
+<Chip variant="outlined" avatar={<Avatar src={projectOwner.profile_pic} />} 
+label={projectOwner.name} label={projectOwner.username}/>
+<CardMedia
         className={classes.cover}
         image={project.image}
+     
       />
-              <AppBar position="static" color='white'>
+
+
+</CardContent>
+
+</div>
+{/* <Typography variant="subtitle2" color="textSecondary"> */}
+
+{/* </Typography> */}
+
+
+   
+
+     
+   
+   
+              {/* <AppBar position="static" color='white'>
   <Toolbar variant="dense">
    
 
@@ -90,14 +133,43 @@ by {projectOwner.name} / @{projectOwner.username}
    {project.stage} stage
    </Typography>
   </Toolbar>
-</AppBar>
+</AppBar> */}
+
     </Card>
-    </div>
- 
-                    <div>
+    </Grid>
+    <Paper  component="ul" className={chipClasses.root}>
+<Link href={data.state.project.github}  variant="body2">
+        <GitHubIcon color='secondary'/>   
+                </Link>
+               
+                <LocationOnIcon color='primary'></LocationOnIcon>
+    <Typography variant="sm" color="primary" >
+   
+    {projectOwner.location}
+    </Typography>
+    <TimelapseIcon color="secondary"/>
+    <Typography variant="sm" color="primary" >
+   
+   {project.stage} stage
+   </Typography>
+   
+            <Chip
+              // icon={icon}
+              label={project.language}
+             
+              className={classes.chip}
+            />
+             <Chip
+              // icon={icon}
+              label={project.stage}
+             
+              className={classes.chip}
+            />
+          
+    </Paper>
                     <SupportingProjectTab project={project} user={user} projectOwner={projectOwner}/>
                     </div>
-                    </div>
+  
              
                     
 

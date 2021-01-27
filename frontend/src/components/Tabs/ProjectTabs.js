@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import { IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
@@ -17,9 +16,8 @@ import Button from '@material-ui/core/Button';
 import PostCard from '../PostCard';
 import SupporterCard from '../SupporterCard';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-
 import CommentCard from '../CommentCard'
+import Box from '@material-ui/core/Box';
 
 
 function TabPanel(props) {
@@ -220,19 +218,19 @@ export default function ProjectTabs(props) {
       
          
       <TabPanel value={value} index={2}>
-        <Container>
+  
       <Grid 
       container
       direction="row"
       justify="space-evenly"
       alignItems="center"
+     
       >    
    
       {props.supporters.map(s =>  <SupporterCard supporter={s} key={s.id}  />)}
           
       </Grid>
-      </Container>
-     
+  
       </TabPanel>
 
 

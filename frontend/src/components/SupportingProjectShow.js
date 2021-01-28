@@ -62,7 +62,7 @@ const useStyles = makeStyles({
       flex: '1 0 auto',
     },
     cover: {
-      width: 650,
+      width: 800,
     },
     bullet: {
         display: 'inline-block',

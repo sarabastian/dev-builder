@@ -24,9 +24,11 @@ const useCStyles = makeStyles((theme) => ({
       flexGrow: 1,
       overflow: 'hidden',
       padding: theme.spacing(0, 3),
+      
     },
     paper: {
       maxWidth: 400,
+
       margin: `${theme.spacing(1)}px auto`,
       padding: theme.spacing(2),
     },
@@ -69,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    height: 224,
+    height: 800,
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,

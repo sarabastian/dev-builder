@@ -33,27 +33,40 @@ u5 = User.create(username: 'lc', password: '123', name: 'Lauren', location: 'Dal
                 profile_pic: 'https://ksr-ugc.imgix.net/assets/025/645/887/bd0c4d3740ac91136f052c345a36c308_original.JPG?ixlib=rb-2.1.0&w=160&h=160&fit=crop&v=1561757827&auto=format&frame=1&q=92&s=c0b090cdc38a7993a0722ef40788f751',
                 bio: 'I love solving problems and I believe that kindness is always in style.')
 u6 = User.create(username: 'hm', password: '123', name: 'Hannah', location: 'Washington, DC', profile_pic: 'https://lh3.googleusercontent.com/proxy/xnKro7VQFHwIKyDhwlzA8rhkqaxtGugzkNnv4JlpNjg74g5QLC8Kje7F7itR6H139W4_jWsEmDTL1SkPW6hSp_u-gAfh9qJOl7YdPEbpOqalSoggKFc4FIYaQLTRpc4GDuNS724', bio: 'Lawyer turned software engineer')
+u7 = User.create(username: 'rs', password: '123', name: 'Rachel', location: 'Seattle, WA', 
+    profile_pic: 'https://secure.gravatar.com/avatar/463a19ab220968f0654956f2f4763312?s=420&d=mm&r=g',
+    bio: 'An entrepreneur who designs online content around food')
 
 p1 = Project.create(title: 'RVnB', story: 'A marketplace for users to rent and list campervans, RVs, and trailers',
                     timeline: 60, fundraising_goal: 1000, image: 'https://i.pinimg.com/564x/86/36/ce/8636ce9e4053b3a46356325742b78214.jpg',
                     github: 'https://github.com/sarabastian/Phase-4-Project,',
-                    language: 'React',
+                    language: 'Ruby',
                     stage: 'early', user_id: u1.id)
 p2 = Project.create(title: 'the Conscious Consumer', story: 'the Amazon for ethical shopping', timeline: 180, fundraising_goal: 500, image: 'https://cdn.shopify.com/s/files/1/1979/9235/articles/ETHICAL_dfbea3bb-c99d-4656-9361-6f666afbc73f_1200x.png?v=1565788248',
                     github: 'https://github.com/sarabastian/Mod-5-Project', language: 'Ruby', stage: 'middle', user_id: u1.id )
 p3 = Project.create(title: 'Hypnos', story: 'A digital sleep journal that helps you discover how your habits are impacting your sleep',
                     timeline: 31, fundraising_goal: 20000, image: 'https://ksr-ugc.imgix.net/assets/031/751/755/04532425626d51b2f25a4146a6f43b1f_original.jpg?ixlib=rb-2.1.0&w=680&fit=max&v=1608049915&auto=format&frame=1&q=92&s=1724efe58649ae47ee6232a5a5b515db',
                     github: 'https://www.kickstarter.com/projects/hypnos-sleep-journal/hypnos-a-sleep-journal-that-helps-you-get-better-sleep/description',
-                    language: 'Python', stage: 'mid', user_id: u4.id)
-p4 = Project.create(title: 'RecommendMe', story: 'Have you ever been worried about recommendation letters for college, graduate school, jobs, or fellowships?   Recommendations without the hassle', timeline: 30, fundraising_goal: 5000, image: 'https://media-exp1.licdn.com/dms/image/C4E0BAQFWi24p-qas3g/company-logo_200_200/0/1548826620340?e=2159024400&v=beta&t=t-fQzWuV5MJ7_gUFoRVl3ly47Ur1uyZBgARWEJfYsVg', github: 'https://github.com/sarabastian', language: 'Python', stage: 'early', user_id: u5.id)
+                    language: 'React', stage: 'mid', user_id: u4.id)
+p4 = Project.create(title: 'RecommendMe', story: 'Have you ever been worried about recommendation letters for college, graduate school, jobs, or fellowships?   Recommendations without the hassle', timeline: 30, fundraising_goal: 5000, image: 'https://www.fastweb.com/uploads/article_photo/photo/2038557/crop635w_student_recommendation_letters.jpg', 
+    github: 'https://github.com/sarabastian', language: 'React', stage: 'early', user_id: u5.id)
 p5 = Project.create(title: 'eWho', story: 'A comprehensive health focused data collection mobile application.', timeline: 180, 
                     fundraising_goal: 77000, image: 'https://ksr-ugc.imgix.net/assets/031/523/778/1e7e565bec47e3b9a8e6dc0ae89b6cd9_original.png?ixlib=rb-2.1.0&crop=faces&w=1024&h=576&fit=crop&v=1606189024&auto=format&frame=1&q=92&s=ab76b1964d689f588531df795b8e40c4',
-                    github: 'https://www.kickstarter.com/projects/harrycoffield/ewho-a-healthier-world-for-all-by-all?ref=discovery_category_popular', language: 'Python', stage: 'mid', user_id: u6.id)
-p6 = Project.create(title: 'Survey Console - Intelligent classroom management', story: "A tool whose purpose is to optimize classroom management in order to analyze and strengthen students' learning and learning methods.", timeline: 12, fundraising_goal: 120000, image: 'https://ksr-ugc.imgix.net/assets/031/949/131/a3330ac8bfd6585b3a873a2f35662040_original.jpg?ixlib=rb-2.1.0&w=680&fit=max&v=1610099414&auto=format&frame=1&q=92&s=a0c19b8ece85c5b53ca730521c14ac25', github: 'https://www.kickstarter.com/projects/1465819932/survey-console-intelligent-classroom-management?ref=discovery_category_popular', language: 'Python', stage: 'late', user_id: u3.id)
+                    github: 'https://www.kickstarter.com/projects/harrycoffield/ewho-a-healthier-world-for-all-by-all?ref=discovery_category_popular', language: 'React', stage: 'mid', user_id: u6.id)
+p6 = Project.create(title: 'Survey Console - Intelligent classroom management', story: "A tool whose purpose is to optimize classroom management in order to analyze and strengthen students' learning and learning methods.", 
+    timeline: 12, fundraising_goal: 120000, 
+    image: 'https://cdn-res.keymedia.com/cms/images/au/130/0314_637269086154300500.jpg', 
+    github: 'https://www.kickstarter.com/projects/1465819932/survey-console-intelligent-classroom-management?ref=discovery_category_popular', 
+    language: 'React', stage: 'late', user_id: u3.id)
+p7 = Project.create(title: 'Cooking Py: Learning, as easy as pie!', story: 'Learn a new language, while cooking, together! Learn Spanish or Python (coding) while cooking deliciously simple recipes!', timeline: 28,
+fundraising_goal: 1179, image: 'https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Mixed-Berry-Pie_EXPS_DIYD19_170770_E05_15_1b.jpg', 
+github: 'https://www.kickstarter.com/projects/cookingpy/cooking-py-learning-as-easy-as-pie?ref=discovery_category', language: 'React', stage: 'mid', user_id: u7.id)
+
 
 ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! looking for some more collaborators on this project - send me a request if you woudl be interested')
 ps2 = Post.create(project_id: p5.id, user_id: u6.id, blurb: 'Think of this application as a health study on a global scale and an opportunity to be a part of something bigger than yourself!')
 ps3 = Post.create(project_id: p2.id, user_id: u1.id, blurb: 'who has any new title ideas for me?')
+ps4 = Post.create(project_id: p3.id, user_id: u4.id, blurb: "What do you do to get a better night's sleep? Let me know in the comments section!")
 
 r1 = Reply.create(post_id: ps1.id, user_id: u2.id, reply: 'love it. 10/10')
 
@@ -61,12 +74,16 @@ c1 = Comment.create(project_id: p1.id, user_id: u2.id, blurb: 'just found your p
 c2 = Comment.create(project_id: p1.id, user_id: u3.id, blurb: 'how close are you to reaching your fundraising goal?')
 c3 = Comment.create(project_id: p2.id, user_id: u3.id, blurb: 'wow I need this in my life')
 c4 = Comment.create(project_id: p3.id, user_id: u2.id, blurb: 'Having struggled with insomnia for much of my life, this sounds AMAZING! So many sleep solutions are just too much work with widely varying results, but this sounds easy and scientific.')
+c5 = Comment.create(project_id: p5.id, user_id: u2.id, blurb: 'Can you share more on how you are collecting this data?')
+c6 = Comment.create(project_id: p5.id, user_id: u7.id, blurb: 'definitely timely!')
 
 s1 = Supportership.create(project_id: p1.id, user_id: u2.id)
 s2 = Supportership.create(project_id: p1.id, user_id: u3.id)
 s3 = Supportership.create(project_id: p2.id, user_id: u2.id)
 s4 = Supportership.create(project_id: p2.id, user_id: u5.id)
-
+s5 = Supportership.create(project_id: p1.id, user_id: u7.id)
+s6 = Supportership.create(project_id: p1.id, user_id: u6.id)
+s7 = Supportership.create(project_id: p5.id, user_id: u1.id)
 
 collab1 = CollaborateRequest.create(project_id: p1.id, user_id: u2.id)
 collab3 = CollaborateRequest.create(project_id: p2.id, user_id: u3.id)

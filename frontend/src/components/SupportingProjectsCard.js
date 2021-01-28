@@ -13,10 +13,11 @@ import CardActions from '@material-ui/core/CardActions'
 
 const useStyles = makeStyles({
     root: {
-      maxWidth: 345,
+      maxWidth: 600,
+      maxHeight: 1000
     },
     media: {
-      height: 200,
+      height: 300,
     },
     subtitle1: {
       fontSize: 18
@@ -59,7 +60,7 @@ const SupportingProjectCard = (props) => {
           title="Project Image"
                 />
             <CardContent>
-            <Typography gutterBottom variant="h4" component="h2">
+            <Typography gutterBottom variant="h3" component="h2">
         <strong>{props.project.title}</strong>
 
                    

@@ -195,7 +195,7 @@ function CreateProject() {
                     </StepContent>
                 </Step>
                 <Step >
-                    <StepLabel>What's your timeline?</StepLabel>
+                    <StepLabel>What's your timeline (i.e. number of days to complete)?</StepLabel>
                     <StepContent>
                         <Typography>
                             <Input onChange={e => setTimeline(e.target.value)} >
@@ -265,7 +265,7 @@ function CreateProject() {
                     </StepContent>
                 </Step>
                 <Step >
-                    <StepLabel>Cover image?</StepLabel>
+                    <StepLabel>Paste the source of your project's cover image</StepLabel>
                     <StepContent>
                         <Typography>
                             <Input onChange={e => setImage(e.target.value)} >
@@ -370,7 +370,7 @@ function CreateProject() {
                     </StepContent>
                 </Step>
                 <Step >
-                    <StepLabel>What stage are you at?</StepLabel>
+                    <StepLabel>What stage are you at (i.e. early, mid, late)?</StepLabel>
                     <StepContent>
                         <Typography>
                             <Input onChange={e => setStage(e.target.value)} >

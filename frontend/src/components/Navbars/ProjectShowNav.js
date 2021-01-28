@@ -266,10 +266,10 @@ export default function ProjectShowNav(props) {
                             </DialogContent>
                             <DialogActions>
                                 <Button onClick={handleClose2} color="primary">
-                                    Disagree
+                                    Decline
           </Button>
                                 <Button onClick={handleClose2} color="primary" autoFocus>
-                                    Agree
+                                    Accept
           </Button>
                             </DialogActions>
                         </Dialog> </div> : null}

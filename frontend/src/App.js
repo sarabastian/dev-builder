@@ -57,7 +57,7 @@ class App extends React.Component {
             <Route exact path ="/logout" component = {()=>{
               localStorage.clear()
              
-              return <Redirect to="/login"/>     }}/>
+              return <Redirect to="/"/>     }}/>
            
    
 

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
+import Box from '@material-ui/core/Box';
 
 
 
@@ -51,7 +52,7 @@ const SearchResultsCard = (props) => {
     return (
       <div>
      
-    
+     <Box mx="auto"  p={3}>
         <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
@@ -108,6 +109,7 @@ const SearchResultsCard = (props) => {
 
         
         </Card>
+        </Box>
         </div>
        
     )

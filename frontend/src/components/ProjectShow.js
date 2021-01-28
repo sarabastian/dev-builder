@@ -81,7 +81,7 @@ const useStyle = makeStyles({
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    height: 350
+    height: 400
   },
   details: {
     display: 'center',
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     flex: '1 0 auto',
   },
   cover: {
-    width: 1050,
+    width: 1500,
     height: 350
   },
   controls: {

@@ -34,7 +34,7 @@ return lang[0]
        
         <div>
             <SearchResultsNav user={data.state.user} language={f()} accurateResults={data.state.accurateResults}/>
-<Container>
+<Container mx="auto"  p={3}>
             <Grid
                 container
                 direction="row"

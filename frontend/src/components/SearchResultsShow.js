@@ -35,7 +35,7 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-    height: 400
+    height: 350
   },
   bullet: {
     display: 'inline-block',
@@ -194,11 +194,7 @@ alignItems="center">
         <Typography variant="body2" color="textSecondary" component="p">
         {projectOwner.bio}        </Typography>
       </CardContent>
-      <CardMedia
-        className={ownerClasses.cover}
-        image={project.image}
-     
-      />
+      
 
     </Card>
 

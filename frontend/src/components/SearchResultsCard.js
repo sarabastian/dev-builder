@@ -19,6 +19,13 @@ const useStyles = makeStyles({
     media: {
       height: 200,
     },
+    subtitle1: {
+      fontSize: 18
+    },
+    subtitle: {
+      fontSize: 14,
+      
+    },
   });
 
 
@@ -53,28 +60,27 @@ const SearchResultsCard = (props) => {
           title="Project Image"
                 />
             <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-            {props.project.title}
+           <Typography gutterBottom variant="h5" component="h2">
+           <strong>{props.project.title}</strong> 
 
                    
             
                    
                 
           </Typography>
-                <Typography variant="h5" component="h2">
+                <Typography className={classes.subtitle1}  component="h2">
                    {props.project.story}
           </Typography>
                 <Typography className={classes.pos} color="textSecondary">
                    timeline: {props.project.timeline} days remain
           </Typography>
-                <Typography variant="body2" component="p">
+               <Typography variant="body2" component="p">
                     Main Language: {props.project.language}
             <br />
         
-                <Link href={props.project.github} >
-                    <GitHubIcon />
-                </Link>
-                </Typography>
+                
+                </Typography> 
+                <Typography  color="textSecondary" className={classes.subtitle}>by: @{props.project.user.username}</Typography>
             {/* <image src={props.image}></image> */}
             </CardContent>
             </CardActionArea>

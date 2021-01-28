@@ -70,7 +70,8 @@ const useStyle = makeStyles({
       transform: 'scale(0.8)',
   },
   title: {
-      fontSize: 24,
+      fontSize: 32,
+      marginLeft: 20
   },
   pos: {
       marginBottom: 12,
@@ -113,7 +114,7 @@ const useAccordionStyles = makeStyles((theme) => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontWeight: theme.typography.fontWeightMedium,
   },
 }));
 
@@ -252,9 +253,7 @@ useEffect(() => {
 
       
        
-      {/* <Paper elevation={2} > */}
-       
-        {/* <div className={paperClasses.root}> * */}
+  
 <Grid>
          <Card elevation={3} className={classes.root} >
    
@@ -305,7 +304,7 @@ useEffect(() => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={accordionClasses.heading}>{changedStory ? updatedProject.story : currentProject.story}</Typography>
+      <Typography className={accordionClasses.heading}>{changedStory ? updatedProject.story : currentProject.story}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <form>

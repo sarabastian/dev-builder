@@ -65,7 +65,7 @@ fundraising_goal: 1179, image: 'https://tmbidigitalassetsazure.blob.core.windows
 github: 'https://www.kickstarter.com/projects/cookingpy/cooking-py-learning-as-easy-as-pie?ref=discovery_category', language: 'Python', stage: 'mid', user_id: u7.id)
 p8 = Project.create(title: 'Pickie: Eatery Recommendations based on your preferences.', story: 'An application that allows you to explore new eatery options with recommendations based on dietary preferences or restrictions.', timeline: 12, fundraising_goal: 35900, image: 'https://ksr-ugc.imgix.net/assets/031/924/008/c961b2bf9167492532bd8837f6e1876a_original.jpg?ixlib=rb-2.1.0&crop=faces&w=1024&h=576&fit=crop&v=1609886673&auto=format&frame=1&q=92&s=e4c6308f52f51dc6c99803293ecedc9b', github: 'https://www.kickstarter.com/projects/pickie/pickie-eatery-recommendations-based-on-your-preferences?ref=discovery_category', language: 'React', stage: 'late', user_id: u8.id)
 
-ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! looking for some more collaborators on this project - send me a request if you woudl be interested')
+ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! looking for some more collaborators on this project - send me a request if you would be interested')
 ps2 = Post.create(project_id: p1.id, user_id: u1.id, blurb: "what's your ideal road trip destination? let me know in the comments :)")
 ps2 = Post.create(project_id: p5.id, user_id: u6.id, blurb: 'Think of this application as a health study on a global scale and an opportunity to be a part of something bigger than yourself!')
 ps3 = Post.create(project_id: p2.id, user_id: u1.id, blurb: 'who has any new title ideas for me?')
@@ -74,6 +74,11 @@ ps5 = Post.create(project_id: p8.id, user_id: u8.id, blurb: 'This project began 
 
 After interviewing some restaurant owners in my area however, I began to see a handful of patterns in their dissatisfaction with their current advertising platform.')
 ps6 = Post.create(project_id: p8.id, user_id: u8.id, blurb: "After interviewing some restaurant owners in my area however, I'm beginning to see a handful of patterns in their dissatisfaction with their current advertising platform.")
+ps7 = Post.create(project_id: p4.id, user_id: u5.id, blurb: 'RecommendMe should help solve common problems with recommendation letters.')
+ps8 = Post.create(project_id: p4.id, user_id: u5.id, blurb: 'As soon as I raise enough funds, I will hire software developers to help me create the application. Keep an eye out for that post!')
+ps9 = Post.create(project_id: p4.id, user_id: u5.id, blurb: 'working on a new feature -notifications when your recommenders send your recommendation letters.')
+ps10 = Post.create(project_id: p3.id, user_id: u4.id, blurb: 'for most people, what matters most when it comes to sleep, is their daily habits and activities')
+ps10 = Post.create(project_id: p3.id, user_id: u4.id, blurb: 'we made Hypnos to help you on the journey to conquer whatever sleep issues you’re having, even in a pandemic.')
 
 r1 = Reply.create(post_id: ps1.id, user_id: u2.id, reply: 'love it. 10/10')
 
@@ -85,7 +90,9 @@ c5 = Comment.create(project_id: p5.id, user_id: u2.id, blurb: 'Can you share mor
 c6 = Comment.create(project_id: p5.id, user_id: u7.id, blurb: 'definitely timely!')
 c7 = Comment.create(project_id: p8.id, user_id: u7.id, blurb: 'love this!')
 c8 = Comment.create(project_id: p8.id, user_id: u3.id, blurb: "how's the fundraising going?")
-
+c9 = Comment.create(project_id: p4.id, user_id: u6.id, blurb: 'definitely needed this when I was applying to law school!')
+c10 = Comment.create(project_id: p4.id, user_id: u2.id, blurb: 'yes!!! I do not anticipate a time when this would never be helpful')
+c11 = Comment.create(project_id: p3.id, user_id: u7.id, blurb: 'having tea before bed has really helped me calm down')
 
 s1 = Supportership.create(project_id: p1.id, user_id: u2.id)
 s2 = Supportership.create(project_id: p1.id, user_id: u3.id)
@@ -93,8 +100,8 @@ s3 = Supportership.create(project_id: p2.id, user_id: u2.id)
 s4 = Supportership.create(project_id: p2.id, user_id: u5.id)
 s5 = Supportership.create(project_id: p1.id, user_id: u7.id)
 s6 = Supportership.create(project_id: p1.id, user_id: u6.id)
-s7 = Supportership.create(project_id: p5.id, user_id: u1.id)
-s8 = Supportership.create(project_id: p3.id, user_id: u1.id)
+s7 = Supportership.create(project_id: p4.id, user_id: u1.id)
+s8 = Supportership.create(project_id: p7.id, user_id: u1.id)
 
 collab1 = CollaborateRequest.create(project_id: p1.id, user_id: u2.id)
 collab3 = CollaborateRequest.create(project_id: p2.id, user_id: u3.id)

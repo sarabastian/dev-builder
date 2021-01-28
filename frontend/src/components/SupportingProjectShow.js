@@ -50,7 +50,7 @@ const useChipStyles = makeStyles((theme) => ({
 const useStyles = makeStyles({
     root: {
         display: 'flex',
-        height: 400, 
+        height: 450, 
 
        
     },
@@ -80,6 +80,7 @@ const useStyles = makeStyles({
     root: {
       marginTop: 50,
       maxWidth: 345,
+      
     },
     media: {
       height: 0,
@@ -206,7 +207,7 @@ alignItems="center">
  
     </Grid>
    
-    <Paper variant="dense" component="ul" className={chipClasses.root}>
+    <Paper style={{ border: "none", boxShadow: "none" }} variant="dense" component="ul" className={chipClasses.root}>
     <Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
   <CardHeader 
   avatar={ <LocationOnIcon color='primary' /> }

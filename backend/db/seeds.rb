@@ -36,6 +36,8 @@ u6 = User.create(username: 'hm', password: '123', name: 'Hannah', location: 'Was
 u7 = User.create(username: 'rs', password: '123', name: 'Rachel', location: 'Seattle, WA', 
     profile_pic: 'https://secure.gravatar.com/avatar/463a19ab220968f0654956f2f4763312?s=420&d=mm&r=g',
     bio: 'An entrepreneur who designs online content around food')
+u8 = User.create(username: 'ch', password: '123', name: 'Collin', location: 'Salt Lake City, UT', profile_pic: 'https://ksr-ugc.imgix.net/assets/031/969/170/c08667e23e1dfd86fb26da4b73c9f5f3_original.jpeg?ixlib=rb-2.1.0&w=160&h=160&fit=crop&v=1610300350&auto=format&frame=1&q=92&s=2efabb277f17dcbf90fbd745fe357f16',
+                bio: 'Student at University of Utah')
 
 p1 = Project.create(title: 'RVnB', story: 'A marketplace for users to rent and list campervans, RVs, and trailers',
                     timeline: 60, fundraising_goal: 1000, image: 'https://i.pinimg.com/564x/86/36/ce/8636ce9e4053b3a46356325742b78214.jpg',
@@ -60,13 +62,18 @@ p6 = Project.create(title: 'Survey Console - Intelligent classroom management', 
     language: 'React', stage: 'late', user_id: u3.id)
 p7 = Project.create(title: 'Cooking Py: Learning, as easy as pie!', story: 'Learn a new language, while cooking, together! Learn Spanish or Python (coding) while cooking deliciously simple recipes!', timeline: 28,
 fundraising_goal: 1179, image: 'https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Mixed-Berry-Pie_EXPS_DIYD19_170770_E05_15_1b.jpg', 
-github: 'https://www.kickstarter.com/projects/cookingpy/cooking-py-learning-as-easy-as-pie?ref=discovery_category', language: 'React', stage: 'mid', user_id: u7.id)
-
+github: 'https://www.kickstarter.com/projects/cookingpy/cooking-py-learning-as-easy-as-pie?ref=discovery_category', language: 'Python', stage: 'mid', user_id: u7.id)
+p8 = Project.create(title: 'Pickie: Eatery Recommendations based on your preferences.', story: 'An application that allows you to explore new eatery options with recommendations based on dietary preferences or restrictions.', timeline: 12, fundraising_goal: 35900, image: 'https://ksr-ugc.imgix.net/assets/031/924/008/c961b2bf9167492532bd8837f6e1876a_original.jpg?ixlib=rb-2.1.0&crop=faces&w=1024&h=576&fit=crop&v=1609886673&auto=format&frame=1&q=92&s=e4c6308f52f51dc6c99803293ecedc9b', github: 'https://www.kickstarter.com/projects/pickie/pickie-eatery-recommendations-based-on-your-preferences?ref=discovery_category', language: 'React', stage: 'late', user_id: u8.id)
 
 ps1 = Post.create(project_id: p1.id, user_id: u1.id, blurb: 'hey everyone! looking for some more collaborators on this project - send me a request if you woudl be interested')
+ps2 = Post.create(project_id: p1.id, user_id: u1.id, blurb: "what's your ideal road trip destination? let me know in the comments :)")
 ps2 = Post.create(project_id: p5.id, user_id: u6.id, blurb: 'Think of this application as a health study on a global scale and an opportunity to be a part of something bigger than yourself!')
 ps3 = Post.create(project_id: p2.id, user_id: u1.id, blurb: 'who has any new title ideas for me?')
 ps4 = Post.create(project_id: p3.id, user_id: u4.id, blurb: "What do you do to get a better night's sleep? Let me know in the comments section!")
+ps5 = Post.create(project_id: p8.id, user_id: u8.id, blurb: 'This project began with an idea for an application that helped consumers find healthier local places to eat. 
+
+After interviewing some restaurant owners in my area however, I began to see a handful of patterns in their dissatisfaction with their current advertising platform.')
+ps6 = Post.create(project_id: p8.id, user_id: u8.id, blurb: "After interviewing some restaurant owners in my area however, I'm beginning to see a handful of patterns in their dissatisfaction with their current advertising platform.")
 
 r1 = Reply.create(post_id: ps1.id, user_id: u2.id, reply: 'love it. 10/10')
 
@@ -76,6 +83,9 @@ c3 = Comment.create(project_id: p2.id, user_id: u3.id, blurb: 'wow I need this i
 c4 = Comment.create(project_id: p3.id, user_id: u2.id, blurb: 'Having struggled with insomnia for much of my life, this sounds AMAZING! So many sleep solutions are just too much work with widely varying results, but this sounds easy and scientific.')
 c5 = Comment.create(project_id: p5.id, user_id: u2.id, blurb: 'Can you share more on how you are collecting this data?')
 c6 = Comment.create(project_id: p5.id, user_id: u7.id, blurb: 'definitely timely!')
+c7 = Comment.create(project_id: p8.id, user_id: u7.id, blurb: 'love this!')
+c8 = Comment.create(project_id: p8.id, user_id: u3.id, blurb: "how's the fundraising going?")
+
 
 s1 = Supportership.create(project_id: p1.id, user_id: u2.id)
 s2 = Supportership.create(project_id: p1.id, user_id: u3.id)
@@ -84,6 +94,7 @@ s4 = Supportership.create(project_id: p2.id, user_id: u5.id)
 s5 = Supportership.create(project_id: p1.id, user_id: u7.id)
 s6 = Supportership.create(project_id: p1.id, user_id: u6.id)
 s7 = Supportership.create(project_id: p5.id, user_id: u1.id)
+s8 = Supportership.create(project_id: p3.id, user_id: u1.id)
 
 collab1 = CollaborateRequest.create(project_id: p1.id, user_id: u2.id)
 collab3 = CollaborateRequest.create(project_id: p2.id, user_id: u3.id)

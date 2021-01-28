@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions'
+import Box from '@material-ui/core/Box';
 
 
 const useStyles = makeStyles({
@@ -51,7 +52,7 @@ const SupportingProjectCard = (props) => {
       console.log(fullProject)
     return (
 
-
+      <Box mx="auto"  p={3}>
         <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
@@ -102,6 +103,7 @@ const SupportingProjectCard = (props) => {
 
         
         </Card>
+        </Box>
        
     )
 }

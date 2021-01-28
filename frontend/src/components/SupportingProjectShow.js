@@ -17,7 +17,6 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
 import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
-import TagFacesIcon from '@material-ui/icons/TagFaces';
 import Grid from '@material-ui/core/Grid';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
@@ -40,6 +39,7 @@ const useChipStyles = makeStyles((theme) => ({
     listStyle: 'none',
     padding: theme.spacing(0.5),
     margin: 0,
+    
   },
   chip: {
     margin: theme.spacing(0.5),
@@ -50,7 +50,8 @@ const useChipStyles = makeStyles((theme) => ({
 const useStyles = makeStyles({
     root: {
         display: 'flex',
-        height: 400
+        height: 400, 
+
        
     },
     details: {

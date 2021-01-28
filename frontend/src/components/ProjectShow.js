@@ -88,7 +88,6 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flex: '1 0 auto',
-    margin: 40
   },
   cover: {
     width: 1050,
@@ -110,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
 
 const useAccordionStyles = makeStyles((theme) => ({
   root: {
-    width: '400%',
+    width: 200,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),

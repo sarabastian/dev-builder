@@ -58,7 +58,6 @@ function NewProjectContainer() {
 
     return (
         <div>
-            test
             <NewProjectNav user={project.user} />
      
             <NewProjectCard project={project} user={project.user}/>

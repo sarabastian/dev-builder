@@ -26,12 +26,25 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
-
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CardActions from '@material-ui/core/CardActions';
+import CardHeader from '@material-ui/core/CardHeader';
+import Box from '@material-ui/core/Box';
+import CodeIcon from '@material-ui/icons/Code';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { green } from '@material-ui/core/colors';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyle = makeStyles({
   root: {
-      minWidth: 275,
-      height: 400
+     
+      height: 150
   },
   bullet: {
       display: 'inline-block',
@@ -45,7 +58,31 @@ const useStyle = makeStyles({
       marginBottom: 12,
   },
 });
+const useOwnerStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: 50,
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+  avatar: {
+   color: green[500],
+  },
 
+
+}));
 
 const useAccordionStyles = makeStyles((theme) => ({
   root: {
@@ -56,12 +93,29 @@ const useAccordionStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
 }));
+const useChipStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    listStyle: 'none',
+    padding: theme.spacing(0.5),
+    margin: 0,
+ 
+    // height: 120
+  },
+  chip: {
+    margin: theme.spacing(0.5),
+  },
+}));
 
 
 function NewProjectCard(props) {
   const data = useLocation()
   const styles = useStyle();
   const accordionClasses = useAccordionStyles();
+  const ownerClasses = useOwnerStyles();
+  const chipClasses = useChipStyles();
 
 
   const [open, setOpen] = React.useState(false);
@@ -188,8 +242,10 @@ console.log(currentProject)
   return (
     deleted ? <Redirect to="/my-projects" /> : 
     <div>
+      <Grid>
 
-    <Card className={styles.root} variant="outlined">
+    <Card style={{ border: "none", boxShadow: "none" }}  className={styles.root} >
+    <div className={styles.details}>
           <CardContent>
               <Typography className={styles.title} color="textSecondary" gutterBottom>
                   {currentProject.title}
@@ -339,50 +395,109 @@ console.log(currentProject)
          */}
 
           </CardContent>
-    
+    </div>
+    <CardMedia
+        className={styles.cover}
+        image={props.project.image}
+     
+      />
       </Card>
+      </Grid>
 
-      <AppBar position="static" color='white'>
+      <Paper style={{ border: "none", boxShadow: "none" }}variant="dense" component="ul" className={chipClasses.root}>
+    
+    <Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <LocationOnIcon color='primary' /> }
+  title={props.user.location}
+ />
+  
+ 
+</Card> 
+
+<Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <TimelapseIcon color='primary' /> }
+  title={props.project.stage}
+  subheader='stage'
+ />
+  
+ 
+</Card> 
+  
+  <Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <AttachMoneyIcon className={ownerClasses.avatar}/> }
+  title={props.project.fundraising_goal}
+  subheader="goal" />
+  
+ 
+</Card> 
+
+<Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <CalendarTodayIcon color='primary' /> }
+  title={props.project.timeline}
+  subheader="days remain" />
+  
+ 
+</Card> 
+
+<Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <CodeIcon color='primary' /> }
+  title={props.project.language}
+   />
+  
+ 
+</Card> 
+
+
+          
+    </Paper> 
+
+    {/* <AppBar position="center" color='white'>
   <Toolbar variant="dense">
    
-
   <Link href={data.state.project.github}  variant="body2">
-        <GitHubIcon color='secondary'/>   
+  <Card  style={{ border: "none", boxShadow: "none" }}>
+  <CardHeader 
+  avatar={ <GitHubIcon color='secondary' /> }
+   />
+   </Card>
                 </Link>
+
+                {/* <Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <LocationOnIcon color='primary' /> }
+  title={props.user.location}
+ />
+  
+ 
+</Card>  */}
                
-                <LocationOnIcon color='primary'></LocationOnIcon>
+                {/* <LocationOnIcon color='primary'></LocationOnIcon>
     <Typography variant="sm" color="primary" >
    
     {props.user.location}
     </Typography>
+    <Card style={{ border: "none", boxShadow: "none" }} className={ownerClasses.root}>
+  <CardHeader 
+  avatar={ <TimelapseIcon color='primary' /> }
+  title={props.project.stage}
+  subheader='stage'
+ />
+  
+ 
+</Card> 
     <TimelapseIcon color="secondary"/>
     <Typography variant="sm" color="primary" >
    
    {currentProject.stage} stage
    </Typography>
   </Toolbar>
-</AppBar>
-      {/* <AppBar position="static" color='white'>
-  <Toolbar variant="dense">
-   
-
-  <Link href={data.state.project.github}  variant="body2">
-        <GitHubIcon color='secondary'/>   
-                </Link>
-               
-                <LocationOnIcon color='primary'></LocationOnIcon>
-    <Typography variant="sm" color="primary" >
-   
-    {props.user.location}
-    </Typography>
-    <TimelapseIcon color="secondary"/>
-    <Typography variant="sm" color="primary" >
-   
-   {currentProject.stage} stage
-   </Typography>
-  </Toolbar> */}
-{/* </AppBar>
-      */}
+</AppBar>  */}
+     
       <NewProjectTabs project={currentProject} user={props.user}  
                       supporters={props.project.supporters} comments={props.project.comments}
                       commenters={props.project.commenters}/>

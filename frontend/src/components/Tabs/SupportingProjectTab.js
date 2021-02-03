@@ -181,7 +181,6 @@ export default function SupportingProjectTab(props) {
             autoFocus
             margin="dense"
             id="name"
-            label="update"
             type="text"
             fullWidth
           />

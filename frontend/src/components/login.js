@@ -76,7 +76,7 @@ export default function Login(props){
   }
 
   const handleSubmit = (e) => {
-    console.log('working')
+ 
     e.preventDefault()
   
     fetch('http://localhost:3001/api/v1/login',{
@@ -93,12 +93,15 @@ export default function Login(props){
     }).then(response => response.json())
   
     .then(data => {
-        
+      if(data.hasOwnProperty('auth_key')){
             console.log(data.user_info)
             console.log(data)
             localStorage.setItem('token', data.user_info.user_id)
             props.handleLogin()
             history.push('/my-projects')
+      } else {
+        alert('Login Failed..')
+      }
         })
   
   }

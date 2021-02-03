@@ -125,7 +125,7 @@ function CreateProject() {
             <Stepper activeStep={activeStep} orientation="vertical">
 
                 <Step >
-                    <StepLabel>Name your Project</StepLabel>
+                    <StepLabel>Name your Campaign</StepLabel>
                     <StepContent>
                         <Typography>
                             <Input onChange={e => setTitle(e.target.value)} >

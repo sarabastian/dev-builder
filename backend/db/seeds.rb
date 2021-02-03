@@ -32,7 +32,7 @@ u4 = User.create(username: 'js', password: '123', name: 'James', location: 'San 
 u5 = User.create(username: 'lc', password: '123', name: 'Lauren', location: 'Dallas, TX',
                 profile_pic: 'https://ksr-ugc.imgix.net/assets/025/645/887/bd0c4d3740ac91136f052c345a36c308_original.JPG?ixlib=rb-2.1.0&w=160&h=160&fit=crop&v=1561757827&auto=format&frame=1&q=92&s=c0b090cdc38a7993a0722ef40788f751',
                 bio: 'I love solving problems and I believe that kindness is always in style.')
-u6 = User.create(username: 'hm', password: '123', name: 'Hannah', location: 'Washington, DC', profile_pic: 'https://lh3.googleusercontent.com/proxy/xnKro7VQFHwIKyDhwlzA8rhkqaxtGugzkNnv4JlpNjg74g5QLC8Kje7F7itR6H139W4_jWsEmDTL1SkPW6hSp_u-gAfh9qJOl7YdPEbpOqalSoggKFc4FIYaQLTRpc4GDuNS724', bio: 'Lawyer turned software engineer')
+u6 = User.create(username: 'hm', password: '123', name: 'Hannah', location: 'Washington, DC', profile_pic: 'https://profile.alumnius.net/317023817.jpg', bio: 'Lawyer turned software engineer')
 u7 = User.create(username: 'rs', password: '123', name: 'Rachel', location: 'Seattle, WA', 
     profile_pic: 'https://secure.gravatar.com/avatar/463a19ab220968f0654956f2f4763312?s=420&d=mm&r=g',
     bio: 'An entrepreneur who designs online content around food')
@@ -99,7 +99,7 @@ s2 = Supportership.create(project_id: p1.id, user_id: u3.id)
 s3 = Supportership.create(project_id: p2.id, user_id: u2.id)
 s4 = Supportership.create(project_id: p2.id, user_id: u5.id)
 s5 = Supportership.create(project_id: p1.id, user_id: u7.id)
-s6 = Supportership.create(project_id: p1.id, user_id: u6.id)
+
 s7 = Supportership.create(project_id: p4.id, user_id: u1.id)
 s8 = Supportership.create(project_id: p7.id, user_id: u1.id)
 

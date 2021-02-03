@@ -56,10 +56,12 @@ function a11yProps(index) {
 const useGridStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+
   },
   paper: {
     height: 140,
     width: 100,
+   
   },
   control: {
     padding: theme.spacing(2),
@@ -72,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
     height: 600,
+    
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -86,6 +89,7 @@ const useSnackStyles = makeStyles((theme) => ({
 
     
     },
+    
   },
 }));
 

@@ -160,7 +160,7 @@ export default function SupportingProjectTab(props) {
          <Tab label="Comments" {...a11yProps(1)} />
          </Tabs>
          
-         <TabPanel 
+         <TabPanel  
       value={value} index={0}>
         {allPosts.map(p => <PostCard post={p} key={p.id} project={props.project} projectOwner={props.projectOwner}/>)}
          

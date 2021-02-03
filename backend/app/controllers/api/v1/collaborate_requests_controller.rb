@@ -10,7 +10,7 @@ class Api::V1::CollaborateRequestsController < ApplicationController
     end
 
     def create 
-        collaborate_request = CollaborateRequest.create(collaborate_request _params)
+        collaborate_request = CollaborateRequest.create(collaborate_request_params)
         render json: collaborate_request 
     end
 
@@ -24,6 +24,6 @@ class Api::V1::CollaborateRequestsController < ApplicationController
     private
 
     def collaborate_request_params
-        params.require(:comment).permit(:project_id, :requester_id)
+        params.require(:collaborate_request).permit(:project_id, :user_id)
     end
 end

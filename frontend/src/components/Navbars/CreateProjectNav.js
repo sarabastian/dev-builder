@@ -113,7 +113,7 @@ export default function MainNavBar(props) {
             </div>
           )}
           <Typography variant="h6" className={classes.title}>
-            My Campaigns
+  
           </Typography>
           <div>
             <Search user={props.user}/>

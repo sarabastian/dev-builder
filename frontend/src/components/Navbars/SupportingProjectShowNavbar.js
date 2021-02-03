@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
                     state: {
                       user: props.user
                     }
-                  }}style={{ textDecoration: 'none' }}>
+                  }}style={{ textDecoration: 'none', color: 'black' }}>
                   <MenuItem >My Campaigns</MenuItem>
                   </Link>
                   <Link to={{
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
                     state: {
                       user: props.user
                     }
-                  }}style={{ textDecoration: 'none' }}>
+                  }}style={{ textDecoration: 'none', color: 'black' }}>
                     <MenuItem>Saved Campaigns</MenuItem>
               
                   </Link>

@@ -8,10 +8,8 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
 import {useLocation} from "react-router-dom";
 import { withRouter } from 'react-router-dom';
-import { checkPropTypes } from 'prop-types';
 import { useHistory } from "react-router-dom";
 import Container from '@material-ui/core/Container';
 import CreateProjectNav from './Navbars/CreateProjectNav'
@@ -125,8 +123,7 @@ function CreateProject() {
       
         <div>
            <CreateProjectNav user = {user} />
-           {/* <Container height={100}></Container> */}
-       <Container >
+       <Container  boxShadow={0}> >
         <div className={classes.root}>
             <Stepper activeStep={activeStep} orientation="vertical">
 

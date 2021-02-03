@@ -103,15 +103,7 @@ const useStyles = makeStyles((theme) => ({
                   }}style={{ textDecoration: 'none', color: 'black' }}>
                   <MenuItem >My Campaigns</MenuItem>
                   </Link>
-                  <Link to={{
-                    pathname:'/supporting-projects',
-                    state: {
-                      user: props.user
-                    }
-                  }}style={{ textDecoration: 'none', color: 'black'}}>
-                    <MenuItem>Saved Campaigns</MenuItem>
-              
-                  </Link>
+          
                   
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
               

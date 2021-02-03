@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import SupportingProjectTab from './Tabs/SupportingProjectTab';
-import SupportingProjectsContainerNavbar from './Navbars/SupportingProjectsContainerNavbar'
+import SupportingProjectShowNavbar from './Navbars/SupportingProjectShowNavbar';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
@@ -117,7 +117,7 @@ export default function SupportingProjectShow()  {
 
     return (
       <div>
-         <SupportingProjectsContainerNavbar user={user} />
+         <SupportingProjectShowNavbar user={user} />
 
 <Grid>
 

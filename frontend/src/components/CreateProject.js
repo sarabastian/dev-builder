@@ -13,7 +13,8 @@ import {useLocation} from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 import { checkPropTypes } from 'prop-types';
 import { useHistory } from "react-router-dom";
-
+import Container from '@material-ui/core/Container';
+import CreateProjectNav from './Navbars/CreateProjectNav'
 
 
 
@@ -27,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
     actionsContainer: {
         marginBottom: theme.spacing(2),
+        
     },
     resetContainer: {
         padding: theme.spacing(3),
@@ -114,13 +116,17 @@ function CreateProject() {
     //     'User': data.state.user
 
     // }
-    // console.log(details);
-
+    // console.log(data);
+    const user = data.state.user
+    // console.log(user)
 
 
     return (
       
-       
+        <div>
+           <CreateProjectNav user = {user} />
+           {/* <Container height={100}></Container> */}
+       <Container >
         <div className={classes.root}>
             <Stepper activeStep={activeStep} orientation="vertical">
 
@@ -420,6 +426,8 @@ function CreateProject() {
 
                 </Paper>
             )}
+        </div>
+        </Container>
         </div>
  
     );

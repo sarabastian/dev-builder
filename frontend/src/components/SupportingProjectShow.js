@@ -116,7 +116,10 @@ export default function SupportingProjectShow() {
   // console.log(data.state.projectOwner)
   const projectOwner = data.state.projectOwner
   const user = data.state.user
+  const [collaborate_requests, setCollaborateRequests] = React.useState([])
 
+  const alreadyCollaborating = collaborate_requests.filter(r => r.project_id === project.id && r.user_id === user.id)
+console.log(alreadyCollaborating)
   const chipClasses = useChipStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -124,6 +127,13 @@ export default function SupportingProjectShow() {
     setOpen(true);
   };
 
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/v1/collaborate_requests/')
+    .then(res => res.json())
+    .then(collaborate_requests => setCollaborateRequests(collaborate_requests));
+    }, [])
+console.log(collaborate_requests)
   const handleClose = () => {
     fetch('http://localhost:3001/api/v1/collaborate_requests', {
       method: 'POST',
@@ -139,9 +149,7 @@ export default function SupportingProjectShow() {
     })
     .then(r => r.json())
     .then(result =>
-    console.log(result)
-
-
+    setCollaborateRequests([...collaborate_requests, result])
     )
     setOpen(false);
   };
@@ -181,17 +189,18 @@ export default function SupportingProjectShow() {
                       </Avatar>
                     }
                     action={
+                      alreadyCollaborating.length > 0 ? null :
                       <IconButton aria-label="send a request to collaborate on this project" onClick={handleClickOpen}>
-                        <PersonAddIcon />
-                      </IconButton>
-
+                        <PersonAddIcon /> 
+                      </IconButton> 
+                      
                     }
-
                     title='About the Developer'
                     // caption={projectOwner.username}
                     subheader={projectOwner.name}
 
                   />
+                   
                   <Dialog
                     open={open}
                     TransitionComponent={Transition}
@@ -210,7 +219,8 @@ export default function SupportingProjectShow() {
                         Agree
           </Button>
                     </DialogActions>
-                  </Dialog>
+                  </Dialog> 
+
                   <CardContent>
                     <Typography variant="body1" color="textSecondary" component="p">
                     </Typography>

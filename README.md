@@ -1,6 +1,8 @@
 # dev-builder
 Welcome to dev-builder, a platform for software developers to manage, share, and create dialogue around their personal projects, as well as get inspiration from and support other creators' ideas and work.
 
+*Click on the below image to see a demo.*
+
 [![IMAGE ALT TEXT HERE](https://github.com/sarabastian/dev-builder/blob/main/frontend/public/Screen%20Shot%202021-02-21%20at%203.20.42%20PM.png)](https://www.youtube.com/watch?v=H8_LGSDINUk)
 
 ## Setup and Installation

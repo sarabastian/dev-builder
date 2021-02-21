@@ -1,7 +1,8 @@
 # dev-builder
 Welcome to dev-builder, a platform for software developers to manage, share, and create dialogue around their personal projects, as well as get inspiration from and support other creators' ideas and work.
 
-![](Final Project.mov)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=H8_LGSDINUk)
+
 ## Setup and Installation
 To get started, clone this repository onto your local machine.
 

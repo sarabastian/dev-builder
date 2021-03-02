@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::API
  
+  def home
+    render json: {message: 'Server is up!'}
+  end
+  
   def current_user
     token = request.headers['auth-key']
     begin

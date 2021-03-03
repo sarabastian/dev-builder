@@ -100,7 +100,7 @@ export default function Login(props){
             props.handleLogin()
             history.push('/my-projects')
       } else {
-        alert('Login Failed..')
+        alert("Oops! We couldn't find you. Please try logging in again")
       }
         })
   

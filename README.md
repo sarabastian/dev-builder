@@ -24,6 +24,13 @@ Next, navigate to the backend directory.
 ```
 cd backend
 ```
+Install the dependencies and seed the database:
+```
+bundle install
+```
+```
+rails db:migrate && rails db:seed
+```
 Start the Rails server.
 ```
 rails s -p 3001

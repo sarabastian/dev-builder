@@ -8,13 +8,7 @@ Welcome to dev-builder, a platform for software developers to manage, share, and
 ## Setup and Installation
 To get started, clone this repository onto your local machine.
 
-Open up your terminal, and clone down the repository.
-
-```
-git clone git@github.com:sarabastian/dev-builder.git
-```
-
-In your terminal, navigate to the project directory.
+Open up your terminal, and clone down the repository, and navigate to the project directory.
 
 ```
 cd dev-builder
@@ -46,6 +40,14 @@ npm install && npm start
 ```
 
 Once the local server has opened, you are ready to start using the app. Enjoy!
+
+## Contributing 
+
+Contributions are welcome. Feel free to open a pull request or branch from this project.
+
+## License 
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ### About
 

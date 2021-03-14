@@ -34,7 +34,7 @@ Open up another terminal, and navigate to the front-end directory from the root 
 cd frontend
 ```
 
-Install the inlcuded packages and start the front-end server.
+Install the included packages and start the front-end server.
 ```
 npm install && npm start
 ```

@@ -29,7 +29,7 @@ Start the Rails server.
 ```
 rails s -p 3001
 ```
-Open up another terminal, and navigate to the front-end directory.
+Open up another terminal, and navigate to the front-end directory from the root directory.
 ```
 cd frontend
 ```

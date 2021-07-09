@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import { IconButton } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from '@material-ui/core/Button';
-import PostCard from '../PostCard';
-import SupporterCard from '../SupporterCard';
-import Grid from '@material-ui/core/Grid';
-import CommentCard from '../CommentCard'
-import Box from '@material-ui/core/Box';
-
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import { IconButton } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@material-ui/core/Button";
+import PostCard from "../PostCard";
+import SupporterCard from "../SupporterCard";
+import Grid from "@material-ui/core/Grid";
+import CommentCard from "../CommentCard";
+import Box from "@material-ui/core/Box";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,19 +48,17 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
+    "aria-controls": `vertical-tabpanel-${index}`,
   };
 }
 
 const useGridStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-
   },
   paper: {
     height: 140,
     width: 100,
-   
   },
   control: {
     padding: theme.spacing(2),
@@ -72,9 +69,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    display: 'flex',
+    display: "flex",
     height: 600,
-    
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -84,15 +80,11 @@ const useStyles = makeStyles((theme) => ({
 const useSnackStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 600,
-    '& > * + *': {
+    "& > * + *": {
       marginTop: theme.spacing(2),
-
-    
     },
-    
   },
 }));
-
 
 export default function ProjectTabs(props) {
   const [spacing, setSpacing] = React.useState(2);
@@ -108,137 +100,123 @@ export default function ProjectTabs(props) {
   };
   const classes = useStyles();
   const snackClasses = useSnackStyles();
- 
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const [post, setPost] = useState('');
+  const [post, setPost] = useState("");
   // console.log(props.user)
   const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/v1/projects/${props.project.id}`)
-      .then(res => res.json())
-      .then(project => setAllPosts(project.posts));
+      .then((res) => res.json())
+      .then((project) => setAllPosts(project.posts));
   }, []);
-// console.log(props.project.id)
+  // console.log(props.project.id)
   const addPost = () => {
     setOpen(false);
     fetch(`http://localhost:3001/api/v1/posts`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
         project_id: props.project.id,
         user_id: props.user.id,
-        blurb: post
+        blurb: post,
       }),
-  })
-
-
-  .then(r => r.json())
-  .then(post => setAllPosts([...allPosts, post]));
-
+    })
+      .then((r) => r.json())
+      .then((post) => setAllPosts([...allPosts, post]));
   };
 
- 
-  // const [userCommenter, setUser] = useState([])
-  // const getCommenter = (id) => {
-
-  //   fetch(`http://localhost:3001/api/v1/users/${id}`)
-  //   .then(r => r.json())
-  //   .then( user => setUser(user))
-  // }
-// let commenters = props.commenters.filter(com => com.id == props.comments.map(c => c.user_id))
-
-
   return (
-      <div>
-          <h2 >Community</h2>
-     
+    <div>
+      <h2>Community</h2>
 
-    <div className={classes.root}>
-       
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        <Tab label="Your Updates" {...a11yProps(0)} ></Tab>
-        <Tab label="Comments" {...a11yProps(1)} />
-        <Tab label="Supporters" {...a11yProps(2)} />
-        
-
-      </Tabs>
-      <TabPanel value={value} index={0} >
-        <IconButton aria-label="add" onClick={handleClickOpen}>
+      <div className={classes.root}>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          aria-label="Vertical tabs example"
+          className={classes.tabs}
+        >
+          <Tab label="Your Updates" {...a11yProps(0)}></Tab>
+          <Tab label="Comments" {...a11yProps(1)} />
+          <Tab label="Supporters" {...a11yProps(2)} />
+        </Tabs>
+        <TabPanel value={value} index={0}>
+          <IconButton aria-label="add" onClick={handleClickOpen}>
             <AddIcon />
-            </IconButton>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add an update about your project</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Keep your community informed of your progress.
-          </DialogContentText>
-          <TextField  onChange={e => setPost(e.target.value)}
-            autoFocus
-            margin="dense"
-            id="name"
-            label="update"
-            type="text"
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={addPost} color="primary">
-            Post
-          </Button>
-        </DialogActions>
-      </Dialog>
-    
-       {allPosts.map(p => <PostCard post={p} key={p.id} project={props.project} user={props.user}/>)}
-    
-      </TabPanel>
-      
-    
-      <TabPanel 
-      value={value} index={1}>
-        {props.comments.map(c => <CommentCard comment={c} key={c.id} project={props.project} />)}
-         
- 
-      </TabPanel>
-      
-         
-      <TabPanel value={value} index={2}>
-  
-      <Grid 
-      container
-      direction="row"
-      justify="space-evenly"
-      alignItems="center"
-     
-      >    
-   
-      {props.supporters.map(s =>  <SupporterCard supporter={s} key={s.id}  />)}
-          
-      </Grid>
-  
-      </TabPanel>
+          </IconButton>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">
+              Add an update about your project
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Keep your community informed of your progress.
+              </DialogContentText>
+              <TextField
+                onChange={(e) => setPost(e.target.value)}
+                autoFocus
+                margin="dense"
+                id="name"
+                label="update"
+                type="text"
+                fullWidth
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={addPost} color="primary">
+                Post
+              </Button>
+            </DialogActions>
+          </Dialog>
 
+          {allPosts.map((p) => (
+            <PostCard
+              post={p}
+              key={p.id}
+              project={props.project}
+              user={props.user}
+            />
+          ))}
+        </TabPanel>
 
-    </div>
+        <TabPanel value={value} index={1}>
+          {props.comments.map((c) => (
+            <CommentCard comment={c} key={c.id} project={props.project} />
+          ))}
+        </TabPanel>
+
+        <TabPanel value={value} index={2}>
+          <Grid
+            container
+            direction="row"
+            justify="space-evenly"
+            alignItems="center"
+          >
+            {props.supporters.map((s) => (
+              <SupporterCard supporter={s} key={s.id} />
+            ))}
+          </Grid>
+        </TabPanel>
+      </div>
     </div>
   );
 }
